@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Database, Map, BarChart3, Layers, Award } from "lucide-react";
+import { Database, Map, BarChart3, Layers, Award, Lock } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { FadeIn } from "@/components/FadeIn";
 import { ProjectGallery, ExternalEmbed } from "@/components/ProjectGallery";
@@ -26,6 +26,29 @@ export default function RetailGeospatialPage() {
   return (
     <article className="container max-w-5xl py-16 md:py-24">
       <ProjectDeepHero project={project} assets={assets} stats={stats} />
+
+      <FadeIn>
+        <div className="mt-8 rounded-2xl border border-amber-500/30 bg-amber-500/5 p-5">
+          <div className="flex items-start gap-3">
+            <Lock className="mt-0.5 h-4 w-4 text-amber-400" />
+            <div className="text-sm leading-relaxed text-muted">
+              <p className="font-semibold text-amber-200">
+                Mock data, real methodology
+              </p>
+              <p className="mt-2">
+                Fater&apos;s proprietary sales records are under NDA. The
+                map below and the public repo use representative mock data
+                that mirrors the structure of the original. The SQL
+                queries, joins, spatial pipeline, and per-capita
+                store-potential metric are faithful to the work I
+                presented to leadership; only the underlying numbers are
+                synthetic. The static deliverable that drove the jury
+                decision used the real data and is not shown here.
+              </p>
+            </div>
+          </div>
+        </div>
+      </FadeIn>
 
       <FadeIn>
         <DeepSection
@@ -78,23 +101,23 @@ export default function RetailGeospatialPage() {
         </DeepSection>
 
         <DeepSection
-          eyebrow="Interactive map"
+          eyebrow="Interactive map (mock data)"
           title="Choropleth of per-capita store potential"
           icon={<Map className="h-4 w-4" />}
         >
           <p>
-            The Folium map below is the exact deliverable that went into the
-            Fater presentation. Hover any district for the KPI breakdown.
+            The Folium map below reproduces the shape of the deliverable
+            that went into the Fater presentation, rendered against mock
+            data (see the note at the top of this page). The static map
+            export with the real data drove the jury decision; the
+            interactive version here exists so the methodology is
+            inspectable.
           </p>
           {assets.externalEmbed ? (
             <div className="mt-6">
               <ExternalEmbed {...assets.externalEmbed} />
             </div>
           ) : null}
-          <p className="mt-4 text-xs text-muted">
-            Tip: try the Toggle layers control in the top-right corner of the
-            map to switch base layers.
-          </p>
         </DeepSection>
 
         <DeepSection

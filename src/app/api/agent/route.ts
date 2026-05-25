@@ -2,7 +2,6 @@ import Anthropic from "@anthropic-ai/sdk";
 import { AGENT_SYSTEM_PROMPT } from "@/lib/agent-prompt";
 import { generateStubAnswer } from "@/lib/agent-stub";
 import { getProject } from "@/lib/projects";
-import { agentTools, executeAgentTool } from "@/lib/agent-tools";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -11,9 +10,10 @@ type ChatMessage = { role: "user" | "assistant"; content: string };
 
 const MAX_HISTORY_TURNS = 6;
 const MAX_MESSAGE_LEN = 1500;
-const MAX_TOOL_ITERATIONS = 3;
 
-type AnthropicMessage = Parameters<Anthropic["messages"]["create"]>[0]["messages"][number];
+type AnthropicMessage = Parameters<
+  Anthropic["messages"]["create"]
+>[0]["messages"][number];
 
 export async function POST(req: Request) {
   let payload: {
@@ -62,76 +62,49 @@ export async function POST(req: Request) {
       content: m.content.slice(0, MAX_MESSAGE_LEN),
     }));
 
-  const conversationContext = trimmedHistory
-    .map((m) => `${m.role.toUpperCase()}: ${m.content}`)
-    .concat(`USER: ${rawMessage}`)
-    .join("\n");
-
-  const messages: AnthropicMessage[] = [
-    ...trimmedHistory,
-    { role: "user", content: userMessageWithContext },
-  ];
-
   try {
-    // Agentic loop. Most turns finish in 1 iteration. Tool-using turns
-    // take 2 (tool call -> tool result -> final text).
-    for (let iter = 0; iter < MAX_TOOL_ITERATIONS; iter++) {
-      const resp = await client.messages.create({
-        model: "claude-haiku-4-5",
-        max_tokens: 800,
-        system: AGENT_SYSTEM_PROMPT,
-        tools: agentTools,
-        messages,
-      });
+    const stream = await client.messages.stream({
+      model: "claude-haiku-4-5",
+      max_tokens: 800,
+      system: AGENT_SYSTEM_PROMPT,
+      messages: [
+        ...trimmedHistory,
+        { role: "user", content: userMessageWithContext },
+      ],
+    });
 
-      if (resp.stop_reason !== "tool_use") {
-        const text = resp.content
-          .filter((b): b is Anthropic.TextBlock => b.type === "text")
-          .map((b) => b.text)
-          .join("");
-        return new Response(text, {
-          headers: {
-            "content-type": "text/plain; charset=utf-8",
-            "x-agent-source": "claude-haiku-4-5",
-            "cache-control": "no-store",
-          },
-        });
-      }
+    const encoder = new TextEncoder();
+    const readable = new ReadableStream({
+      async start(controller) {
+        try {
+          for await (const event of stream) {
+            if (
+              event.type === "content_block_delta" &&
+              event.delta.type === "text_delta"
+            ) {
+              controller.enqueue(encoder.encode(event.delta.text));
+            }
+          }
+        } catch (err) {
+          console.error("agent stream error", err);
+          controller.enqueue(
+            encoder.encode(
+              "\n\n(Hit a snag mid-response. Try again, or save what you have via the download button at the top of the chat.)"
+            )
+          );
+        } finally {
+          controller.close();
+        }
+      },
+    });
 
-      const toolUse = resp.content.find(
-        (b): b is Anthropic.ToolUseBlock => b.type === "tool_use"
-      );
-      if (!toolUse) break;
-
-      const toolResult = await executeAgentTool(
-        toolUse.name,
-        toolUse.input as Record<string, unknown>,
-        conversationContext
-      );
-
-      messages.push({ role: "assistant", content: resp.content });
-      messages.push({
-        role: "user",
-        content: [
-          {
-            type: "tool_result",
-            tool_use_id: toolUse.id,
-            content: JSON.stringify(toolResult),
-          },
-        ],
-      });
-    }
-
-    return new Response(
-      "I tried to handle that but hit a snag. Please email Parham directly at parhamkhoshsolat@gmail.com.",
-      {
-        status: 200,
-        headers: {
-          "content-type": "text/plain; charset=utf-8",
-          "x-agent-source": "max-iterations",
-        },
-      }
-    );
+    return new Response(readable, {
+      headers: {
+        "content-type": "text/plain; charset=utf-8",
+        "x-agent-source": "claude",
+        "cache-control": "no-store",
+      },
+    });
   } catch (err) {
     console.error("agent request error", err);
     const answer = generateStubAnswer(rawMessage);

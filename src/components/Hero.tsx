@@ -7,6 +7,12 @@ import { Button } from "@/components/ui/button";
 import { HeroMarquee } from "@/components/HeroMarquee";
 import { siteConfig } from "@/lib/site-config";
 
+function openAgentChat() {
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new CustomEvent("open-agent-chat"));
+  }
+}
+
 const HEADLINE_WORDS = ["Parham", "Khosh", "Solat"];
 
 export function Hero() {
@@ -78,19 +84,19 @@ export function Hero() {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut", delay: 0.8 }}
-            className="mt-10 flex flex-wrap gap-3"
+            className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3"
           >
             <Button asChild size="lg">
               <Link href="#projects">
                 See the work <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
-            <Button asChild size="lg" variant="secondary">
-              <Link href="#about">About me</Link>
-            </Button>
-            <Button asChild size="lg" variant="ghost">
-              <a href={`mailto:${siteConfig.contact.email}`}>Get in touch</a>
-            </Button>
+            <Link
+              href="#about"
+              className="text-sm text-muted hover:text-text transition-colors"
+            >
+              Read the back-story
+            </Link>
           </motion.div>
         </div>
 
@@ -100,22 +106,35 @@ export function Hero() {
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.4 }}
           className="hidden self-end md:block"
         >
-          <div className="rounded-2xl border border-border bg-card/60 p-6">
-            <p className="text-xs uppercase tracking-wider text-muted">
-              Try the agent
+          <button
+            type="button"
+            onClick={() => {
+              if (typeof window !== "undefined") {
+                window.dispatchEvent(new CustomEvent("open-agent-chat"));
+              }
+            }}
+            className="group w-full rounded-2xl border border-accent/30 bg-gradient-to-br from-accent-soft/40 via-card to-card p-6 text-left transition-all hover:border-accent/60 hover:shadow-[0_0_0_4px_rgba(56,189,248,0.08)]"
+          >
+            <div className="flex items-center justify-between gap-3">
+              <p className="text-xs uppercase tracking-wider text-accent">
+                Skip the scroll
+              </p>
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-accent text-bg transition-transform group-hover:translate-x-0.5">
+                →
+              </span>
+            </div>
+            <p className="mt-3 text-base leading-relaxed text-text">
+              Ask the agent.
             </p>
-            <p className="mt-3 text-sm leading-relaxed text-text">
-              The chat in the bottom-right is an AI agent that answers
-              recruiter questions about my work. Built on Claude Haiku and
-              grounded in my project memory.
+            <p className="mt-2 text-sm leading-relaxed text-muted">
+              Trained on the full memory of my work. Ask anything in
+              plain English, then download the conversation when
+              you&apos;re done.
             </p>
-            <p className="mt-3 text-xs text-muted">
-              Ask it: <span className="text-accent">&ldquo;What&apos;s my
-              strongest LLM project?&rdquo;</span> or{" "}
-              <span className="text-accent">&ldquo;Send Parham a
-              message.&rdquo;</span>
+            <p className="mt-4 text-xs text-accent">
+              Click to open chat →
             </p>
-          </div>
+          </button>
         </motion.aside>
       </div>
 

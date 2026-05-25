@@ -1,4 +1,4 @@
-export type ProjectStatus = "live-demo" | "static-demo" | "stub";
+export type ProjectStatus = "live-demo" | "case-study";
 
 export type Project = {
   slug: string;
@@ -48,7 +48,7 @@ export const projects: Project[] = [
       "model serving",
     ],
     repoUrl: "https://github.com/parhamkhoshsolat/florence2-vqa",
-    liveUrl: "https://huggingface.co/spaces/parhamkhoshsolat/Florence-2_VQA",
+    liveUrl: "https://parhamkhoshsolat-florence-2-vqa.hf.space",
     heroStat: { label: "Training loss reduction", value: "64%" },
     status: "live-demo",
   },
@@ -84,7 +84,7 @@ export const projects: Project[] = [
     ],
     repoUrl: "https://github.com/parhamkhoshsolat/stock-clustering-pipeline",
     heroStat: { label: "Streaming topics", value: "55" },
-    status: "stub",
+    status: "case-study",
   },
   {
     slug: "talentsonar",
@@ -113,7 +113,7 @@ export const projects: Project[] = [
       "prompt engineering",
     ],
     repoUrl: "https://github.com/parhamkhoshsolat/TalentSonar",
-    liveUrl: "https://huggingface.co/spaces/parhamkhoshsolat/TalentSonar",
+    liveUrl: "https://parhamkhoshsolat-talentsonar.hf.space",
     heroStat: { label: "Data source", value: "GitHub GraphQL" },
     status: "live-demo",
   },
@@ -148,7 +148,7 @@ export const projects: Project[] = [
       "deployment",
     ],
     repoUrl: "https://github.com/parhamkhoshsolat/pest-population-forecasting",
-    liveUrl: "https://huggingface.co/spaces/parhamkhoshsolat/pest-prediction-dashboard",
+    liveUrl: "https://parhamkhoshsolat-pest-prediction-dashboard.hf.space",
     heroStat: { label: "Minority-class recall", value: "1.00" },
     status: "live-demo",
   },
@@ -183,7 +183,7 @@ export const projects: Project[] = [
     ],
     repoUrl: "https://github.com/parhamkhoshsolat/time-series-OULAD",
     heroStat: { label: "CNN test MAPE", value: "1.9%" },
-    status: "stub",
+    status: "case-study",
   },
   {
     slug: "retail-geospatial",
@@ -215,7 +215,7 @@ export const projects: Project[] = [
     ],
     repoUrl: "https://github.com/parhamkhoshsolat/retail-geospatial-analytics",
     heroStat: { label: "Recognition", value: "Jury pick" },
-    status: "stub",
+    status: "case-study",
   },
 ];
 

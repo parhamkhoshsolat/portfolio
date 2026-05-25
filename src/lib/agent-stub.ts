@@ -86,10 +86,10 @@ export function generateStubAnswer(raw: string): string {
     return `${siteConfig.availability}`;
   }
   if (/rag|agent|llm|claude|haiku/.test(q)) {
-    return "Parham has shipped LLM work in TalentSonar (Gemini API + GitHub GraphQL) and the Florence-2 VLM fine-tune. This very agent (Claude Haiku grounded in his project memory) is a third example you can play with right now.";
+    return "Parham has shipped LLM work in TalentSonar (Gemini API + GitHub GraphQL) and the Florence-2 VLM fine-tune. This very agent (grounded in his project memory) is a third example you can play with right now.";
   }
   if (/contact|email|reach|call|book/.test(q)) {
-    return `Fastest way is ${siteConfig.contact.email}. He'll usually reply within a working day. LinkedIn: ${siteConfig.links.linkedin}.`;
+    return `Reach Parham on LinkedIn: ${siteConfig.links.linkedin}. Or download this conversation via the icon at the top of the chat and follow up later.`;
   }
   if (/cv|resume|pdf/.test(q)) {
     return "His latest CV is available on request, or he can send a role-tailored version. Drop a note to " + siteConfig.contact.email + ".";

@@ -1,8 +1,7 @@
 import Link from "next/link";
-import { Compass, MessageSquare, Mail } from "lucide-react";
+import { Compass, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { projects } from "@/lib/projects";
-import { siteConfig } from "@/lib/site-config";
 
 export default function NotFound() {
   return (
@@ -24,14 +23,6 @@ export default function NotFound() {
       <div className="mt-8 flex flex-wrap gap-3">
         <Button asChild>
           <Link href="/">Back to the home page</Link>
-        </Button>
-        <Button asChild variant="secondary">
-          <a href={`mailto:${siteConfig.contact.email}`}>
-            <Mail className="h-4 w-4" /> Email me directly
-          </a>
-        </Button>
-        <Button asChild variant="ghost">
-          <Link href="/cv">View CV</Link>
         </Button>
       </div>
 

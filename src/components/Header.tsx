@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { siteConfig } from "@/lib/site-config";
 
 export function Header() {
   return (
@@ -11,39 +10,25 @@ export function Header() {
         >
           parham.
         </Link>
-        <nav className="flex items-center gap-5 text-sm">
+        <nav className="flex items-center gap-6 text-sm">
           <Link
             href="/#projects"
-            className="hidden text-muted hover:text-text transition-colors sm:inline"
+            className="text-muted hover:text-text transition-colors"
           >
             Projects
           </Link>
           <Link
-            href="/#about"
+            href="/#in-progress"
             className="hidden text-muted hover:text-text transition-colors sm:inline"
+          >
+            In progress
+          </Link>
+          <Link
+            href="/#about"
+            className="text-muted hover:text-text transition-colors"
           >
             About
           </Link>
-          <Link
-            href="/cv"
-            className="text-muted hover:text-text transition-colors"
-          >
-            CV
-          </Link>
-          <Link
-            href={siteConfig.links.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden text-muted hover:text-text transition-colors md:inline"
-          >
-            GitHub
-          </Link>
-          <a
-            href={`mailto:${siteConfig.contact.email}`}
-            className="inline-flex items-center rounded-md border border-border bg-card px-3 py-1.5 text-text hover:border-accent/60 hover:text-accent transition-all"
-          >
-            Get in touch
-          </a>
         </nav>
       </div>
     </header>
