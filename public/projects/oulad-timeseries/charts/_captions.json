@@ -1,0 +1,194 @@
+[
+  {
+    "file": "chart-01.png",
+    "cell": 10,
+    "size_kb": 16.4,
+    "from": "import pandas as pd \u23ce import numpy as np \u23ce import matplotlib.pyplot as plt \u23ce import seaborn as sns \u23ce  \u23ce # Load the preprocessed st"
+  },
+  {
+    "file": "chart-02.png",
+    "cell": 10,
+    "size_kb": 59.0,
+    "from": "import pandas as pd \u23ce import numpy as np \u23ce import matplotlib.pyplot as plt \u23ce import seaborn as sns \u23ce  \u23ce # Load the preprocessed st"
+  },
+  {
+    "file": "chart-03.png",
+    "cell": 10,
+    "size_kb": 43.0,
+    "from": "import pandas as pd \u23ce import numpy as np \u23ce import matplotlib.pyplot as plt \u23ce import seaborn as sns \u23ce  \u23ce # Load the preprocessed st"
+  },
+  {
+    "file": "chart-04.png",
+    "cell": 10,
+    "size_kb": 16.0,
+    "from": "import pandas as pd \u23ce import numpy as np \u23ce import matplotlib.pyplot as plt \u23ce import seaborn as sns \u23ce  \u23ce # Load the preprocessed st"
+  },
+  {
+    "file": "chart-05.png",
+    "cell": 10,
+    "size_kb": 17.1,
+    "from": "import pandas as pd \u23ce import numpy as np \u23ce import matplotlib.pyplot as plt \u23ce import seaborn as sns \u23ce  \u23ce # Load the preprocessed st"
+  },
+  {
+    "file": "chart-06.png",
+    "cell": 10,
+    "size_kb": 19.1,
+    "from": "import pandas as pd \u23ce import numpy as np \u23ce import matplotlib.pyplot as plt \u23ce import seaborn as sns \u23ce  \u23ce # Load the preprocessed st"
+  },
+  {
+    "file": "chart-07.png",
+    "cell": 10,
+    "size_kb": 32.3,
+    "from": "import pandas as pd \u23ce import numpy as np \u23ce import matplotlib.pyplot as plt \u23ce import seaborn as sns \u23ce  \u23ce # Load the preprocessed st"
+  },
+  {
+    "file": "chart-08.png",
+    "cell": 10,
+    "size_kb": 29.7,
+    "from": "import pandas as pd \u23ce import numpy as np \u23ce import matplotlib.pyplot as plt \u23ce import seaborn as sns \u23ce  \u23ce # Load the preprocessed st"
+  },
+  {
+    "file": "chart-09.png",
+    "cell": 10,
+    "size_kb": 46.6,
+    "from": "import pandas as pd \u23ce import numpy as np \u23ce import matplotlib.pyplot as plt \u23ce import seaborn as sns \u23ce  \u23ce # Load the preprocessed st"
+  },
+  {
+    "file": "chart-10.png",
+    "cell": 11,
+    "size_kb": 119.5,
+    "from": "# Load the preprocessed student VLE data \u23ce student_vle_path = r\"D:\\study\\Hardware and Software per Big Data mod B\\project\\"
+  },
+  {
+    "file": "chart-11.png",
+    "cell": 12,
+    "size_kb": 31.9,
+    "from": "# Load the preprocessed student assessment data \u23ce student_assessment_path = r\"D:\\study\\Hardware and Software per Big Data"
+  },
+  {
+    "file": "chart-12.png",
+    "cell": 12,
+    "size_kb": 96.6,
+    "from": "# Load the preprocessed student assessment data \u23ce student_assessment_path = r\"D:\\study\\Hardware and Software per Big Data"
+  },
+  {
+    "file": "chart-13.png",
+    "cell": 13,
+    "size_kb": 17.1,
+    "from": "# Load the preprocessed assessments data \u23ce assessments_path = r\"D:\\study\\Hardware and Software per Big Data mod B\\project\\"
+  },
+  {
+    "file": "chart-14.png",
+    "cell": 13,
+    "size_kb": 26.0,
+    "from": "# Load the preprocessed assessments data \u23ce assessments_path = r\"D:\\study\\Hardware and Software per Big Data mod B\\project\\"
+  },
+  {
+    "file": "chart-15.png",
+    "cell": 13,
+    "size_kb": 77.8,
+    "from": "# Load the preprocessed assessments data \u23ce assessments_path = r\"D:\\study\\Hardware and Software per Big Data mod B\\project\\"
+  },
+  {
+    "file": "chart-16.png",
+    "cell": 14,
+    "size_kb": 17.9,
+    "from": "# Load the preprocessed courses data \u23ce courses_path = r\"D:\\study\\Hardware and Software per Big Data mod B\\project\\preproce"
+  },
+  {
+    "file": "chart-17.png",
+    "cell": 15,
+    "size_kb": 21.8,
+    "from": "# Load the preprocessed VLE data \u23ce vle_path = r\"D:\\study\\Hardware and Software per Big Data mod B\\project\\preprocessed_vle"
+  },
+  {
+    "file": "chart-18.png",
+    "cell": 15,
+    "size_kb": 20.9,
+    "from": "# Load the preprocessed VLE data \u23ce vle_path = r\"D:\\study\\Hardware and Software per Big Data mod B\\project\\preprocessed_vle"
+  },
+  {
+    "file": "chart-19.png",
+    "cell": 16,
+    "size_kb": 31.3,
+    "from": "# Load the preprocessed student registration data \u23ce student_registration_path = r\"D:\\study\\Hardware and Software per Big D"
+  },
+  {
+    "file": "chart-20.png",
+    "cell": 16,
+    "size_kb": 32.2,
+    "from": "# Load the preprocessed student registration data \u23ce student_registration_path = r\"D:\\study\\Hardware and Software per Big D"
+  },
+  {
+    "file": "chart-21.png",
+    "cell": 16,
+    "size_kb": 22.1,
+    "from": "# Load the preprocessed student registration data \u23ce student_registration_path = r\"D:\\study\\Hardware and Software per Big D"
+  },
+  {
+    "file": "chart-22.png",
+    "cell": 16,
+    "size_kb": 85.0,
+    "from": "# Load the preprocessed student registration data \u23ce student_registration_path = r\"D:\\study\\Hardware and Software per Big D"
+  },
+  {
+    "file": "chart-23.png",
+    "cell": 17,
+    "size_kb": 29.6,
+    "from": "# Load the preprocessed assessments data \u23ce assessments_path = r\"D:\\study\\Hardware and Software per Big Data mod B\\project\\"
+  },
+  {
+    "file": "chart-24.png",
+    "cell": 21,
+    "size_kb": 133.7,
+    "from": "import pandas as pd \u23ce import numpy as np \u23ce import matplotlib.pyplot as plt \u23ce import matplotlib.dates as mdates \u23ce import statsmod"
+  },
+  {
+    "file": "chart-25.png",
+    "cell": 21,
+    "size_kb": 167.9,
+    "from": "import pandas as pd \u23ce import numpy as np \u23ce import matplotlib.pyplot as plt \u23ce import matplotlib.dates as mdates \u23ce import statsmod"
+  },
+  {
+    "file": "chart-26.png",
+    "cell": 21,
+    "size_kb": 146.5,
+    "from": "import pandas as pd \u23ce import numpy as np \u23ce import matplotlib.pyplot as plt \u23ce import matplotlib.dates as mdates \u23ce import statsmod"
+  },
+  {
+    "file": "chart-27.png",
+    "cell": 22,
+    "size_kb": 133.7,
+    "from": "import pandas as pd \u23ce import numpy as np \u23ce import matplotlib.pyplot as plt \u23ce import matplotlib.dates as mdates \u23ce import statsmod"
+  },
+  {
+    "file": "chart-28.png",
+    "cell": 22,
+    "size_kb": 167.7,
+    "from": "import pandas as pd \u23ce import numpy as np \u23ce import matplotlib.pyplot as plt \u23ce import matplotlib.dates as mdates \u23ce import statsmod"
+  },
+  {
+    "file": "chart-29.png",
+    "cell": 22,
+    "size_kb": 135.8,
+    "from": "import pandas as pd \u23ce import numpy as np \u23ce import matplotlib.pyplot as plt \u23ce import matplotlib.dates as mdates \u23ce import statsmod"
+  },
+  {
+    "file": "chart-30.png",
+    "cell": 23,
+    "size_kb": 133.7,
+    "from": "import pandas as pd \u23ce import numpy as np \u23ce import matplotlib.pyplot as plt \u23ce import matplotlib.dates as mdates \u23ce from prophet im"
+  },
+  {
+    "file": "chart-31.png",
+    "cell": 23,
+    "size_kb": 152.9,
+    "from": "import pandas as pd \u23ce import numpy as np \u23ce import matplotlib.pyplot as plt \u23ce import matplotlib.dates as mdates \u23ce from prophet im"
+  },
+  {
+    "file": "chart-32.png",
+    "cell": 24,
+    "size_kb": 125.1,
+    "from": "import pandas as pd \u23ce import numpy as np \u23ce import matplotlib.pyplot as plt \u23ce import matplotlib.dates as mdates \u23ce from sklearn.pr"
+  }
+]

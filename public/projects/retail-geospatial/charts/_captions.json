@@ -1,0 +1,8 @@
+[
+  {
+    "file": "chart-01.png",
+    "cell": 35,
+    "size_kb": 68.1,
+    "from": "# Create choropleth map of potential per capita \u23ce # Merge shape data with combined data \u23ce merged_gdf = shapes_gdf.merge(comb"
+  }
+]

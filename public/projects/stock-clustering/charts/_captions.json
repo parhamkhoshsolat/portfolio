@@ -1,0 +1,38 @@
+[
+  {
+    "file": "chart-01.png",
+    "cell": 22,
+    "size_kb": 38.9,
+    "from": "# Install and import necessary libraries for visualization \u23ce !pip install seaborn \u23ce import seaborn as sns \u23ce import matplotlib."
+  },
+  {
+    "file": "chart-02.png",
+    "cell": 24,
+    "size_kb": 37.5,
+    "from": "from pyspark.ml.clustering import KMeans \u23ce from pyspark.ml.evaluation import ClusteringEvaluator \u23ce from pyspark.ml.feature i"
+  },
+  {
+    "file": "chart-03.png",
+    "cell": 27,
+    "size_kb": 35.9,
+    "from": "from pyspark.ml.clustering import KMeans \u23ce import matplotlib.pyplot as plt \u23ce  \u23ce  \u23ce cluster_columns = ['Open', 'High', 'Low', 'Cl"
+  },
+  {
+    "file": "chart-04.png",
+    "cell": 30,
+    "size_kb": 252.3,
+    "from": "from pyspark.ml.clustering import KMeans \u23ce from pyspark.ml.feature import PCA \u23ce from pyspark.ml.feature import VectorAssembl"
+  },
+  {
+    "file": "chart-05.png",
+    "cell": 35,
+    "size_kb": 28.9,
+    "from": "import matplotlib.pyplot as plt \u23ce import seaborn as sns \u23ce import numpy as np \u23ce  \u23ce  \u23ce # Convert Spark DataFrame to Pandas for easy"
+  },
+  {
+    "file": "chart-06.png",
+    "cell": 37,
+    "size_kb": 101.6,
+    "from": "\u23ce feature_columns = ['Open', 'High', 'Low'] \u23ce  \u23ce  \u23ce clustered_pd = clustered_data.select('prediction', *feature_columns).toPand"
+  }
+]
