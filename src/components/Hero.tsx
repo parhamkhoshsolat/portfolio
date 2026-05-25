@@ -18,7 +18,16 @@ const HEADLINE_WORDS = ["Parham", "Khosh", "Solat"];
 export function Hero() {
   return (
     <section className="relative overflow-hidden border-b border-border/40">
-      <div className="absolute inset-0 grid-bg opacity-50" aria-hidden />
+      {/* Local accent gradient stays on top of the site-wide texture for a
+          stronger hero presence; the grid pattern itself is now site-wide. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage:
+            "radial-gradient(ellipse 900px 500px at 50% -10%, rgba(56, 189, 248, 0.10), transparent 60%)",
+        }}
+      />
       <div className="container relative grid gap-12 py-24 md:grid-cols-[1.4fr_1fr] md:py-28">
         <div>
           <motion.div
