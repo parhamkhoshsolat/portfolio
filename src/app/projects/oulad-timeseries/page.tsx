@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { FadeIn } from "@/components/FadeIn";
 import { ProjectGallery } from "@/components/ProjectGallery";
 import { ProjectDeepHero, DeepSection } from "@/components/ProjectDeepHero";
+import { HypothesisCallout } from "@/components/HypothesisCallout";
 import { getProject } from "@/lib/projects";
 import { getProjectAssets } from "@/lib/project-assets";
 
@@ -26,6 +27,12 @@ export default function OuladPage() {
   return (
     <article className="container max-w-5xl py-16 md:py-24">
       <ProjectDeepHero project={project} assets={assets} stats={stats} />
+
+      <HypothesisCallout>
+        Can a small custom 1D CNN out-forecast SARIMA, ARIMAX, and Prophet
+        on the OULAD click-stream while staying interpretable enough to
+        sit next to a SARIMA baseline academic staff actually trust?
+      </HypothesisCallout>
 
       <FadeIn>
         <DeepSection

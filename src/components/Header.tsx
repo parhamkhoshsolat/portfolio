@@ -22,7 +22,7 @@ export function Header() {
             Parham Khosh Solat
           </span>
         </Link>
-        <nav className="flex items-center gap-6 text-sm">
+        <nav className="flex items-center gap-5 text-sm">
           <Link
             href="/#projects"
             className="text-muted hover:text-text transition-colors"
@@ -40,6 +40,12 @@ export function Header() {
             className="text-muted hover:text-text transition-colors"
           >
             About
+          </Link>
+          <Link
+            href="/#contact"
+            className="rounded-md border border-border bg-card px-3 py-1.5 text-text hover:border-accent/60 hover:text-accent transition-all"
+          >
+            Contact
           </Link>
         </nav>
       </div>

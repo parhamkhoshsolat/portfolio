@@ -1,8 +1,12 @@
+"use client";
+
+import { useState } from "react";
 import { ExternalLink } from "lucide-react";
 
 // Direct embed of the running HuggingFace Space via its dedicated
-// *.hf.space subdomain. No interstitial click. If the Space is sleeping,
-// HuggingFace's own warming-up UI renders inside the iframe automatically.
+// *.hf.space subdomain. Hides the bare iframe area behind a placeholder
+// for the 30-60s cold-start window so the page never reads as broken
+// while the container wakes up.
 
 export function HFSpaceEmbed({
   liveUrl,
@@ -13,32 +17,46 @@ export function HFSpaceEmbed({
   spaceName: string;
   height?: number;
 }) {
+  const [loaded, setLoaded] = useState(false);
+
   return (
-    <div>
-      <div className="mb-3 flex items-center justify-between gap-3 text-xs text-muted">
-        <span>
-          Sleeps when idle. First request may take 30 to 60 seconds while
-          the container wakes up.
-        </span>
-        <a
-          href={liveUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 whitespace-nowrap text-accent hover:underline"
+    <div className="relative overflow-hidden rounded-2xl border border-border bg-white">
+      {!loaded ? (
+        <div
+          className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 bg-bg px-6 text-center"
+          aria-live="polite"
         >
-          <ExternalLink className="h-3.5 w-3.5" /> Open in new tab
-        </a>
-      </div>
-      <div className="overflow-hidden rounded-2xl border border-border bg-white">
-        <iframe
-          src={liveUrl}
-          title={`${spaceName} demo`}
-          className="w-full"
-          style={{ height }}
-          loading="lazy"
-          allow="clipboard-read; clipboard-write; fullscreen"
-        />
-      </div>
+          <div className="flex items-center gap-2">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-accent" />
+            </span>
+            <p className="text-sm font-medium text-text">
+              Container starting
+            </p>
+          </div>
+          <p className="text-xs leading-relaxed text-muted">
+            {spaceName} usually wakes up in 30 to 60 seconds.
+          </p>
+          <a
+            href={liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs text-accent hover:underline"
+          >
+            <ExternalLink className="h-3.5 w-3.5" /> Or open in a new tab
+          </a>
+        </div>
+      ) : null}
+      <iframe
+        src={liveUrl}
+        title={`${spaceName} demo`}
+        className="w-full bg-white"
+        style={{ height }}
+        loading="lazy"
+        onLoad={() => setLoaded(true)}
+        allow="clipboard-read; clipboard-write; fullscreen"
+      />
     </div>
   );
 }

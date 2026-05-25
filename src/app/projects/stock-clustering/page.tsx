@@ -5,6 +5,7 @@ import { FadeIn } from "@/components/FadeIn";
 import { ProjectGallery } from "@/components/ProjectGallery";
 import { ProjectDeepHero, DeepSection } from "@/components/ProjectDeepHero";
 import { SilhouetteChart, ElbowChart } from "@/components/StockKSelection";
+import { HypothesisCallout } from "@/components/HypothesisCallout";
 import { getProject } from "@/lib/projects";
 import { getProjectAssets } from "@/lib/project-assets";
 
@@ -31,6 +32,12 @@ export default function StockClusteringPage() {
         assets={assets}
         stats={stats}
       />
+
+      <HypothesisCallout>
+        Can a single notebook bootstrap a Kafka + Zookeeper broker, stream
+        55 tickers through it, and produce daily price-regime clusters
+        cleanly justified by Silhouette, Elbow, and PCA together?
+      </HypothesisCallout>
 
       <FadeIn>
         <DeepSection

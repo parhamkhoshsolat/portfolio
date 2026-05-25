@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { FadeIn } from "@/components/FadeIn";
 import { ProjectGallery, ExternalEmbed } from "@/components/ProjectGallery";
 import { ProjectDeepHero, DeepSection } from "@/components/ProjectDeepHero";
+import { HypothesisCallout } from "@/components/HypothesisCallout";
 import { getProject } from "@/lib/projects";
 import { getProjectAssets } from "@/lib/project-assets";
 
@@ -26,6 +27,13 @@ export default function RetailGeospatialPage() {
   return (
     <article className="container max-w-5xl py-16 md:py-24">
       <ProjectDeepHero project={project} assets={assets} stats={stats} />
+
+      <HypothesisCallout>
+        Can SQL joins between Fater proprietary sales and ISTAT census,
+        plus a Python geospatial pipeline, produce a single ranked map of
+        expansion opportunities a non-technical executive can act on in
+        five seconds?
+      </HypothesisCallout>
 
       <FadeIn>
         <div className="mt-8 rounded-2xl border border-amber-500/30 bg-amber-500/5 p-5">

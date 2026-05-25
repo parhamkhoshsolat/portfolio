@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Download,
-  Loader2,
   MessageSquare,
   Send,
   Sparkles,
@@ -17,10 +16,11 @@ import { getProject } from "@/lib/projects";
 type Msg = { role: "user" | "agent"; text: string };
 
 const HOME_SUGGESTIONS = [
+  "Walk me through the Fater project",
+  "Walk me through Florence-2",
   "What's Parham's strongest project?",
   "Has he worked on LLMs?",
-  "Compare the warehouse RL project with the localization one",
-  "What kind of role is Parham looking for?",
+  "What kind of role is he looking for?",
 ];
 
 const PROJECT_SUGGESTIONS = [
@@ -272,7 +272,7 @@ export function ChatBubble() {
                   <p className="text-[11px] text-muted">
                     {currentProject
                       ? `Context: ${currentProject.shortTitle}`
-                      : "Trained on the full project memory"}
+                      : "Project memory in the system prompt · Claude Haiku 4.5"}
                   </p>
                 </div>
               </div>
@@ -333,9 +333,13 @@ export function ChatBubble() {
                       >
                         {m.text}
                         {isStreamingThisMsg && !m.text ? (
-                          <span className="inline-flex items-center gap-2 text-muted">
-                            <Loader2 className="h-3.5 w-3.5 animate-spin" />
-                            Thinking...
+                          <span
+                            className="inline-flex items-center gap-1.5"
+                            aria-label="Agent is thinking"
+                          >
+                            <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-accent [animation-delay:-0.32s]" />
+                            <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-accent [animation-delay:-0.16s]" />
+                            <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-accent" />
                           </span>
                         ) : null}
                         {isStreamingThisMsg && m.text ? (
