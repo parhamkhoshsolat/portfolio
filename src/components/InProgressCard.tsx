@@ -91,7 +91,7 @@ export function InProgressCard({
       {hasDeepPage ? (
         <Link
           href={`/projects/${project.slug}`}
-          className="block p-7"
+          className="block p-7 transition-all active:scale-[0.985] active:bg-bg/30"
           aria-label={`View ${project.shortTitle} write-up`}
         >
           {Inner}

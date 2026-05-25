@@ -32,3 +32,8 @@ yarn-error.log*
 
 # claude code local project state
 .claude
+
+# stray local clones of other repos that don't belong in this one
+/pest-prediction-dashboard
+/Florence-2_VQA
+/TalentSonar

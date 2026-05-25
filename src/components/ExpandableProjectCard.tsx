@@ -52,7 +52,7 @@ export function ExpandableProjectCard({ project, index, featured = false }: Prop
         aria-expanded={expanded}
         aria-controls={contentId}
         className={cn(
-          "block w-full text-left",
+          "block w-full text-left transition-all active:scale-[0.985] active:bg-bg/30",
           featured ? "p-8" : "p-7"
         )}
       >

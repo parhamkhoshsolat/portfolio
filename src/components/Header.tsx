@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function Header() {
   return (
@@ -6,9 +7,20 @@ export function Header() {
       <div className="container flex h-16 items-center justify-between">
         <Link
           href="/"
-          className="text-sm font-semibold tracking-tight text-text hover:text-accent transition-colors"
+          aria-label="Home — Parham Khosh Solat"
+          className="group flex items-center gap-3 transition-transform active:scale-95"
         >
-          parham.
+          <Image
+            src="/brand/mark.svg"
+            alt=""
+            width={36}
+            height={36}
+            priority
+            className="h-9 w-9 transition-opacity group-hover:opacity-80"
+          />
+          <span className="hidden text-sm font-semibold tracking-tight text-text transition-colors group-hover:text-accent sm:inline">
+            Parham Khosh Solat
+          </span>
         </Link>
         <nav className="flex items-center gap-6 text-sm">
           <Link
