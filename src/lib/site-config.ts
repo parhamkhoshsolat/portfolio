@@ -16,7 +16,6 @@ export const siteConfig = {
     linkedin: "https://www.linkedin.com/in/parham-khoshsolat",
     github: "https://github.com/parhamkhoshsolat",
     huggingface: "https://huggingface.co/parhamkhoshsolat",
-    cv: "/cv",
   },
   targetRoles: [
     "Data Analyst",

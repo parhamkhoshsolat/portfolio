@@ -2,16 +2,19 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Github, ExternalLink } from "lucide-react";
+import { ArrowUpRight, Github, ExternalLink, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 import type { Project } from "@/lib/projects";
 
 export function ProjectCard({
   project,
   index,
+  featured = false,
 }: {
   project: Project;
   index: number;
+  featured?: boolean;
 }) {
   return (
     <motion.article
@@ -20,11 +23,21 @@ export function ProjectCard({
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.05 }}
       whileHover={{ y: -4 }}
-      className="group relative overflow-hidden rounded-2xl border border-border bg-card transition-all hover:border-accent/40"
+      className={cn(
+        "group relative overflow-hidden rounded-2xl border bg-card transition-all hover:border-accent/40",
+        featured
+          ? "border-accent/30 bg-gradient-to-br from-accent-soft/30 via-card to-card md:col-span-2"
+          : "border-border"
+      )}
     >
+      {featured ? (
+        <div className="absolute right-5 top-5 inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-accent-soft/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-accent">
+          <Star className="h-3 w-3" /> Featured
+        </div>
+      ) : null}
       <Link
         href={`/projects/${project.slug}`}
-        className="block p-7"
+        className={cn("block", featured ? "p-8" : "p-7")}
         aria-label={`View ${project.shortTitle} project`}
       >
         <div className="mb-4 flex items-start justify-between gap-4">
@@ -39,16 +52,28 @@ export function ProjectCard({
               </Badge>
             ) : null}
           </div>
-          <ArrowUpRight
-            className="h-5 w-5 text-muted transition-all group-hover:text-accent group-hover:rotate-12"
-            aria-hidden
-          />
+          {!featured ? (
+            <ArrowUpRight
+              className="h-5 w-5 text-muted transition-all group-hover:text-accent group-hover:rotate-12"
+              aria-hidden
+            />
+          ) : null}
         </div>
 
-        <h3 className="text-xl font-semibold text-text">
+        <h3
+          className={cn(
+            "font-semibold text-text",
+            featured ? "text-2xl md:text-3xl" : "text-xl"
+          )}
+        >
           {project.shortTitle}
         </h3>
-        <p className="mt-3 text-sm leading-relaxed text-muted">
+        <p
+          className={cn(
+            "mt-3 leading-relaxed text-muted",
+            featured ? "max-w-2xl text-base" : "text-sm"
+          )}
+        >
           {project.tagline}
         </p>
 

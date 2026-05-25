@@ -11,63 +11,54 @@ export function Footer() {
             <p className="mt-2 max-w-md text-sm text-muted">
               {siteConfig.oneLiner}
             </p>
+            <p className="mt-3 text-xs text-muted">
+              Based in {siteConfig.location}.
+            </p>
           </div>
-          <div className="grid grid-cols-2 gap-6 text-sm">
-            <div>
-              <p className="mb-3 font-semibold text-text">Contact</p>
-              <ul className="space-y-2 text-muted">
-                <li>
-                  <a
-                    href={`mailto:${siteConfig.contact.email}`}
-                    className="hover:text-accent"
-                  >
-                    {siteConfig.contact.email}
-                  </a>
-                </li>
-                <li>{siteConfig.contact.phone}</li>
-                <li>{siteConfig.location}</li>
-              </ul>
-            </div>
-            <div>
-              <p className="mb-3 font-semibold text-text">Elsewhere</p>
-              <ul className="space-y-2 text-muted">
-                <li>
-                  <Link
-                    href={siteConfig.links.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-accent"
-                  >
-                    LinkedIn
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href={siteConfig.links.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-accent"
-                  >
-                    GitHub
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href={siteConfig.links.huggingface}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-accent"
-                  >
-                    HuggingFace
-                  </Link>
-                </li>
-              </ul>
-            </div>
+          <div className="text-sm">
+            <p className="mb-3 font-semibold text-text">Find me elsewhere</p>
+            <ul className="grid grid-cols-3 gap-3 text-muted">
+              <li>
+                <Link
+                  href={siteConfig.links.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block rounded-md border border-border bg-card px-3 py-2 hover:border-accent/60 hover:text-accent"
+                >
+                  LinkedIn
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={siteConfig.links.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block rounded-md border border-border bg-card px-3 py-2 hover:border-accent/60 hover:text-accent"
+                >
+                  GitHub
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={siteConfig.links.huggingface}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block rounded-md border border-border bg-card px-3 py-2 hover:border-accent/60 hover:text-accent"
+                >
+                  HuggingFace
+                </Link>
+              </li>
+            </ul>
+            <p className="mt-4 text-xs text-muted">
+              For direct contact, message me on LinkedIn. The agent in the
+              bottom-right will answer any question about the work, and you
+              can download the conversation when you&apos;re done.
+            </p>
           </div>
         </div>
         <p className="mt-10 text-xs text-muted">
-          © {new Date().getFullYear()} {siteConfig.name}. Built with Next.js,
-          deployed on Vercel.
+          © {new Date().getFullYear()} {siteConfig.name}. Built with
+          Next.js, deployed on Vercel.
         </p>
       </div>
     </footer>
