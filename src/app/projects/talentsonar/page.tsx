@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { FadeIn } from "@/components/FadeIn";
 import { ProjectDeepHero, DeepSection } from "@/components/ProjectDeepHero";
 import { HFSpaceEmbed } from "@/components/HFSpaceEmbed";
+import { HypothesisCallout } from "@/components/HypothesisCallout";
 import { getProject } from "@/lib/projects";
 import { getProjectAssets } from "@/lib/project-assets";
 
@@ -45,6 +46,12 @@ export default function TalentSonarPage() {
   return (
     <article className="container max-w-5xl py-16 md:py-24">
       <ProjectDeepHero project={project} assets={assets} stats={stats} />
+
+      <HypothesisCallout>
+        Can a GitHub GraphQL extractor plus a Gemini LLM call infer a
+        candidate&apos;s technical skills accurately enough to give a
+        recruiter a defensible first read in under a minute?
+      </HypothesisCallout>
 
       <FadeIn>
         <DeepSection

@@ -1,9 +1,12 @@
+import Link from "next/link";
 import { Hero } from "@/components/Hero";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { InProgressSection } from "@/components/InProgressSection";
 import { FadeIn } from "@/components/FadeIn";
+import { OpenAgentContactCard } from "@/components/OpenAgentChatButton";
 import { credentials } from "@/lib/credentials";
-import { Award, ExternalLink } from "lucide-react";
+import { siteConfig } from "@/lib/site-config";
+import { Award, ExternalLink, Linkedin, Github } from "lucide-react";
 
 export default function HomePage() {
   return (
@@ -74,6 +77,69 @@ export default function HomePage() {
       <ProjectsSection />
 
       <InProgressSection />
+
+      <section
+        id="contact"
+        className="border-t border-border/40 bg-card/30"
+      >
+        <div className="container max-w-4xl py-20 md:py-24">
+          <FadeIn>
+            <p className="text-xs uppercase tracking-[0.2em] text-accent">
+              Contact
+            </p>
+            <h2 className="mt-2 text-3xl font-semibold md:text-4xl">
+              Reach me directly.
+            </h2>
+            <p className="mt-3 max-w-2xl text-muted">
+              LinkedIn is the fastest route. Replies usually land within a
+              working day. The agent in the bottom-right can also pass
+              questions to me with full conversation context.
+            </p>
+          </FadeIn>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            <FadeIn delay={0.05}>
+              <Link
+                href={siteConfig.links.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex h-full flex-col rounded-xl border border-border bg-card p-5 transition-colors hover:border-accent/60"
+              >
+                <Linkedin className="h-5 w-5 text-accent" />
+                <p className="mt-3 font-semibold text-text">LinkedIn</p>
+                <p className="mt-1 text-sm text-muted">
+                  Best for recruiters and hiring managers.
+                </p>
+                <p className="mt-auto pt-4 text-xs text-accent group-hover:underline">
+                  linkedin.com/in/parham-khoshsolat →
+                </p>
+              </Link>
+            </FadeIn>
+
+            <FadeIn delay={0.1}>
+              <Link
+                href={siteConfig.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex h-full flex-col rounded-xl border border-border bg-card p-5 transition-colors hover:border-accent/60"
+              >
+                <Github className="h-5 w-5 text-accent" />
+                <p className="mt-3 font-semibold text-text">GitHub</p>
+                <p className="mt-1 text-sm text-muted">
+                  Source code for every project on this site.
+                </p>
+                <p className="mt-auto pt-4 text-xs text-accent group-hover:underline">
+                  github.com/parhamkhoshsolat →
+                </p>
+              </Link>
+            </FadeIn>
+
+            <FadeIn delay={0.15}>
+              <OpenAgentContactCard />
+            </FadeIn>
+          </div>
+        </div>
+      </section>
 
       <section
         id="credentials"

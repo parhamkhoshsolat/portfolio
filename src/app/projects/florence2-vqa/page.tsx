@@ -7,6 +7,7 @@ import { FadeIn } from "@/components/FadeIn";
 import { Florence2LiveDemo } from "@/components/Florence2LiveDemo";
 import { ProjectGallery, TechReportLink } from "@/components/ProjectGallery";
 import { TopAnswersChart } from "@/components/Florence2EdaCharts";
+import { HypothesisCallout } from "@/components/HypothesisCallout";
 import { getProject } from "@/lib/projects";
 import { getProjectAssets } from "@/lib/project-assets";
 
@@ -66,6 +67,12 @@ export default function Florence2Page() {
             <TechReportLink {...assets.techReport} />
           ) : null}
         </div>
+
+        <HypothesisCallout>
+          Can a 771M-parameter vision-language model be fine-tuned on a
+          single Colab T4 to a stable, deployable VQA endpoint without
+          exceeding memory or destabilising gradients?
+        </HypothesisCallout>
       </FadeIn>
 
       <FadeIn delay={0.05}>
@@ -229,10 +236,9 @@ export default function Florence2Page() {
           title="Try the fine-tuned model on HuggingFace Spaces"
         >
           <p className="mb-6">
-            The Space below runs our fine-tuned model with configurable beam
-            search and a per-answer confidence score. HuggingFace pauses idle
-            Spaces, so the first request may take 30 to 60 seconds to wake the
-            container.
+            Configurable beam search and a per-answer confidence score.
+            Upload any photo and ask a question about it. Open in a new tab
+            if you&apos;d rather not wait inline.
           </p>
           <Florence2LiveDemo
             liveUrl={project.liveUrl!}

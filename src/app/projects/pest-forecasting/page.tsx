@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { FadeIn } from "@/components/FadeIn";
 import { ProjectDeepHero, DeepSection } from "@/components/ProjectDeepHero";
 import { HFSpaceEmbed } from "@/components/HFSpaceEmbed";
+import { HypothesisCallout } from "@/components/HypothesisCallout";
 import {
   RegressionMaeChart,
   ClassificationChart,
@@ -31,6 +32,13 @@ export default function PestPage() {
   return (
     <article className="container max-w-5xl py-16 md:py-24">
       <ProjectDeepHero project={project} assets={assets} stats={stats} />
+
+      <HypothesisCallout>
+        Can a tournament of eleven models find a classifier that catches
+        every rare pest outbreak in a 245-sample field dataset with a
+        10.67:1 minority-class imbalance, where the cost of a missed
+        outbreak dwarfs the cost of a false alarm?
+      </HypothesisCallout>
 
       <FadeIn>
         <DeepSection
