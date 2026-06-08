@@ -18,7 +18,7 @@ export function InProgressSection() {
             Currently building
           </p>
           <h2 className="text-3xl font-semibold md:text-4xl">
-            Three research projects in flight
+            Two research projects in flight
           </h2>
         </div>
       </FadeIn>

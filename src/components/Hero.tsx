@@ -62,9 +62,9 @@ export function Hero() {
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.5 }}
           className="mt-6 max-w-2xl text-lg leading-relaxed text-muted md:text-xl"
         >
-          I ship the whole data pipeline. Six projects below across
+          I ship the whole data pipeline. Seven projects below across
           vision-language fine-tuning, streaming engineering, time-series
-          forecasting, and{" "}
+          forecasting, shielded multi-agent RL, and{" "}
           <span className="text-accent">geospatial BI</span>.
         </motion.p>
 
@@ -78,7 +78,7 @@ export function Hero() {
             <MapPin className="h-4 w-4" /> {siteConfig.location}
           </span>
           <span className="inline-flex items-center gap-1.5">
-            <Sparkles className="h-4 w-4 text-accent" /> Three research
+            <Sparkles className="h-4 w-4 text-accent" /> Two research
             projects in flight
           </span>
         </motion.div>

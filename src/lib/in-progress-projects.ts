@@ -22,40 +22,6 @@ export type InProgressProject = {
 
 export const inProgressProjects: InProgressProject[] = [
   {
-    slug: "six-robot-warehouse-rl",
-    title: "Six-Robot Warehouse RL",
-    shortTitle: "Six-Robot Warehouse RL",
-    tagline:
-      "A simulated warehouse where six autonomous forklifts learn to pick pallets and avoid each other. Three RL methods benchmarked against three classical path-planning baselines under rigorous statistical analysis.",
-    statusLabel: "Pilot training executing",
-    statusDetail:
-      "Environment, three RL algorithms (DQN, Bootstrapped DQN, PPO), three classical baselines (A*, Cooperative A*, Conflict-Based Search), and the full statistical-analysis pipeline are complete and tested (190+ unit tests). The current pilot is training the full algorithm sweep at N=6 robots; headline metric will be per-algorithm delivery success rate over 50 evaluation episodes (best-checkpoint and final-state pair), with rliable IQM + 95 percent bootstrap CIs and Mann-Whitney + Bayesian BEST posterior probability against each classical baseline. No paper yet, no final results yet, by design.",
-    progressStat: { label: "Agents in simulation", value: "6" },
-    techStack: [
-      "PyTorch (MARL DQN + Bootstrapped DQN)",
-      "Stable-Baselines3 (PPO)",
-      "Cooperative A* + CBS",
-      "Gymnasium custom env",
-      "rliable + Bayesian BEST",
-      "Optuna",
-    ],
-    techStackFull: [
-      "Python 3.11",
-      "PyTorch (custom MARL DQN and Bootstrapped-DQN with parameter sharing + agent-ID embeddings)",
-      "Stable-Baselines3 (PPO)",
-      "Optuna for hyperparameter tuning",
-      "Gymnasium-style custom env with vectorised LIDAR (16 rays per agent per step)",
-      "Differential-drive physics with sub-step collision resolution",
-      "Cooperative A* with space-time reservation",
-      "Conflict-Based Search (CBS)",
-      "Hungarian task assignment",
-      "rliable (IQM + bootstrap CIs)",
-      "Bayesian BEST test, Mann-Whitney U, Wilcoxon, Benjamini-Hochberg FDR",
-      "TensorBoard live diagnostics + per-run JSONL summaries",
-      "pytest (190+ tests)",
-    ],
-  },
-  {
     slug: "active-object-localization-rl",
     title: "Active Object Localization with Deep RL",
     shortTitle: "Active Object Localization",

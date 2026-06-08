@@ -37,6 +37,20 @@ Availability: Graduating October 2026. Working-student available now (20 hours/w
 
 # Projects (verified facts only)
 
+## 0. Shielded LGV Routing (2026, 2-person team)
+
+Live 3D demo on HuggingFace Spaces: huggingface.co/spaces/parhamkhoshsolat/shielded-lgv-routing. Six laser-guided vehicles (LGVs) navigate a warehouse via six methods, all under a planner-agnostic PIBT collision shield.
+
+- Three classical planners (greedy, prioritized planning, Conflict-Based Search) and three learned policies (RL, Bayes-DQN ensemble, hybrid learned-classical) share the same environment and the same safety guarantee.
+- PIBT (Priority Inheritance with Backtracking) collision shield runs underneath every method, guaranteeing the joint action is collision-free at every step. Safety is decoupled from planner choice.
+- Human workers walk the aisles on the same grid the LGVs use. Every method navigates around them without retraining: the shield treats dynamic obstacles the same as vehicle-vehicle conflicts.
+- Architecture: Python simulation server, WebSocket streaming to a live web client, switchable methods, reconfigurable warehouse layouts, adjustable worker counts. Docker-deployed on HuggingFace Spaces.
+- Tech: Python, PyTorch (Bayes-DQN ensemble), Conflict-Based Search, PIBT, WebSocket streaming, Docker.
+- Co-built with Farshad Farahtaj.
+- Honest contribution framing: the project's value is the shield-as-architecture pattern (safety lives outside the policy), which makes a fair multi-method comparison possible without penalising learned methods for statistical uncertainty about safety.
+
+
+
 ## 1. Florence-2 Fine-Tuning for Visual Question Answering (2025, 3-person team at Federico II, 30/30 e lode)
 
 - Fine-tuned microsoft/Florence-2-base-ft (771M parameters) at revision refs/pr/6.
@@ -120,17 +134,7 @@ If asked about formal credentials beyond these three, the answer is: "Those are 
 
 These are not shipped projects yet, but Parham is actively working on them. Be honest about status when asked.
 
-## A. Six-Robot Warehouse RL (pilot training executing)
-
-A simulated warehouse where six autonomous forklifts learn to pick pallets and avoid each other. Deep multi-agent RL benchmarked rigorously against classical path planning. One project (the on-disk folder name reflects the course code, not a separate project).
-
-- Environment, three RL algorithms (DQN, Bootstrapped DQN, PPO), three classical baselines (A*, Cooperative A*, Conflict-Based Search), and the full statistical-analysis pipeline are complete and tested (190+ unit tests).
-- The current pilot is training the full algorithm sweep at N = 6 robots; no final results yet, by design.
-- Headline metric (once training lands): per-algorithm delivery success rate over 50 evaluation episodes, reported as best-checkpoint vs final-state pair. Secondary: rliable IQM with 95 percent bootstrap CIs and Mann-Whitney + Bayesian BEST posterior probability vs each classical baseline.
-- No paper compiled yet. The card on the portfolio will update with the live numbers once training finishes (about 10 hours from now).
-- Tech: Python 3.11, PyTorch (custom MARL DQN + Bootstrapped DQN with parameter sharing + agent-ID embeddings), Stable-Baselines3 (PPO), Optuna, Gymnasium custom env with vectorised LIDAR, Cooperative A* with space-time reservation, Conflict-Based Search, Hungarian task assignment, rliable + Bayesian BEST + Mann-Whitney U + Wilcoxon for statistics.
-
-## B. Active Object Localization with Deep RL (v10 training; v7 currently holds best mAP 0.287)
+## A. Active Object Localization with Deep RL (v10 training; v7 currently holds best mAP 0.287)
 
 An RL agent that learns to find objects in natural images by iteratively refining a bounding box through geometric actions, built on frozen CLIP features. A reimplementation-with-modern-components of Caicedo and Lazebnik (ICCV 2015) on Pascal VOC 2007 — NOT a strict reproduction; direct mAP comparison with the paper's VGG-feature 0.46 is not apples-to-apples.
 
@@ -152,7 +156,7 @@ An RL agent that learns to find objects in natural images by iteratively refinin
 
 **Honest framing:** the realistic target band for modern CLIP-backbone work is 0.28 to 0.35 mAP. The contribution worth presenting is closing the gap between representational quality (which the aux head delivered) and policy quality (which the broken reward prevented), regardless of whether v10 hits the stretch target.
 
-## C. Preference Shielding for Human-Robot Interaction (Parham's MSc thesis)
+## B. Preference Shielding for Human-Robot Interaction (Parham's MSc thesis)
 
 This is Parham's MSc thesis project.
 
