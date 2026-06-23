@@ -43,24 +43,28 @@ export default function HomePage() {
                 model I fine-tuned on 150,000 image-question pairs, shipped
                 as a public web demo where anyone uploads a photo and asks
                 questions about it. A streaming pipeline (Apache Kafka,
-                PySpark) that groups daily stock prices into market patterns
-                using the same tools production financial systems use. A
-                pest-prediction system picked from a tournament of eleven
-                models because it catches every rare outbreak in the test
-                data, which is exactly the case farmers cannot afford to
-                miss.
+                PySpark) that groups daily stock prices into market patterns.
+                A tournament of eleven models that chose the pest-outbreak
+                detector which never misses a rare event, the one case a
+                farmer cannot afford to lose.
               </p>
               <p>
-                One more is in flight: the human-robot interaction study at
-                the heart of my MSc thesis at the University of Naples
-                Federico II.
+                My newest work leans into reinforcement learning. Six
+                warehouse vehicles routed by classical and learned planners
+                alike, all under a collision shield that makes crashes
+                structurally impossible. An agent that repairs damaged photos
+                by chaining small specialist networks, reimplemented from a
+                CVPR paper and extended with its unreleased fine-tuning. Both
+                are live demos you can try. The same thread runs into my MSc
+                thesis at Federico II, on how a learning robot can stay
+                transparent and trustworthy to the person it learns from.
               </p>
               <p>
                 What I&apos;m after: a team that values clarity over
                 cleverness and ships work to real users. Strong in Python,
                 SQL (CTEs, window functions, query optimisation), PyTorch,
-                HuggingFace Transformers, Apache Kafka, PySpark, Tableau,
-                and Power BI.
+                HuggingFace Transformers, reinforcement learning, Apache
+                Kafka, PySpark, Tableau, and Power BI.
               </p>
               <p>
                 Naples-based.{" "}
