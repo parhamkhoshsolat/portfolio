@@ -4,8 +4,8 @@ import { Boxes, FlaskConical, MessageSquare, FileText } from "lucide-react";
 // Sets expectations without animation noise.
 
 const items = [
-  { icon: Boxes, label: "7 shipped projects" },
-  { icon: FlaskConical, label: "2 research projects in flight" },
+  { icon: Boxes, label: "8 shipped projects" },
+  { icon: FlaskConical, label: "MSc thesis in progress" },
   { icon: MessageSquare, label: "Live AI agent trained on the work" },
   { icon: FileText, label: "3 verified certificates" },
 ];

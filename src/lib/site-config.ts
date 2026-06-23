@@ -24,7 +24,7 @@ export const siteConfig = {
     "BI / AI Analyst",
   ],
   oneLiner:
-    "I'm an MSc Data Science student in Naples. Seven shipped projects across vision-language models, streaming data, time-series forecasting, shielded multi-agent RL, and geospatial BI.",
+    "I'm an MSc Data Science student in Naples. Eight shipped projects across vision-language models, streaming data, time-series forecasting, deep RL, and geospatial BI.",
 };
 
 export type SiteConfig = typeof siteConfig;

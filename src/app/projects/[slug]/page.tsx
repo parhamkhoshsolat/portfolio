@@ -15,9 +15,9 @@ const STATIC_ROUTED_SLUGS = new Set([
   "pest-forecasting",
   "talentsonar",
   "shielded-lgv-routing",
+  "rl-restore",
   // In-progress deep pages live at their own static routes too:
   "preference-shielding-hri",
-  "active-object-localization-rl",
 ]);
 
 export function generateStaticParams() {

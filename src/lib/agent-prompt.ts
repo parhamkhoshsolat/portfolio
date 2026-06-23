@@ -51,6 +51,19 @@ Live 3D demo on HuggingFace Spaces: huggingface.co/spaces/parhamkhoshsolat/shiel
 
 
 
+## 0b. RL-Restore: Reinforcement-Learning Toolchain for Image Restoration (2026, solo course project)
+
+Live demo on HuggingFace Spaces: huggingface.co/spaces/parhamkhoshsolat/rl-restore. Repo: github.com/parhamkhoshsolat/rl-restore.
+
+- A PyTorch reimplementation of Yu, Dong, Lin, Loy, "Crafting a Toolchain for Image Restoration by Deep Reinforcement Learning" (CVPR 2018), with extensions the original never shipped.
+- The problem: real photos arrive with a mix of blur, noise, and JPEG artifacts at unknown strengths, and no single filter fixes all three.
+- The system: 12 small specialist CNN tools (each fixes one kind of damage at one strength) plus a DQN+LSTM agent that reads a 63x63 crop, picks a chain of up to 3 tools, applies them in order to the full image, and stops when the photo is good enough.
+- Results (held-out DIV2K test, PSNR gain over the damaged input): best single tool +2.34 dB, RL agent +2.93, greedy-oracle ceiling +3.24, agent after joint fine-tuning +3.67, single-CNN baseline +4.03.
+- The honest takeaway (this is the point, do not hide it): the agent reaches about 90% of the oracle ceiling and nearly doubles the best single tool, but a single end-to-end CNN of the same size scores higher on raw PSNR. So the toolchain's value is interpretability (it shows its work step by step), modularity, and per-image adaptivity, not peak fidelity. Pixel-loss models also come out slightly soft from regression to the mean.
+- What Parham added beyond the paper: a single-CNN baseline for honest comparison, the paper's unreleased joint fine-tuning (its Algorithm 1, which retrains tools on the mid-chain images they actually see and lifts the agent from +2.93 to +3.67), a generative Real-ESRGAN "Enhance & Upscale 4x" finisher (shown without a PSNR number because the detail is synthesized not recovered), and a live web app that shows the agent's every step.
+- Tech: Python, PyTorch (the 12 tools, the DQN+LSTM agent, the baselines, joint fine-tuning), Real-ESRGAN, FastAPI + React + TypeScript + Docker for the web app, deployed on a free HuggingFace CPU Space, about 200 tests.
+- This is a course project and a paper reimplementation. No state-of-the-art claims.
+
 ## 1. Florence-2 Fine-Tuning for Visual Question Answering (2025, 3-person team at Federico II, 30/30 e lode)
 
 - Fine-tuned microsoft/Florence-2-base-ft (771M parameters) at revision refs/pr/6.
@@ -134,29 +147,7 @@ If asked about formal credentials beyond these three, the answer is: "Those are 
 
 These are not shipped projects yet, but Parham is actively working on them. Be honest about status when asked.
 
-## A. Active Object Localization with Deep RL (v10 training; v7 currently holds best mAP 0.287)
-
-An RL agent that learns to find objects in natural images by iteratively refining a bounding box through geometric actions, built on frozen CLIP features. A reimplementation-with-modern-components of Caicedo and Lazebnik (ICCV 2015) on Pascal VOC 2007 — NOT a strict reproduction; direct mAP comparison with the paper's VGG-feature 0.46 is not apples-to-apples.
-
-**Six specific differences from the paper:**
-
-1. Visual backbone: paper used VGG-16 fc7 (4096-d). We use frozen CLIP ViT-L/14 (768-d region embedding).
-2. Action space: paper had 9 actions. We have 10 (added a fine-grained scale-smaller for endgame refinement).
-3. RL algorithm: paper used vanilla DQN. We use Double DQN + n-step Bellman + persistent DQfD margin loss.
-4. Trigger reward: paper used binary +5 / -1. We use a continuous monotone reward (shaped above IoU 0.5, smooth failure penalty scaling with IoU below threshold).
-5. Auxiliary tasks: paper had none. We have an aux IoU prediction head with pairwise ranking loss and gradient flow into the Q-trunk.
-6. Conditioning signal: paper had none. We use class-conditional SCLIP saliency map (16x16) concatenated into the observation.
-
-**Iteration history:**
-
-- v6 (Double DQN added) cured Q-overestimation, mAP 0.257.
-- v7 (n-step + persistent DQfD margin) propagated trigger reward 3x faster, mAP 0.287 (current best).
-- v9.2 (aux IoU head with gradient flow) lifted Pearson rho between trunk features and true IoU in the critical [0.5, 0.85] band from 0.18 to 0.48, but did NOT translate to mAP, which exposed the binding constraint as the trigger reward not the representation.
-- v10 (current) tests whether closing the policy-vs-representation gap recovers mAP. Floor: equal v7 (0.287). Stretch: above 0.30.
-
-**Honest framing:** the realistic target band for modern CLIP-backbone work is 0.28 to 0.35 mAP. The contribution worth presenting is closing the gap between representational quality (which the aux head delivered) and policy quality (which the broken reward prevented), regardless of whether v10 hits the stretch target.
-
-## B. Preference Shielding for Human-Robot Interaction (Parham's MSc thesis)
+## A. Preference Shielding for Human-Robot Interaction (Parham's MSc thesis)
 
 This is Parham's MSc thesis project.
 
