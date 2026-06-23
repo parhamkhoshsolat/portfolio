@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   Image as ImageIcon,
   Cpu,
@@ -7,6 +8,7 @@ import {
   Layers,
   ExternalLink,
   Plus,
+  Film,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { FadeIn } from "@/components/FadeIn";
@@ -214,6 +216,47 @@ export default function RlRestorePage() {
               </div>
             ))}
           </div>
+        </DeepSection>
+
+        <DeepSection
+          eyebrow="See it work"
+          title="The agent adapts the chain to the image"
+          icon={<Film className="h-4 w-4" />}
+        >
+          <p>
+            Two held-out test crops, left to right: the damaged input, each
+            tool the agent applied in order (with the running PSNR), and the
+            ground truth. The agent picks a different chain for each image.
+          </p>
+          <div className="mt-6 space-y-5">
+            <figure className="overflow-hidden rounded-2xl border border-border bg-white">
+              <Image
+                src="/projects/rl-restore/restore-strip-mild.png"
+                alt="Mild degradation restored in three steps: degraded 19.93 dB, denoise4, deblur3, denoise3, then ground truth, for a +2.20 dB agent gain"
+                width={1440}
+                height={360}
+                className="h-auto w-full"
+                unoptimized
+              />
+            </figure>
+            <figure className="overflow-hidden rounded-2xl border border-border bg-white">
+              <Image
+                src="/projects/rl-restore/restore-strip-severe.png"
+                alt="Severe degradation restored in one step: degraded 24.61 dB, denoise3, then ground truth, for a +4.45 dB agent gain"
+                width={863}
+                height={360}
+                className="h-auto w-full"
+                unoptimized
+              />
+            </figure>
+          </div>
+          <p className="mt-4 border-l-2 border-accent/40 pl-4 text-sm leading-relaxed text-muted">
+            Top: a mild but textured crop gets a three-tool chain (denoise,
+            deblur, denoise again) for a +2.20 dB gain. Bottom: a heavily
+            degraded crop gets a single strong denoise and a +4.45 dB gain.
+            Same agent, different decision per image. That per-image
+            adaptivity is the behaviour the toolchain buys you.
+          </p>
         </DeepSection>
 
         {project.liveUrl ? (
