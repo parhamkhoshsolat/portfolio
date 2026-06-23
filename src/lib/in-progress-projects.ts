@@ -1,9 +1,8 @@
 // In-flight research projects. Separate from shipped projects (lib/projects.ts)
 // because the card treatment, status framing, and audience are different.
-// Content reconciled against the actual local repos:
-//   - /Users/parham/Desktop/computer vision project/v10 (Active Object Localization, currently v10)
-//   - /Users/parham/Desktop/Advance_Statistics_ModeA_project (Six-Robot Warehouse RL, one project; folder name is the course code)
-//   - /Users/parham/Desktop/internship project/experiment (Preference Shielding for HRI, MSc thesis)
+// Currently just the MSc thesis (Preference Shielding for HRI). The warehouse
+// RL and object-localization projects graduated to the shipped section
+// (shielded-lgv-routing and rl-restore respectively).
 
 export type InProgressProject = {
   slug: string;
@@ -21,42 +20,6 @@ export type InProgressProject = {
 };
 
 export const inProgressProjects: InProgressProject[] = [
-  {
-    slug: "active-object-localization-rl",
-    title: "Active Object Localization with Deep RL",
-    shortTitle: "Active Object Localization",
-    tagline:
-      "An RL agent that learns to find objects in natural images by iteratively refining a bounding box through geometric actions, built on frozen CLIP features. A reimplementation-with-modern-components of Caicedo and Lazebnik (ICCV 2015) on Pascal VOC 2007, not a strict reproduction.",
-    statusLabel: "v10 training; v7 currently holds best mAP 0.287",
-    statusDetail:
-      "Iteration history (each version is a separate Drive root for clean A/B): v6 (Double DQN added) cured Q-overestimation, mAP 0.257. v7 (n-step Bellman + persistent DQfD margin) propagated trigger reward 3x faster, mAP 0.287. v9.2 (aux IoU head with gradient flow) lifted Pearson rho between trunk features and true IoU in the critical [0.5, 0.85] band from 0.18 to 0.48, but did NOT translate to mAP, which exposed the binding constraint as the trigger reward not the representation. v10 (current) tests whether closing that policy-vs-representation gap recovers mAP. Realistic target band for CLIP-backbone work is 0.28 to 0.35, against the paper's VGG-feature 0.46 (not apples-to-apples).",
-    progressStat: { label: "Best mAP @ 0.5 so far", value: "0.287" },
-    techStack: [
-      "PyTorch",
-      "Stable-Baselines3 (custom Double DQN + n-step + DQfD)",
-      "OpenAI CLIP ViT-L/14 (frozen)",
-      "SCLIP class-conditional saliency",
-      "Gymnasium",
-      "Google Colab + TensorBoard",
-    ],
-    techStackFull: [
-      "Python",
-      "PyTorch",
-      "Stable-Baselines3 with custom DoubleDQN(DQN) subclass",
-      "n-step Bellman target propagation",
-      "Persistent DQfD margin loss",
-      "OpenAI CLIP ViT-L/14 (frozen vision and text encoder, 768-d region embeddings)",
-      "SCLIP for class-conditional saliency (16x16 map concatenated into the observation)",
-      "Gymnasium environment API",
-      "Behaviour-cloning warmup from a greedy IoU oracle",
-      "Auxiliary IoU-prediction head with pairwise ranking loss",
-      "Importance-sampled replay buffer",
-      "10 discrete actions (paper's 9 + a fine-grained scale-smaller for endgame refinement)",
-      "Continuous monotone trigger reward (replaces paper's binary +5 / -1)",
-      "Google Colab with chunked checkpoints persisted to Google Drive",
-      "TensorBoard live diagnostics",
-    ],
-  },
   {
     slug: "preference-shielding-hri",
     title: "Preference Shielding for Human-Robot Interaction (MSc thesis)",

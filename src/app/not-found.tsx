@@ -16,7 +16,7 @@ export default function NotFound() {
       </h1>
       <p className="mt-4 max-w-2xl text-lg text-muted">
         The page you tried doesn&apos;t exist. The site has six shipped
-        projects and two more in flight, all linked below. Or use the
+        projects and one more in flight, all linked below. Or use the
         agent in the bottom-right corner to ask for what you need.
       </p>
 

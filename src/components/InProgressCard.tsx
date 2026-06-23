@@ -6,10 +6,7 @@ import { Wrench, ArrowUpRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import type { InProgressProject } from "@/lib/in-progress-projects";
 
-const SLUGS_WITH_DEEP_PAGES = new Set([
-  "preference-shielding-hri",
-  "active-object-localization-rl",
-]);
+const SLUGS_WITH_DEEP_PAGES = new Set(["preference-shielding-hri"]);
 
 export function InProgressCard({
   project,

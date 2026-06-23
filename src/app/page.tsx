@@ -51,9 +51,9 @@ export default function HomePage() {
                 miss.
               </p>
               <p>
-                Two more projects are in flight, including the human-robot
-                interaction study at the heart of my MSc thesis at the
-                University of Naples Federico II.
+                One more is in flight: the human-robot interaction study at
+                the heart of my MSc thesis at the University of Naples
+                Federico II.
               </p>
               <p>
                 What I&apos;m after: a team that values clarity over
