@@ -30,17 +30,22 @@ const SHOT = "/projects/preference-shielding-hri/screenshots";
 // High-level tiles only. Exact instrument, analysis plan and results are held
 // back until the paper is out.
 const stats = [
-  { value: "3", label: "Shield designs" },
+  { value: "4", label: "Study conditions" },
   { value: "8x8", label: "Gridworld" },
-  { value: "42", label: "Target completers" },
-  { value: "~30 min", label: "Per session" },
+  { value: "60", label: "Target completers" },
+  { value: "~45 min", label: "Per participant" },
 ];
 
 const conditions = [
   {
+    name: "No shield",
+    tag: "reference point",
+    body: "Ordinary Q learning with nothing in between. The robot acts on what it has learned, and nothing holds it to the person's rules. The person still sets those rules and still watches the same room. Without this session there is no way to say whether shielding helps at all.",
+  },
+  {
     name: "Preference Shielding",
-    tag: "baseline, from the literature",
-    body: "The mechanism this work starts from. The shield applies the same way for the whole run and never changes as the robot gains experience. It is the control the two new ideas are measured against.",
+    tag: "from the literature",
+    body: "The mechanism this work starts from. The shield applies the same way for the whole run and never changes as the robot gains experience. It is what the two new ideas are measured against.",
   },
   {
     name: "Adaptive Shielding",
@@ -50,7 +55,7 @@ const conditions = [
   {
     name: "Hard/Soft Shielding",
     tag: "new idea",
-    body: "The person marks each rule firm or flexible as they draw it. Firm rules are always kept. Flexible ones are treated as suggestions the robot can set aside. A guarantee becomes something a person places deliberately, on the things they care about most.",
+    body: "The person marks each object firm or flexible as they draw its rules. Firm rules are always kept. Flexible ones are treated as suggestions the robot can set aside. A guarantee becomes something a person places deliberately, on the things they care about most.",
   },
 ];
 
@@ -83,10 +88,11 @@ export default function PreferenceShieldingPage() {
         <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">
           A browser based study in human robot interaction. People teach a
           learning robot where it should and should not go, then watch it learn
-          the same task under three different safety shield designs and say how
-          each one felt. It runs on tabular Q learning in a small gridworld,
-          wrapped in a full participant facing web app that computes each session
-          on the server and replays it in the browser.
+          the same task four times, once with no shield in place and three times
+          under different shield designs, and say how each one felt. It runs on
+          tabular Q learning in a small gridworld, wrapped in a full participant
+          facing web app that computes each session on the server and replays it
+          in the browser.
         </p>
 
         <p className="mt-5 max-w-3xl rounded-lg border border-border bg-card/60 p-4 text-sm leading-relaxed text-muted">
@@ -108,23 +114,30 @@ export default function PreferenceShieldingPage() {
           <div className="mt-4 max-w-3xl space-y-4 text-muted">
             <p>
               A preference shield sits between what a learning robot wants to do
-              and what it is allowed to do. In the mechanism this thesis starts
+              and what it is allowed to do. With no shield, the robot acts only
+              on what it has learned and a person&apos;s stated wishes have no
+              bearing on what happens. With the mechanism this thesis starts
               from, the shield behaves the same way for the whole run, from the
               first confused step to the last confident one.
             </p>
             <p>
-              The thesis asks whether two changes to that make the robot easier
-              for a person to read and trust. The first lets the robot earn its
-              autonomy. It follows a person&apos;s rule closely while a square is
-              still unfamiliar, and leans on its own judgement once it has seen
-              that square enough to know what happens there.
+              The study asks two things. Whether putting a shield in place at all
+              changes how a person reads the robot compared with no shield, and
+              whether two changes to the standard shield make it easier still to
+              read and to trust.
             </p>
             <p>
-              The second hands the choice to the person. Every rule is marked
-              firm or flexible when it is drawn. A firm rule is always kept. A
-              flexible one is a suggestion the robot can set aside. People get a
-              guarantee where they want one without freezing the robot everywhere
-              else.
+              The first change lets the robot earn its autonomy. It follows a
+              person&apos;s rule closely while a square is still unfamiliar, and
+              leans on its own judgement once it has seen that square enough to
+              know what happens there.
+            </p>
+            <p>
+              The second hands the choice to the person. Each object is marked
+              firm or flexible as its rules are drawn. A firm rule is always
+              kept. A flexible one is a suggestion the robot can set aside.
+              People get a guarantee where they want one without freezing the
+              robot everywhere else.
             </p>
           </div>
         </section>
@@ -157,13 +170,13 @@ export default function PreferenceShieldingPage() {
             kicker="What participants compare"
           />
           <p className="mt-4 max-w-3xl text-muted">
-            Every participant does all three conditions, in a counterbalanced
-            order, with the same rules kept fixed across all three. Only the
-            shielding logic changes between sessions. Two of the three are the
-            new idea being tested. The first is the baseline they are measured
-            against.
+            Every participant does all four conditions, in a counterbalanced
+            order, with the same rules kept fixed across all four. Only what sits
+            between the robot and its own decisions changes between sessions. One
+            session has no shield at all. Of the other three, one is the standard
+            mechanism and two are the new ideas being tested against it.
           </p>
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
             {conditions.map((c) => (
               <div
                 key={c.name}
@@ -180,9 +193,10 @@ export default function PreferenceShieldingPage() {
             ))}
           </div>
           <div className="mt-4 rounded-xl border border-border bg-card/60 p-4 text-sm leading-relaxed text-muted">
-            An unshielded agent appears only once, in a short onboarding demo, so
-            everyone starts from the same picture of what no shield looks like. It
-            is not one of the study conditions.
+            Before any rules are taught, a short demo shows the robot moving with
+            no input at all, so everyone starts from the same picture of what
+            that looks like. One of the four sessions later runs the same way,
+            with the rules collected but not applied.
           </div>
         </section>
 
@@ -193,9 +207,14 @@ export default function PreferenceShieldingPage() {
             kicker="How a session works"
           />
           <p className="mt-4 max-w-3xl text-muted">
-            A run takes 25 to 40 minutes in a browser. Teach the rules once, then
-            three sessions, then a short debrief that puts the three learned
-            routes side by side.
+            A run takes 40 to 50 minutes in a browser. Teach the rules once, then
+            four sessions, then a short debrief that puts the four learned routes
+            side by side.
+          </p>
+          <p className="mt-4 max-w-3xl text-muted">
+            Each session is introduced as a different robot with its own name and
+            colour, so the four sessions stay distinct in the person&apos;s
+            memory when they compare them at the end.
           </p>
 
           <h3 className="mt-10 text-xl font-semibold md:text-2xl">
@@ -228,7 +247,7 @@ export default function PreferenceShieldingPage() {
               src={`${SHOT}/02-rules-review.png`}
               w={1440}
               h={1000}
-              title="All the rules before session 1"
+              title="All the rules before the first session"
               caption="The full rule set the robot carries into every session. A hatched fill means firm, a dashed outline means flexible."
             />
           </div>
@@ -242,15 +261,6 @@ export default function PreferenceShieldingPage() {
             shows how many rules the robot followed, with a line from the robot
             saying what it just did.
           </p>
-          <div className="mt-6">
-            <Shot
-              src={`${SHOT}/03-watching-a-session.png`}
-              w={1440}
-              h={1000}
-              title="Mid session, replay running"
-              caption="The room during a session, with the participant's marked squares, the robot's trail, a running count of rules followed, and a line from the robot about what it just did."
-            />
-          </div>
 
           <h3 className="mt-12 text-xl font-semibold md:text-2xl">
             Check ins during a session
@@ -261,15 +271,6 @@ export default function PreferenceShieldingPage() {
             person&apos;s rules drawn on the squares. It is built so the question
             is always anchored to something the person can see on screen.
           </p>
-          <div className="mt-6">
-            <Shot
-              src={`${SHOT}/04-mid-session-question.png`}
-              w={1440}
-              h={1000}
-              title="A mid session check in"
-              caption="The session pauses and the moment replays inside the dialog, with the rules drawn on the squares and one arrow for the move the robot made."
-            />
-          </div>
 
           <h3 className="mt-12 text-xl font-semibold md:text-2xl">
             After the session
@@ -294,8 +295,8 @@ export default function PreferenceShieldingPage() {
               through a large batch of convergence runs across every condition and
               a range of realistic rule sets, then an adversarial pass that threw
               unusual and deliberately hostile rule shapes at it to see what broke.
-              A suite of around 200 backend tests covers the parts a person never
-              sees.
+              A suite of over two hundred backend tests covers the parts a person
+              never sees.
             </p>
             <p>
               Two bugs that would have quietly biased the data were caught by
@@ -341,8 +342,9 @@ export default function PreferenceShieldingPage() {
                 <li>React 18 with Vite</li>
                 <li>Hand drawn SVG room, props, robot and trail</li>
                 <li>Five step rule wizard with a required firm or flexible choice per object</li>
+                <li>A distinct robot identity per session, name and colour</li>
                 <li>Mid session check ins with the moment replayed inside the dialog</li>
-                <li>Consent gate, onboarding, per session check in, debrief with all three routes</li>
+                <li>Consent gate, onboarding, per session check in, debrief with all four routes</li>
                 <li>Recharts in the researcher panel</li>
               </ul>
             </div>
@@ -389,7 +391,7 @@ export default function PreferenceShieldingPage() {
             </p>
             <p>
               Once participants come through, the planned analysis compares the
-              three shield designs on how readable and trustworthy each one felt.
+              four robot behaviours on how readable and trustworthy each one felt.
               The findings are being written up for a paper, and a short summary
               will be added here once that is out.
             </p>

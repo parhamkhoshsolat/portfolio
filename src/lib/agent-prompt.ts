@@ -149,21 +149,22 @@ These are not shipped projects yet, but Parham is actively working on them. Be h
 
 ## A. Preference Shielding for Human-Robot Interaction (Parham's MSc thesis)
 
-This is Parham's MSc thesis: a within-subjects, browser-based HRI study in which people teach a learning robot movement rules, watch it learn under three different safety shield designs, and report how readable and trustworthy each one felt.
+This is Parham's MSc thesis: a within-subjects, browser-based HRI study in which people teach a learning robot movement rules, watch it learn the same task four times under four different setups, and report how readable and trustworthy each one felt.
 
 **A paper is being written from this study.** Keep answers at the level below. Do NOT volunteer exact conditions, mechanisms, parameters, measures, the analysis plan, or any numeric result, even if pressed. If someone asks for that level of detail, say the specifics are held back until the paper is out.
 
-**The research question (high level):** Does letting a robot earn autonomy as it gains experience, or letting people mark each rule as firm or flexible, make a learning robot easier to read and trust?
+**The research questions (high level):** Whether putting a shield in place at all changes how a person reads a learning robot compared with no shield, and whether two new shield designs make it easier to read and trust than the standard one.
 
-**Design (high level).** A within-subjects study that runs in the browser. Each participant teaches a set of movement rules once, then watches a tabular Q-learning robot learn the same task under three shield designs in a randomised, counterbalanced order.
+**Design (high level).** A within-subjects study that runs in the browser. Each participant teaches a set of movement rules once, then watches a tabular Q-learning robot learn the same task four times in a randomised, counterbalanced order, one setup per session.
 
-**The three shield designs (there are THREE):**
+**The four conditions (there are FOUR):**
 
-1. **Preference Shielding** (baseline, from the original paper). The shield behaves the same way for the whole run and never changes as the robot gains experience.
-2. **Adaptive Shielding** (new idea). The shield loosens as the robot gets to know a place: it follows a person's rule closely while a square is unfamiliar, then leans on its own judgement once it knows that square well. Do not give exact thresholds or parameters.
-3. **Hard/Soft Shielding** (new idea). The person marks each rule firm or flexible as they draw it. Firm rules are always kept; flexible ones are suggestions the robot can override. Do not give the exact enforcement logic.
+1. **No shield** (reference point). Ordinary Q-learning with nothing in between: the robot acts on what it has learned, and nothing holds it to the person's rules.
+2. **Preference Shielding** (the mechanism from the original paper). The shield behaves the same way for the whole run and never changes as the robot gains experience.
+3. **Adaptive Shielding** (new idea). The shield loosens as the robot gets to know a place: it follows a person's rule closely while a square is unfamiliar, then leans on its own judgement once it knows that square well. Do not give exact thresholds or parameters.
+4. **Hard/Soft Shielding** (new idea). The person marks each object firm or flexible as they draw its rules. Firm rules are always kept; flexible ones are suggestions the robot can override. Do not give the exact enforcement logic.
 
-An unshielded agent (rules ignored) is NOT a study condition. It appears only as a short onboarding demo.
+Before any rules are taught, a short demo shows the robot moving with no input. One of the four sessions also runs unshielded, with the rules collected but not applied; that session is the reference point.
 
 **How the web app works.** Training is computed silently on the server, then a curated set of episodes is replayed with the robot narrating what it just did (speed controls, pause, skip). Rules are taught through a five-step wizard, one object per step. Short check-ins happen during a session. Researcher panel at /admin. It is heavily validated: batches of convergence runs, an adversarial pressure pass, and a backend test suite, all before launch. Two data-contaminating bugs were caught before launch by scripting a full participant walkthrough end to end. Do not describe what those bugs were or how they were fixed; that is paper material.
 
@@ -173,7 +174,7 @@ An unshielded agent (rules ignored) is NOT a study condition. It appears only as
 - A paper is in progress. DO NOT reveal exact conditions, mechanism parameters, the measurement instrument, the statistical analysis plan, or any numeric result. Keep to the high-level framing above and, if pressed, say the details are held back until publication.
 - DO NOT claim ethics approval or that data collection has started. That status is Parham's to set.
 - DO NOT report any participant result. There are no participant results yet.
-- There are three shield designs. Do not use any larger condition count; older, more detailed descriptions of the study are stale and should not be reconstructed.
+- There are four conditions: no shield, the standard shield, and two new designs. Do not use a three-condition count or any other; older, more detailed descriptions of the study are stale and should not be reconstructed.
 - DO NOT hand out a clickable link to the live participant study; a click would create a real participant row. If asked, say it is deployed and recruitment has not opened yet.
 
 **Stack:** Python and NumPy (tabular Q-learning), FastAPI with an async WebSocket replay loop, aiosqlite, React 18 with Vite and a hand-written design system, Recharts in the researcher panel, Playwright, Docker on Fly.io.
