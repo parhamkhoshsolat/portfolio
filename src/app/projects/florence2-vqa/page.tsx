@@ -20,9 +20,9 @@ export const metadata: Metadata = {
 };
 
 const stats = [
-  { label: "Model size", value: "771M params" },
-  { label: "Training data", value: "150K Q-pairs" },
-  { label: "Loss reduction", value: "64%" },
+  { label: "Model size", value: "230M params" },
+  { label: "Training data", value: "60K train pairs" },
+  { label: "Fine-tune", value: "Full-parameter" },
   { label: "Hardware", value: "Colab T4" },
 ];
 
@@ -69,7 +69,7 @@ export default function Florence2Page() {
         </div>
 
         <HypothesisCallout>
-          Can a 771M-parameter vision-language model be fine-tuned on a
+          Can a 230M-parameter vision-language model be fine-tuned on a
           single Colab T4 to a stable, deployable VQA endpoint without
           exceeding memory or destabilising gradients?
         </HypothesisCallout>
@@ -167,7 +167,7 @@ export default function Florence2Page() {
                 </tr>
                 <tr>
                   <td className="py-3 pr-4 text-accent">Florence-2-base-ft</td>
-                  <td className="py-3 pr-4 text-accent">771M</td>
+                  <td className="py-3 pr-4 text-accent">230M</td>
                   <td className="py-3 pr-4 text-accent">
                     Stable end-to-end full-parameter fine-tune.
                   </td>
@@ -180,14 +180,14 @@ export default function Florence2Page() {
             <code className="text-accent">microsoft/Florence-2-base-ft</code>{" "}
             at revision <code className="text-accent">refs/pr/6</code> with{" "}
             <code className="text-accent">trust_remote_code=True</code>. All
-            771M parameters trainable, no frozen layers.
+            230M parameters trainable, no frozen layers.
           </p>
         </Section>
 
         <Section
           icon={<GraduationCap className="h-4 w-4" />}
           eyebrow="Training and results"
-          title="64% training-loss reduction over 3 epochs"
+          title="Training loss across 3 epochs"
         >
           <p>
             We optimised with AdamW (learning rate 1e-5, batch size 8), a
