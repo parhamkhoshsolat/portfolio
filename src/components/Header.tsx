@@ -7,7 +7,7 @@ export function Header() {
       <div className="container flex h-16 items-center justify-between">
         <Link
           href="/"
-          aria-label="Home — Parham Khosh Solat"
+          aria-label="Home, Parham Khosh Solat"
           className="group flex items-center gap-3 transition-transform active:scale-95"
         >
           <Image

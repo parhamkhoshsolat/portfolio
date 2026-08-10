@@ -33,7 +33,7 @@ export const metadata: Metadata = {
         url: "/brand/og-image.png",
         width: 1584,
         height: 396,
-        alt: "Parham Khosh Solat — Data Scientist · ML Engineer · Data Analyst",
+        alt: "Parham Khosh Solat · Data Scientist · ML Engineer · Data Analyst",
       },
     ],
   },
