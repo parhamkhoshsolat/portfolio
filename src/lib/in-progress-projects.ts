@@ -25,13 +25,13 @@ export const inProgressProjects: InProgressProject[] = [
     title: "Preference Shielding for Human-Robot Interaction (MSc thesis)",
     shortTitle: "Preference Shielding for HRI",
     tagline:
-      "A browser based study in human robot interaction. People teach a learning robot where it should and should not go, then watch it learn the same task under three different safety shield designs and say how each one felt. Built on tabular Q learning in a small gridworld, deployed as a full participant facing web app.",
+      "An MSc thesis in human robot interaction. People teach a learning robot where it should and should not go, then watch it learn the same task four times under four different setups and say how each one felt. Q learning in a gridworld, wrapped in a full participant facing web app.",
     hypothesis:
-      "Does letting a robot earn autonomy as it gains experience, or letting people mark each rule as firm or flexible, make a learning robot easier to read and trust?",
+      "Does a shield make a learning robot easier to read than no shield, and do two new shield designs improve on the standard one?",
     statusLabel: "Build complete, deployed",
     statusDetail:
-      "A within-subjects study that runs in the browser. Each participant teaches a set of movement rules once, then watches a tabular Q-learning robot learn the same task under three shield designs in a randomised order: the plain shield from the original paper, an adaptive shield that loosens as the robot gains experience, and a firm-or-flexible shield the person sets per rule. The app computes each session on the server, then replays it with the robot narrating what it did. A paper is being written from the study, so the exact conditions, measures and analysis are held back for now. Heavily validated before launch, and deployed.",
-    progressStat: { label: "Shield designs", value: "3" },
+      "A within-subjects study that runs in the browser. Each participant teaches a set of movement rules once, then watches a tabular Q-learning robot learn the same task four times in a randomised order: once with no shield, once under the standard shield from the original paper, and twice under new designs, an adaptive shield that loosens as the robot gains experience and a firm-or-flexible shield the person sets per object. The app computes each session on the server, then replays it with the robot narrating what it did. A paper is being written from the study, so the exact conditions, measures and analysis are held back for now. Heavily validated before launch, and deployed.",
+    progressStat: { label: "Study conditions", value: "4" },
     techStack: [
       "Python + tabular Q-learning",
       "FastAPI + aiosqlite (async WebSocket replay)",
@@ -46,7 +46,7 @@ export const inProgressProjects: InProgressProject[] = [
       "FastAPI backend with an async WebSocket replay loop",
       "aiosqlite for participant data",
       "React 18 with Vite, hand-drawn SVG room and props",
-      "Three shield designs: the plain shield from the original paper, an adaptive shield that loosens with experience, and a firm-or-flexible shield set per rule",
+      "Four conditions: no shield, the standard shield from the original paper, an adaptive shield that loosens with experience, and a firm-or-flexible shield set per object",
       "Recharts in the researcher panel",
       "Playwright for scripted participant walkthroughs",
       "Docker on Fly.io (London region), SQLite on an encrypted volume with scheduled backup",
