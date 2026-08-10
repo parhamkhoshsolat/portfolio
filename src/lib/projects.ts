@@ -90,9 +90,9 @@ export const projects: Project[] = [
     title: "Florence-2 Fine-Tuning for Visual Question Answering",
     shortTitle: "Florence-2 VQA",
     tagline:
-      "I fine-tuned a 771M-parameter vision-language model on 150K image-question pairs and shipped it live on HuggingFace Spaces.",
+      "I fine-tuned a 230M-parameter vision-language model on 60,000 image-question pairs and shipped it live on HuggingFace Spaces.",
     summary:
-      "I benchmarked three VLM architectures (PaliGemma 3B, BLIP, Florence-2) and picked Florence-2 for stable training on a Colab T4. Cross-entropy fell 0.307 to 0.111 over 3 epochs (about 64% reduction). The Streamlit serving layer ships with beam-search controls and per-answer confidence scores. Team of 3 at Federico II.",
+      "I benchmarked three VLM architectures (PaliGemma 3B, BLIP, Florence-2) and picked Florence-2 for stable training on a Colab T4. Cross-entropy fell 0.307 to 0.111 over 3 epochs. The Streamlit serving layer ships with beam-search controls and per-answer confidence scores. Team of 3 at Federico II.",
     year: "2025",
     team: "3-person team at Federico II",
     grade: "Top mark · Honours",
@@ -116,7 +116,7 @@ export const projects: Project[] = [
     ],
     repoUrl: "https://github.com/parhamkhoshsolat/florence2-vqa",
     liveUrl: "https://parhamkhoshsolat-florence-2-vqa.hf.space",
-    heroStat: { label: "Training loss reduction", value: "64%" },
+    heroStat: { label: "Full fine-tune", value: "230M VLM" },
     status: "live-demo",
   },
   {
@@ -224,7 +224,7 @@ export const projects: Project[] = [
     title: "Multi-Source Sensor ML Pipeline: Pest Population Forecasting",
     shortTitle: "Pest Forecasting",
     tagline:
-      "I ran an eleven-model tournament across regression and classification; Random Forest reached F1 0.667 and recall 1.00 on a heavily imbalanced minority class.",
+      "I ran a tournament of eight model families across regression and classification; Random Forest reached F1 0.667 and recall 1.00 on a heavily imbalanced minority class.",
     summary:
       "I cleaned and merged 245 daily samples across 5 monitoring sites (meteorological + entomological), then engineered lag, 3-day rolling-mean, recency, and calendar features. The tournament covered 6 regressors (ARIMAX, SARIMAX, Prophet, RandomForest, XGBoost, LightGBM) and 5 classifiers (RF, XGB, LGB, LSTM, GRU) under TimeSeriesSplit CV. Random Forest won both: regression test MAE 0.34 vs ARIMAX baseline 2.00; classification F1 0.667 / AUC 0.919, recall 1.00 on the 9-sample minority class against a 10.67:1 imbalance. Team of 3.",
     year: "2025",

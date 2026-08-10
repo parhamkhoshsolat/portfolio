@@ -66,11 +66,11 @@ Live demo on HuggingFace Spaces: huggingface.co/spaces/parhamkhoshsolat/rl-resto
 
 ## 1. Florence-2 Fine-Tuning for Visual Question Answering (2025, 3-person team at Federico II, 30/30 e lode)
 
-- Fine-tuned microsoft/Florence-2-base-ft (771M parameters) at revision refs/pr/6.
-- Trained on VQA v2.0 Abstract Scenes subset: 150K image-question pairs total (60K train, 30K val, 60K test), open-ended QA only.
+- Fine-tuned microsoft/Florence-2-base-ft (~230M parameters) at revision refs/pr/6.
+- Trained on 60,000 image-question pairs (the train split of VQA v2.0 Abstract Scenes, open-ended QA only). The full set is 150K but the val and test splits are not training data and the test answers are unusable, so do not claim training on 150K.
 - Benchmarked against PaliGemma 3B (exceeded GPU memory) and BLIP (unstable gradients); Florence-2 trained stably on a single Colab T4 GPU.
 - AdamW optimizer, lr=1e-5, batch=8, 3 epochs, 22,500 total steps, linear LR schedule, no warmup.
-- Training cross-entropy loss fell 0.307 → 0.111 (about 64% reduction). Final validation loss 0.202.
+- Training cross-entropy loss fell 0.307 to 0.111 over 3 epochs. Final validation loss 0.202. No task accuracy or VQA-score was measured, so do not headline a percentage loss reduction.
 - No quantitative test-set metric was computed (only train/val cross-entropy). Qualitative validation by manual inspection.
 - Streamlit serving layer with beam-search controls and per-answer confidence scores. Deployed live on HuggingFace Spaces: huggingface.co/spaces/parhamkhoshsolat/Florence-2_VQA (Space sleeps when idle; first request may take 30 to 60 seconds to wake the container).
 - Repo: github.com/parhamkhoshsolat/florence2-vqa
@@ -139,7 +139,7 @@ If asked about formal credentials beyond these three, the answer is: "Those are 
 - SARIMA, ARIMAX, Prophet, LSTM, GRU, 1D CNN, time-series forecasting, TimeSeriesSplit CV.
 - K-means, PCA, hypothesis testing, A/B testing.
 - GeoPandas, Folium, choropleth, geospatial joins.
-- Power BI (DAX), Tableau, Plotly, Seaborn, Matplotlib, Streamlit.
+- Power BI (DAX), Plotly, Seaborn, Matplotlib, Streamlit.
 - HuggingFace Spaces, Docker, Git, Google Colab.
 - Google Gemini API, GitHub GraphQL API, prompt engineering, LLM API integration.
 

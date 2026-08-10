@@ -40,11 +40,11 @@ export default function HomePage() {
               </p>
               <p>
                 That pattern repeats across this site. A vision-language
-                model I fine-tuned on 150,000 image-question pairs, shipped
+                model I fine-tuned on 60,000 image-question pairs, shipped
                 as a public web demo where anyone uploads a photo and asks
                 questions about it. A streaming pipeline (Apache Kafka,
                 PySpark) that groups daily stock prices into market patterns.
-                A tournament of eleven models that chose the pest-outbreak
+                A tournament of eight model families that chose the pest-outbreak
                 detector which never misses a rare event, the one case a
                 farmer cannot afford to lose.
               </p>
@@ -64,7 +64,7 @@ export default function HomePage() {
                 cleverness and ships work to real users. Strong in Python,
                 SQL (CTEs, window functions, query optimisation), PyTorch,
                 HuggingFace Transformers, reinforcement learning, Apache
-                Kafka, PySpark, Tableau, and Power BI.
+                Kafka, PySpark, and Power BI.
               </p>
               <p>
                 Naples-based.{" "}

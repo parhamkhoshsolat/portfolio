@@ -61,7 +61,7 @@ export function generateStubAnswer(raw: string): string {
   }
   if (/pest|forecast|random forest|imbalance/.test(q)) {
     const p = projects.find((x) => x.slug === "pest-forecasting")!;
-    return `${p.tagline} 11-model tournament under TimeSeriesSplit CV. Random Forest hit recall 1.00 on the 9-sample minority class against a 10.67:1 imbalance.`;
+    return `${p.tagline} Eight-model-family tournament under TimeSeriesSplit CV. Random Forest hit recall 1.00 on the 9-sample minority class against a 10.67:1 imbalance.`;
   }
   if (/oulad|cnn|time.?series|sarima|prophet/.test(q)) {
     const p = projects.find((x) => x.slug === "oulad-timeseries")!;
@@ -74,10 +74,10 @@ export function generateStubAnswer(raw: string): string {
 
   // Profile-level questions.
   if (/strong|best|favourite|favorite|showpiece|impressive/.test(q)) {
-    return "Florence-2 is the AI showpiece (fine-tuned a 771M-parameter VLM end to end and shipped it live), and the Fater geospatial project is the BI showpiece (SQL + GeoPandas + a solo executive presentation that won jury recognition). Pick by audience.";
+    return "Florence-2 is the AI showpiece (fine-tuned a 230M-parameter VLM end to end and shipped it live), and the Fater geospatial project is the BI showpiece (SQL + GeoPandas + a solo executive presentation that won jury recognition). Pick by audience.";
   }
   if (/hire|fit|why.*him|reason/.test(q)) {
-    return "Parham ships end to end: he fine-tuned a 771M-parameter VLM, built a Kafka + PySpark pipeline, ran an 11-model ML tournament, and presented a geospatial analysis solo to a P&G joint-venture's leadership. Strong in SQL, Python, PyTorch, and dashboards, and clearly available with no relocation needed in Italy.";
+    return "Parham ships end to end: he fine-tuned a 230M-parameter VLM, built a Kafka + PySpark pipeline, ran an eight-model-family ML tournament, and presented a geospatial analysis solo to a P&G joint-venture's leadership. Strong in SQL, Python, PyTorch, and dashboards, and clearly available with no relocation needed in Italy.";
   }
   if (/naples|locat|relocat|based|onsite|on-site/.test(q)) {
     return "Yes, Parham is based in Naples, Italy. No relocation needed for Italian roles; open to remote across the EU.";
@@ -95,7 +95,7 @@ export function generateStubAnswer(raw: string): string {
     return "His latest CV is available on request, or he can send a role-tailored version. Drop a note to " + siteConfig.contact.email + ".";
   }
   if (/skill|stack|tech|tool/.test(q)) {
-    return "Strongest in Python, SQL (CTEs, window functions, query optimisation), PyTorch, HuggingFace Transformers, Scikit-learn, Apache Kafka, PySpark, GeoPandas, and Power BI / Tableau. Comfortable shipping with Streamlit and HuggingFace Spaces.";
+    return "Strongest in Python, SQL (CTEs, window functions, query optimisation), PyTorch, HuggingFace Transformers, Scikit-learn, Apache Kafka, PySpark, GeoPandas, and Power BI. Comfortable shipping with Streamlit and HuggingFace Spaces.";
   }
   if (/thesis|research/.test(q)) {
     return "Master's thesis (in progress): human-robot interaction with reinforcement learning, at Federico II.";

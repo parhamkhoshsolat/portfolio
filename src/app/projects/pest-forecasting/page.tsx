@@ -34,7 +34,7 @@ export default function PestPage() {
       <ProjectDeepHero project={project} assets={assets} stats={stats} />
 
       <HypothesisCallout>
-        Can a tournament of eleven models find a classifier that catches
+        Can a tournament of eight model families find a classifier that catches
         every rare pest outbreak in a 245-sample field dataset with a
         10.67:1 minority-class imbalance, where the cost of a missed
         outbreak dwarfs the cost of a false alarm?
@@ -43,7 +43,7 @@ export default function PestPage() {
       <FadeIn>
         <DeepSection
           eyebrow="Overview"
-          title="Eleven-model tournament across regression and classification"
+          title="Eight model families across regression and classification"
           icon={<Database className="h-4 w-4" />}
         >
           <p>
