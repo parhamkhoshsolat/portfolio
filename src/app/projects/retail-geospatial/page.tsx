@@ -74,7 +74,7 @@ export default function RetailGeospatialPage() {
           <p>
             Our team of four built the SQL and spatial pipeline together; I
             presented the final analysis solo to Fater leadership and was
-            picked by the jury for individual recognition.
+            picked by the jury.
           </p>
         </DeepSection>
 

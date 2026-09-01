@@ -61,7 +61,7 @@ export function generateStubAnswer(raw: string): string {
   }
   if (/pest|forecast|random forest|imbalance/.test(q)) {
     const p = projects.find((x) => x.slug === "pest-forecasting")!;
-    return `${p.tagline} Eight-model-family tournament under TimeSeriesSplit CV. Random Forest hit recall 1.00 on the 9-sample minority class against a 10.67:1 imbalance.`;
+    return `${p.tagline} Eight-model-family tournament under TimeSeriesSplit CV. Random Forest hit recall 1.00 on the 9-sample minority class against a 9.65:1 imbalance.`;
   }
   if (/oulad|cnn|time.?series|sarima|prophet/.test(q)) {
     const p = projects.find((x) => x.slug === "oulad-timeseries")!;
@@ -69,7 +69,7 @@ export function generateStubAnswer(raw: string): string {
   }
   if (/fater|geospatial|map|sql|choropleth|p&g|procter/.test(q)) {
     const p = projects.find((x) => x.slug === "retail-geospatial")!;
-    return `${p.tagline} Presented solo to Fater leadership; jury picked the work for individual recognition.`;
+    return `${p.tagline} Presented solo to Fater leadership; jury picked the work.`;
   }
 
   // Profile-level questions.

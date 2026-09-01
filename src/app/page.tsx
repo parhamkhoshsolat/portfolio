@@ -28,6 +28,18 @@ export default function HomePage() {
             </h2>
             <div className="mt-6 space-y-5 text-muted">
               <p>
+                For three years I was the data person at Sakoudar, an
+                influencer marketing platform. The problem
+                underneath it was comparison: raw impressions reward whoever
+                posts most often, and a beauty audience is nothing like a
+                tech audience, so nobody could say which creator was actually
+                worth the money. I built the weekly pipeline that pulled
+                engagement from the Instagram, LinkedIn and X APIs, the
+                scoring that corrected for both distortions, and the
+                recommendation engine that turned a customer&apos;s brief
+                into a ranked shortlist. The platform is still running.
+              </p>
+              <p>
                 In April 2024 I stood in front of Fater S.p.A.&apos;s
                 leadership (the Procter &amp; Gamble joint venture behind
                 Pampers Italia) presenting a map that ranked twenty Naples
@@ -35,18 +47,18 @@ export default function HomePage() {
                 MySQL joins between Fater&apos;s proprietary sales records
                 and Italian census data, plus a Python geospatial pipeline.
                 In front of it: an executive who could read the answer in
-                five seconds. The jury picked the work for individual
-                recognition.
+                five seconds. The jury recognised the project.
               </p>
               <p>
                 That pattern repeats across this site. A vision-language
                 model I fine-tuned on 60,000 image-question pairs, shipped
                 as a public web demo where anyone uploads a photo and asks
-                questions about it. A streaming pipeline (Apache Kafka,
-                PySpark) that groups daily stock prices into market patterns.
-                A tournament of eight model families that chose the pest-outbreak
-                detector which never misses a rare event, the one case a
-                farmer cannot afford to lose.
+                questions about it. A Kafka and Zookeeper cluster that streamed six months of price data
+                through producers, with a separate PySpark stage that clusters a
+                ticker's price history.
+                A tournament of eight model families that chose the pest-outbreak detector that caught
+                every outbreak day in the held-out set, at the cost of a false
+                alarm rate a farmer can live with.
               </p>
               <p>
                 My newest work leans into reinforcement learning. Six
@@ -67,13 +79,64 @@ export default function HomePage() {
                 Kafka, PySpark, and Power BI.
               </p>
               <p>
-                Naples-based.{" "}
-                <span className="text-text">Data Analyst</span>,{" "}
-                <span className="text-text">Data Scientist</span>, or{" "}
-                <span className="text-text">ML Engineer</span> roles in
-                Italy and remote across the EU. English C1.
+                Naples-based, with three years of paid data science behind
+                me and an MSc finishing this year.{" "}
+                <span className="text-text">Data Scientist</span>,{" "}
+                <span className="text-text">ML Engineer</span>, or{" "}
+                <span className="text-text">AI Engineer</span> roles in
+                Italy, Germany, or remote across the EU. English C1.
               </p>
             </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      <section
+        id="experience"
+        className="border-b border-border/40"
+      >
+        <div className="container max-w-3xl py-20 md:py-24">
+          <FadeIn>
+            <p className="text-xs uppercase tracking-[0.2em] text-accent">
+              Experience
+            </p>
+            <h2 className="mt-2 text-3xl font-semibold md:text-4xl">
+              Data Scientist, Sakoudar
+            </h2>
+            <p className="mt-2 text-sm text-muted">
+              2022 to 2025 &middot; full time &middot; on site, then remote
+            </p>
+            <p className="mt-6 text-muted">
+              Sakoudar is an influencer campaign management platform across
+              LinkedIn, X and Instagram. I joined in the company&apos;s first
+              year and built the data side of the product.
+            </p>
+            <ul className="mt-6 space-y-4 text-muted">
+              <li>
+                Built the weekly ingestion across the LinkedIn, X and
+                Instagram APIs, turning one-off snapshots into a
+                per-influencer time series.
+              </li>
+              <li>
+                Designed the scoring that made influencers comparable,
+                weighting impressions so a daily poster did not simply
+                outrank a weekly one, and so categories with very different
+                audience sizes could be judged fairly.
+              </li>
+              <li>
+                Built the recommendation engine: a customer brief in
+                (budget, platforms, vertical, headcount, and the
+                company&apos;s own mission and voice), a ranked shortlist
+                out, matched partly on how closely a creator&apos;s language
+                resembled the way the company talks about itself.
+              </li>
+              <li>
+                Built the dashboard the founders used to check every score
+                against what they personally knew about each influencer, and
+                the pipeline that pushed data live only after they signed
+                off.
+              </li>
+            </ul>
           </FadeIn>
         </div>
       </section>

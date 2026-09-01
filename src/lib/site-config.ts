@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Parham Khosh Solat",
   title: "Parham Khosh Solat | Data Scientist · ML Engineer · Data Analyst",
   description:
-    "Portfolio of Parham Khosh Solat, MSc Data Science at the University of Naples Federico II. Six end-to-end projects across vision-language models, time-series forecasting, streaming pipelines, and geospatial analytics.",
+    "Portfolio of Parham Khosh Solat. Three years as a data scientist at an influencer marketing platform, now finishing an MSc in Data Science at the University of Naples Federico II. Projects across vision-language models, recommender systems, time-series forecasting, and geospatial analytics.",
   domain: "parhamkhoshsolat.com",
   url: "https://parhamkhoshsolat.com",
   location: "Naples, Italy",
