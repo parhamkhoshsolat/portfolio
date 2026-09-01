@@ -215,7 +215,6 @@ export const projects: Project[] = [
       "prompt engineering",
     ],
     repoUrl: "https://github.com/parhamkhoshsolat/TalentSonar",
-    liveUrl: "https://parhamkhoshsolat-talentsonar.hf.space",
     heroStat: { label: "Data source", value: "GitHub GraphQL" },
     status: "live-demo",
   },
