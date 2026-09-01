@@ -106,7 +106,7 @@ Live demo on HuggingFace Spaces: huggingface.co/spaces/parhamkhoshsolat/rl-resto
 - Structured features passed to Google Gemini API for skill inference, project archetype detection, and seniority signal.
 - Streamlit candidate-scoring view with CSS-only anti-cheat layer and downloadable PDF report.
 - Test scoring is currently mock; LLM-evaluated scoring is the next iteration.
-- Streamlit app deployed live on HuggingFace Spaces: huggingface.co/spaces/parhamkhoshsolat/TalentSonar.
+- Streamlit app was deployed on HuggingFace Spaces but the Space is now PRIVATE. There is NO live demo. Never offer a demo link for TalentSonar; say Parham can walk through it directly.
 - Repo: github.com/parhamkhoshsolat/TalentSonar
 
 ## 4. Pest Population Forecasting (2025, 3-person team, 30/30 e lode)
