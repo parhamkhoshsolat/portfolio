@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 const stats = [
   { label: "Samples", value: "245" },
   { label: "Models compared", value: "11" },
-  { label: "Class imbalance", value: "10.67:1" },
+  { label: "Class imbalance", value: "9.65:1" },
   { label: "Minority recall", value: "1.00" },
 ];
 
@@ -36,7 +36,7 @@ export default function PestPage() {
       <HypothesisCallout>
         Can a tournament of eight model families find a classifier that catches
         every rare pest outbreak in a 245-sample field dataset with a
-        10.67:1 minority-class imbalance, where the cost of a missed
+        9.65:1 minority-class imbalance, where the cost of a missed
         outbreak dwarfs the cost of a false alarm?
       </HypothesisCallout>
 
@@ -74,7 +74,7 @@ export default function PestPage() {
             </li>
             <li>
               <strong className="text-text">Classification bracket</strong> (5
-              models): Random Forest, XGBoost, LightGBM, LSTM, GRU. The 10.67:1
+              models): Random Forest, XGBoost, LightGBM, LSTM, GRU. The 9.65:1
               class imbalance was handled with{" "}
               <code className="text-accent">class_weight=&apos;balanced&apos;</code>{" "}
               and per-model F1-optimal threshold tuning on a held-out

@@ -25,7 +25,7 @@ export const projects: Project[] = [
     tagline:
       "I joined Fater proprietary sales with ISTAT census in MySQL and ranked districts by per-capita store potential. I presented the work solo to Fater leadership.",
     summary:
-      "Industry challenge with Fater S.p.A. (Procter & Gamble joint venture). We combined proprietary sales records with ISTAT sociodemographic census data across 20 administrative microcode districts using SQL CTEs, joins, and window functions. A GeoPandas spatial-join pipeline (point-in-polygon, EPSG:4326) attached each store to its district. I presented the Folium choropleth dashboards solo to Fater leadership, and the jury picked the work for individual recognition.",
+      "Industry challenge with Fater S.p.A. (Procter & Gamble joint venture). We combined proprietary sales records with ISTAT sociodemographic census data across 20 administrative microcode districts using SQL CTEs, joins, and window functions. A GeoPandas spatial-join pipeline (point-in-polygon, EPSG:4326) attached each store to its district. I presented the Folium choropleth dashboards solo to Fater leadership, and the jury picked the work.",
     year: "2024",
     team: "4-person team; presented solo",
     techStack: [
@@ -226,7 +226,7 @@ export const projects: Project[] = [
     tagline:
       "I ran a tournament of eight model families across regression and classification; Random Forest reached F1 0.667 and recall 1.00 on a heavily imbalanced minority class.",
     summary:
-      "I cleaned and merged 245 daily samples across 5 monitoring sites (meteorological + entomological), then engineered lag, 3-day rolling-mean, recency, and calendar features. The tournament covered 6 regressors (ARIMAX, SARIMAX, Prophet, RandomForest, XGBoost, LightGBM) and 5 classifiers (RF, XGB, LGB, LSTM, GRU) under TimeSeriesSplit CV. Random Forest won both: regression test MAE 0.34 vs ARIMAX baseline 2.00; classification F1 0.667 / AUC 0.919, recall 1.00 on the 9-sample minority class against a 10.67:1 imbalance. Team of 3.",
+      "I cleaned and merged 245 daily samples across 5 monitoring sites (meteorological + entomological), then engineered lag, 3-day rolling-mean, recency, and calendar features. The tournament covered 6 regressors (ARIMAX, SARIMAX, Prophet, RandomForest, XGBoost, LightGBM) and 5 classifiers (RF, XGB, LGB, LSTM, GRU) under TimeSeriesSplit CV. Random Forest won both: regression test MAE 0.34 vs ARIMAX baseline 2.00; classification F1 0.667 / AUC 0.919, recall 1.00 on the 9-sample minority class against a 9.65:1 imbalance. Team of 3.",
     year: "2025",
     team: "3-person team",
     grade: "Top mark · Honours",
