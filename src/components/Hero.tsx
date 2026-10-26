@@ -29,13 +29,13 @@ export function Hero() {
           transition={{ duration: 0.4, ease: "easeOut" }}
           className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1 text-xs text-muted"
           role="status"
-          aria-label="Open to data and ML roles across the EU"
+          aria-label="Open to data and ML roles and PhD positions"
         >
           <span className="relative flex h-2 w-2" aria-hidden>
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
           </span>
-          Open to data &amp; ML roles across the EU
+          Open to data &amp; ML roles and PhD positions
         </motion.div>
 
         <h1 className="mt-6 text-5xl font-semibold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">

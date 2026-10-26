@@ -79,7 +79,7 @@ export function generateStubAnswer(raw: string): string {
     return "Parham builds end to end: three years on the scoring and recommendation engine of a live influencer platform, two solo reinforcement-learning projects with careful multi-seed evaluation, and a full fine-tune of a 230M-parameter vision-language model deployed as a live demo.";
   }
   if (/naples|locat|relocat|based|onsite|on-site/.test(q)) {
-    return "Parham is based in Naples, Italy, and open to roles and PhD positions in Germany, in Italy, or remote across the EU.";
+    return "Parham is based in Naples, Italy. He is open to roles and PhD positions; for location details, message him on LinkedIn.";
   }
   if (/avail|start|notice|graduat|when can/.test(q)) {
     return `${siteConfig.availability}`;

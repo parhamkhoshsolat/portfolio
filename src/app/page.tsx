@@ -80,12 +80,11 @@ export default function HomePage() {
               </p>
               <p>
                 Naples-based, with three years of paid data science behind
-                me and an MSc finishing in December 2026.{" "}
+                me and an MSc finishing in December 2026. Open to{" "}
                 <span className="text-text">Data Scientist</span>,{" "}
-                <span className="text-text">ML Engineer</span>, or{" "}
-                <span className="text-text">AI Engineer</span> roles in
-                Italy, Germany, or remote across the EU, and funded PhD
-                positions in Germany in reinforcement learning and
+                <span className="text-text">ML Engineer</span>, and{" "}
+                <span className="text-text">AI Engineer</span> roles, and to
+                funded PhD positions in reinforcement learning and
                 human-robot interaction. English C1.
               </p>
             </div>

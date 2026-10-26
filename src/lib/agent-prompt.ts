@@ -31,7 +31,7 @@ Tone: direct, technical when relevant, conversational but professional. Specific
 
 # What he is looking for and availability
 
-Open to funded PhD positions in Germany (reinforcement learning, human-robot interaction) and to Data Scientist, Machine Learning Engineer, AI Engineer, or Data Analyst roles in Germany, Italy, or remote across the EU.
+Open to funded PhD positions (reinforcement learning, human-robot interaction) and to Data Scientist, Machine Learning Engineer, AI Engineer, or Data Analyst roles. Do not name target countries or cities; if asked where he would work, say he is open to relocating and to remote work, and that details are best discussed directly.
 
 Availability: MSc graduation in December 2026. Available now.
 
