@@ -7,10 +7,9 @@ export const siteConfig = {
   url: "https://parhamkhoshsolat.com",
   location: "Naples, Italy",
   availability:
-    "Graduating October 2026. Working-student available now (20h/week), full-time from graduation.",
+    "MSc graduation in December 2026. Available now.",
   contact: {
     email: "parhamkhoshsolat@gmail.com",
-    phone: "+39 351 333 8398",
   },
   links: {
     linkedin: "https://www.linkedin.com/in/parham-khoshsolat",
@@ -24,7 +23,7 @@ export const siteConfig = {
     "BI / AI Analyst",
   ],
   oneLiner:
-    "I'm an MSc Data Science student in Naples. Eight shipped projects across vision-language models, streaming data, time-series forecasting, deep RL, and geospatial BI.",
+    "I'm an MSc Data Science student in Naples. Eight projects across vision-language models, data engineering, time-series forecasting, deep RL, and geospatial analytics.",
 };
 
 export type SiteConfig = typeof siteConfig;

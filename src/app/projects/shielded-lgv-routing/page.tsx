@@ -25,8 +25,8 @@ export const metadata: Metadata = {
 
 const stats = [
   { label: "LGVs in simulation", value: "6" },
-  { label: "Methods compared", value: "6" },
-  { label: "Collisions, by design", value: "0" },
+  { label: "Methods compared", value: "9" },
+  { label: "Collisions (runtime-checked)", value: "0" },
   { label: "Live demo", value: "Yes" },
 ];
 
@@ -47,16 +47,16 @@ const classicalPlanners = [
 
 const learnedPolicies = [
   {
-    name: "RL",
-    body: "Deep RL policy trained to coordinate LGVs from local observations. Generalises to layouts the classical planners must replan for.",
+    name: "Hybrid (learned priority)",
+    body: "Prioritized planning where a small network, trained with REINFORCE as a ranking, picks the order in which vehicles are planned. 3.00x greedy throughput.",
   },
   {
-    name: "Bayes-DQN",
-    body: "Bootstrapped DQN ensemble. Ensemble disagreement is the agent's uncertainty, replacing epsilon-greedy with posterior sampling for directed exploration.",
+    name: "Bootstrapped DQN",
+    body: "Randomized-prior bootstrapped DQN ensemble (K=8) with Thompson sampling per episode and a warm start from expert demonstrations. 2.53x greedy, the best end-to-end learned policy.",
   },
   {
-    name: "Hybrid",
-    body: "Learned high-level routing on top of a classical local planner. Combines the generalisation of RL with the guarantees of search.",
+    name: "PPO, MAPPO, A2C, BC",
+    body: "Parameter-shared PPO 1.56x, behaviour cloning 1.40x, MAPPO with a centralised critic 1.29x, and A2C 1.10x (its interval includes 1.0, so not clearly above greedy).",
   },
 ];
 
@@ -66,38 +66,39 @@ export default function ShieldedLgvRoutingPage() {
       <ProjectDeepHero project={project} assets={assets} stats={stats} />
 
       <HypothesisCallout>
-        Can a collision shield make safety guarantees structurally
-        independent of the routing method, so a fair head-to-head between
-        classical multi-agent planners and learned policies (including
-        humans walking the aisles) becomes possible without retraining
-        anyone?
+        If one collision shield keeps every routing method safe, so that
+        methods compete on throughput alone, do learned policies beat
+        classical multi-agent planners?
       </HypothesisCallout>
 
       <FadeIn>
         <DeepSection
           eyebrow="The contribution"
-          title="PIBT collision shield, planner-agnostic"
+          title="One PIBT-inspired shield under every method"
           icon={<ShieldCheck className="h-4 w-4" />}
         >
           <p>
             Six LGVs share the warehouse with each other and with human
             workers walking the aisles. Every routing method, classical or
-            learned, runs underneath the same PIBT (Priority Inheritance
-            with Backtracking) collision shield. PIBT guarantees that at
-            every simulation step, the joint action is collision-free.
+            learned, runs on top of the same collision shield: a
+            priority-ordered simplification of PIBT (without its priority
+            inheritance or backtracking) that checks every joint move. A
+            separate conflict check asserts zero collisions at every
+            simulation step.
           </p>
           <p>
-            This separation of concerns is the contribution. Safety lives
-            in the shield, not in the planner. So the comparison between
-            planners reduces to a question of throughput, fairness, and
-            generalisation, and learned policies are not penalised for
-            being statistically uncertain about safety the way classical
-            ones are not.
+            Because safety lives in the shield and not in the planner, the
+            comparison reduces to throughput. A first attempt, which
+            penalised collisions in the reward, failed; the shield fixed
+            it. Evaluated over 5 seeds on 15 held-out layouts with IQM and
+            bootstrap confidence intervals, the classical planners won:
+            prioritized planning 3.03x greedy throughput and CBS 3.01x,
+            against 2.53x for the best learned policy.
           </p>
         </DeepSection>
 
         <DeepSection
-          eyebrow="Three classical planners"
+          eyebrow="Classical planners"
           title="What every learned method has to beat"
           icon={<Cpu className="h-4 w-4" />}
         >
@@ -117,8 +118,8 @@ export default function ShieldedLgvRoutingPage() {
         </DeepSection>
 
         <DeepSection
-          eyebrow="Three learned policies"
-          title="What the RL stack adds"
+          eyebrow="Learned and hybrid methods"
+          title="How the learned methods compared"
           icon={<Database className="h-4 w-4" />}
         >
           <div className="grid gap-4 md:grid-cols-3">
@@ -143,11 +144,9 @@ export default function ShieldedLgvRoutingPage() {
         >
           <p>
             Workers walk warehouse aisles on the same grid the LGVs use.
-            Every routing method navigates around them automatically. None
-            of the learned policies were retrained when worker counts
-            change; the shield handles new dynamic obstacles the same way
-            it handles vehicle-vehicle conflicts. This is the
-            zero-shot-generalisation claim that the shield enables.
+            Every routing method navigates around them without retraining,
+            because the shield treats workers as dynamic obstacles, the same
+            way it treats other vehicles.
           </p>
         </DeepSection>
 
@@ -159,7 +158,7 @@ export default function ShieldedLgvRoutingPage() {
           >
             <p className="mb-6">
               Python simulation server, WebSocket streaming, live web
-              client. Pick any of the six methods, change the warehouse
+              client. Pick any of the nine methods, change the warehouse
               layout, raise or lower the number of human workers. The
               shield runs underneath all of it.
             </p>
@@ -184,8 +183,9 @@ export default function ShieldedLgvRoutingPage() {
             ))}
           </div>
           <p className="mt-6 text-xs text-muted">
-            Built with Farshad Farahtaj. Source on the HuggingFace Space
-            files tab.
+            Solo project for the Advanced Statistical Learning and Modeling
+            course at Federico II. Demo source on the HuggingFace Space files
+            tab.
           </p>
         </DeepSection>
       </FadeIn>

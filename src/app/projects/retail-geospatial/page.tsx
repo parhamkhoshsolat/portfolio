@@ -17,10 +17,10 @@ export const metadata: Metadata = {
 };
 
 const stats = [
-  { label: "Districts", value: "20" },
-  { label: "Source systems", value: "2" },
+  { label: "Data sources", value: "Stores + census" },
+  { label: "Join", value: "Point-in-polygon" },
   { label: "Team", value: "4 people" },
-  { label: "Recognition", value: "Jury pick" },
+  { label: "Public data", value: "Synthetic" },
 ];
 
 export default function RetailGeospatialPage() {
@@ -29,10 +29,9 @@ export default function RetailGeospatialPage() {
       <ProjectDeepHero project={project} assets={assets} stats={stats} />
 
       <HypothesisCallout>
-        Can SQL joins between Fater proprietary sales and ISTAT census,
-        plus a Python geospatial pipeline, produce a single ranked map of
-        expansion opportunities a non-technical executive can act on in
-        five seconds?
+        Can store locations and census districts be joined spatially to
+        compare districts of different sizes by store potential per
+        resident, and show the result on a single map?
       </HypothesisCallout>
 
       <FadeIn>
@@ -44,14 +43,11 @@ export default function RetailGeospatialPage() {
                 Mock data, real methodology
               </p>
               <p className="mt-2">
-                Fater&apos;s proprietary sales records are under NDA. The
-                map below and the public repo use representative mock data
-                that mirrors the structure of the original. The SQL
-                queries, joins, spatial pipeline, and per-capita
-                store-potential metric are faithful to the work I
-                presented to leadership; only the underlying numbers are
-                synthetic. The static deliverable that drove the jury
-                decision used the real data and is not shown here.
+                Fater&apos;s data was provided for educational use only. The
+                map below and the public repo use synthetic data that
+                mirrors the structure of the original. The spatial join and
+                the per-capita store-potential metric are the same method;
+                the numbers are not real.
               </p>
             </div>
           </div>
@@ -67,20 +63,21 @@ export default function RetailGeospatialPage() {
           <p>
             Fater S.p.A. is the P&amp;G + Angelini Industries joint venture
             that owns Pampers Italia, Lines, and Tampax for the Italian
-            market. The brief: rank 20 administrative microcode districts by
-            expansion opportunity using a mix of their proprietary sales
-            records and ISTAT census data that had no prior link.
+            market. The brief, set as part of the Statistical Learning and
+            Data Analysis course at Federico II: estimate the potential of
+            sales points in the children&apos;s diapers category by
+            neighbourhood, combining Fater&apos;s store data with census
+            data.
           </p>
           <p>
-            Our team of four built the SQL and spatial pipeline together; I
-            presented the final analysis solo to Fater leadership and was
-            picked by the jury.
+            A university team of four: Shayan Ekramnia, Farshad Farahtaj,
+            Sara Aboudarda and me. I did the statistics and analysis part.
           </p>
         </DeepSection>
 
         <DeepSection
           eyebrow="Methodology"
-          title="From two disconnected sources to one ranked map"
+          title="From store points to a per-capita district map"
           icon={<Map className="h-4 w-4" />}
         >
           <p>
@@ -88,10 +85,10 @@ export default function RetailGeospatialPage() {
           </p>
           <ol className="ml-6 list-decimal space-y-2">
             <li>
-              <strong className="text-text">SQL stitch.</strong> CTEs and
-              joins in MySQL combined Fater&apos;s proprietary sales records
-              with ISTAT sociodemographic census data per district. Window
-              functions handled the district-level rankings.
+              <strong className="text-text">Load.</strong> Store records
+              (location, store type, sales area, Fater&apos;s potential
+              score) came from a MySQL database; census district polygons
+              and population came from ISTAT.
             </li>
             <li>
               <strong className="text-text">Spatial join.</strong> A
@@ -100,10 +97,9 @@ export default function RetailGeospatialPage() {
               computed from raw store points.
             </li>
             <li>
-              <strong className="text-text">Per-capita metric.</strong> Store
-              count divided by district population gives the per-capita
-              store-potential figure that drives the ranking. Higher = under
-              served relative to population.
+              <strong className="text-text">Per-capita metric.</strong> The
+              summed store-potential score of each district, divided by its
+              population, so districts of different sizes can be compared.
             </li>
           </ol>
         </DeepSection>
@@ -114,12 +110,9 @@ export default function RetailGeospatialPage() {
           icon={<Map className="h-4 w-4" />}
         >
           <p>
-            The Folium map below reproduces the shape of the deliverable
-            that went into the Fater presentation, rendered against mock
-            data (see the note at the top of this page). The static map
-            export with the real data drove the jury decision; the
-            interactive version here exists so the methodology is
-            inspectable.
+            The map below shows the method on synthetic data (see the note
+            at the top of this page), so the approach can be inspected
+            without the original data.
           </p>
           {assets.externalEmbed ? (
             <div className="mt-6">
@@ -130,14 +123,14 @@ export default function RetailGeospatialPage() {
 
         <DeepSection
           eyebrow="Static deliverable"
-          title="Final choropleth shipped to Fater leadership"
+          title="Choropleth of potential per resident (synthetic data)"
           icon={<BarChart3 className="h-4 w-4" />}
         >
           <ProjectGallery charts={assets.charts} cols={1} />
         </DeepSection>
 
         <DeepSection
-          eyebrow="Recognition"
+          eyebrow="Certificate"
           title="Attendance certificate from Fater leadership"
           icon={<Award className="h-4 w-4" />}
         >

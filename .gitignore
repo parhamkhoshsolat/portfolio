@@ -37,3 +37,6 @@ yarn-error.log*
 /pest-prediction-dashboard
 /Florence-2_VQA
 /TalentSonar
+
+# Private notes; keep out of the public repo
+portfolio_brief.md

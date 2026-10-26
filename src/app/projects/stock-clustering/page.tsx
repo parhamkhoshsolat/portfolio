@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 };
 
 const stats = [
-  { label: "Streaming topics", value: "55" },
+  { label: "Kafka topics", value: "55" },
   { label: "Window", value: "Apr to Sep 2023" },
   { label: "Chosen K", value: "4" },
   { label: "Silhouette @ K=4", value: "0.74" },
@@ -34,45 +34,50 @@ export default function StockClusteringPage() {
       />
 
       <HypothesisCallout>
-        Can a single notebook bootstrap a Kafka + Zookeeper broker, stream
-        55 tickers through it, and produce daily price-regime clusters
-        cleanly justified by Silhouette, Elbow, and PCA together?
+        Can a single notebook stand up a Kafka + Zookeeper broker, load 55
+        tickers of daily prices into it, and run a K-means analysis in
+        PySpark with K chosen from silhouette and elbow plots?
       </HypothesisCallout>
 
       <FadeIn>
         <DeepSection
           eyebrow="Overview"
-          title="A streaming layer for 55 tickers, plus a clustering experiment on top"
+          title="Kafka ingestion for 55 tickers, plus a separate clustering exercise"
           icon={<Database className="h-4 w-4" />}
         >
           <p>
-            We bootstrapped a single-broker Apache Kafka 3.3.1 plus Zookeeper
-            cluster from a notebook and registered 55 per-ticker topics
-            (stock_AAPL, stock_AMZN, and so on for the US large-cap universe).
-            A KafkaProducer streamed daily OHLCV data (April to September 2023,
-            yfinance) into those topics so downstream consumers could subscribe
-            per ticker without re-fetching.
+            A single-broker Apache Kafka 3.3.1 plus Zookeeper setup, started
+            from a notebook. Producers sent daily OHLCV data (April to
+            September 2023, yfinance) for 55 US tickers into one topic per
+            ticker (stock_AAPL, stock_AMZN, and so on; the topics were
+            auto-created by the producers): 6,875 messages, 55 tickers x 125
+            trading days.
           </p>
           <p>
-            <strong className="text-text">Scope:</strong> the streaming layer
-            carries all 55 tickers, but the K-means experiment runs on a
-            single ticker&apos;s price series. Wiring the Kafka source into
-            the clustering pipeline is the next step.
+            <strong className="text-text">Scope:</strong> this is a batch
+            backfill of historical data, not a live stream. Nothing consumes
+            the topics, and Spark does not read from Kafka. The K-means
+            analysis ran separately, in PySpark local mode, on a single
+            ticker&apos;s 125 daily rows.
+          </p>
+          <p>
+            University team project (Hardware and Software for Big Data,
+            Federico II) with Farshad Farahtaj; I built the full pipeline.
           </p>
         </DeepSection>
 
         <DeepSection
           eyebrow="Methodology"
-          title="K = 4 picked from three independent signals"
+          title="Choosing K for one ticker's prices"
           icon={<Cpu className="h-4 w-4" />}
         >
           <p>
-            The PySpark MLlib pipeline goes{" "}
+            The PySpark MLlib stage runs{" "}
             <code className="text-accent">VectorAssembler</code> →{" "}
             <code className="text-accent">KMeans (seed=1)</code> →{" "}
-            <code className="text-accent">PCA (k=2)</code> →{" "}
-            <code className="text-accent">ClusteringEvaluator</code>. We swept K
-            from 2 to 10 and looked at three orthogonal criteria together:
+            <code className="text-accent">ClusteringEvaluator</code> on the raw
+            Open, High, Low and Close prices; PCA (k=2) is used only to plot
+            the clusters. K was swept from 2 to 10 and judged on:
           </p>
           <ul className="ml-6 list-disc space-y-2">
             <li>Silhouette score (cluster cohesion + separation)</li>
@@ -82,8 +87,10 @@ export default function StockClusteringPage() {
           <p>
             Silhouette peaks at K=3 but stays close at K=4 (0.756 vs 0.740);
             Elbow shows the largest drop between K=2 and K=3, then diminishing
-            returns; the PCA grid shows K=4 separates the price regimes
-            cleanly without over-fragmenting. K=4 was the pick.
+            returns; in the PCA plots K=5 and K=6 start to split bands. K=4
+            was picked by eye from these plots. With one stock and unscaled
+            prices, this is an exercise in choosing K, not a finding about
+            the market.
           </p>
         </DeepSection>
 

@@ -23,18 +23,18 @@ export const projects: Project[] = [
     title: "Retail Geospatial Analytics: Fater S.p.A. Industry Challenge",
     shortTitle: "Fater Geospatial",
     tagline:
-      "I joined Fater proprietary sales with ISTAT census in MySQL and ranked districts by per-capita store potential. I presented the work solo to Fater leadership.",
+      "A four-person university team on a Fater S.p.A. challenge: we mapped stores to census districts and compared districts by store potential per resident. I did the statistics and analysis part.",
     summary:
-      "Industry challenge with Fater S.p.A. (Procter & Gamble joint venture). We combined proprietary sales records with ISTAT sociodemographic census data across 20 administrative microcode districts using SQL CTEs, joins, and window functions. A GeoPandas spatial-join pipeline (point-in-polygon, EPSG:4326) attached each store to its district. I presented the Folium choropleth dashboards solo to Fater leadership, and the jury picked the work.",
+      "Course-linked industry challenge with Fater S.p.A. (Procter & Gamble and Angelini joint venture), in the Statistical Learning and Data Analysis course at Federico II. A GeoPandas spatial join (point-in-polygon, EPSG:4326) attached each store to its census district; we aggregated store counts and Fater's per-store potential score by district and divided by population to compare districts of different sizes. Output: a choropleth of potential per resident plus Folium maps of stores and districts. The public repo reruns the method on synthetic data. Team of 4: Shayan Ekramnia, Farshad Farahtaj, Sara Aboudarda and me.",
     year: "2024",
-    team: "4-person team; presented solo",
+    team: "4-person university team; I did the statistics and analysis",
     techStack: [
-      "MySQL",
-      "SQL (CTEs, window functions)",
       "Python",
+      "Pandas",
       "GeoPandas",
       "Folium",
-      "Scikit-learn",
+      "Matplotlib",
+      "MySQL",
     ],
     skillKeywords: [
       "SQL",
@@ -42,33 +42,32 @@ export const projects: Project[] = [
       "geospatial",
       "GeoPandas",
       "choropleth",
-      "stakeholder presentation",
       "FMCG",
       "retail",
     ],
     repoUrl: "https://github.com/parhamkhoshsolat/retail-geospatial-analytics",
-    heroStat: { label: "Recognition", value: "Jury pick" },
+    heroStat: { label: "Store-potential metric", value: "Per capita" },
     status: "case-study",
   },
   {
     slug: "shielded-lgv-routing",
-    title: "Shielded LGV Routing: Multi-Method Path Planning for Six Laser-Guided Vehicles",
+    title: "Shielded LGV Routing: Classical Planning vs Reinforcement Learning for Warehouse Vehicles",
     shortTitle: "Shielded LGV Routing",
     tagline:
-      "I shipped a live 3D demo where six laser-guided vehicles navigate a warehouse via six methods (classical + RL) under a PIBT collision shield that makes crashes structurally impossible.",
+      "I built a warehouse simulator where six laser-guided vehicles are routed by nine methods, classical planners and reinforcement learning, all under the same PIBT-inspired collision shield. Collisions stay at zero, so the methods compete on throughput alone. The classical planners won.",
     summary:
-      "Six LGVs are routed by three classical planners (greedy, prioritized, CBS) and three learned policies (RL, Bayes-DQN, hybrid). All six share the same PIBT collision shield, so safety is decoupled from the planner choice and the comparison is apples-to-apples. Workers walk the aisles; every method navigates around them without retraining. Python simulation server, WebSocket streaming to a live web client, switchable methods, reconfigurable warehouse layouts. Team of 2.",
+      "Nine methods share one simulator and one safety layer: greedy, prioritized planning (WHCA*), Conflict-Based Search, a hybrid where a small network trained with REINFORCE picks the planning order, a randomized-prior bootstrapped DQN with a demonstration warm start, PPO, MAPPO, A2C and behaviour cloning. A priority-ordered shield inspired by PIBT checks every joint move, and a runtime assertion confirms zero collisions at every step. Evaluated over 5 seeds on 15 held-out layouts with IQM and bootstrap confidence intervals: prioritized planning reached 3.03x greedy throughput, CBS 3.01x, the hybrid 3.00x, and the bootstrapped DQN 2.53x, the best end-to-end learned policy. Live 3D demo with a Python server streaming to a web client. Solo course project (Advanced Statistical Learning and Modeling).",
     year: "2026",
-    team: "2-person team",
+    team: "Solo project",
     techStack: [
       "Python",
       "PyTorch",
-      "Bayes-DQN",
+      "Bootstrapped DQN",
       "Conflict-Based Search (CBS)",
-      "PIBT collision shield",
+      "PIBT-inspired collision shield",
       "WebSocket streaming",
       "Docker",
-      "rliable + Bayesian BEST",
+      "IQM + bootstrap CIs",
     ],
     skillKeywords: [
       "multi-agent RL",
@@ -82,7 +81,7 @@ export const projects: Project[] = [
     ],
     repoUrl: "https://huggingface.co/spaces/parhamkhoshsolat/shielded-lgv-routing/tree/main",
     liveUrl: "https://parhamkhoshsolat-shielded-lgv-routing.hf.space",
-    heroStat: { label: "Methods compared", value: "6" },
+    heroStat: { label: "Methods compared", value: "9" },
     status: "live-demo",
   },
   {
@@ -92,10 +91,9 @@ export const projects: Project[] = [
     tagline:
       "I fine-tuned a 230M-parameter vision-language model on 60,000 image-question pairs and shipped it live on HuggingFace Spaces.",
     summary:
-      "I benchmarked three VLM architectures (PaliGemma 3B, BLIP, Florence-2) and picked Florence-2 for stable training on a Colab T4. Cross-entropy fell 0.307 to 0.111 over 3 epochs. The Streamlit serving layer ships with beam-search controls and per-answer confidence scores. Team of 3 at Federico II.",
+      "Full fine-tune of Florence-2-base-ft (about 230M parameters, no frozen layers) on 60,000 open-ended question-answer pairs from VQA v2.0 Abstract Scenes: 3 epochs, AdamW at lr 1e-5, batch 8, on Colab. PaliGemma 3B ran out of GPU memory and BLIP did not train stably, so Florence-2 was kept. Final validation loss 0.202; no accuracy metric was computed, answers were checked by hand. Served as a Streamlit app on HuggingFace Spaces with beam search and per-answer confidence. University team project (Data Mining and Machine Learning, Federico II) with Zahra Jafarinejad and Farshad Farahtaj; I built the full pipeline.",
     year: "2025",
-    team: "3-person team at Federico II",
-    grade: "Top mark · Honours",
+    team: "University team project (3 people); I built the full pipeline",
     techStack: [
       "PyTorch",
       "HuggingFace Transformers",
@@ -103,7 +101,7 @@ export const projects: Project[] = [
       "AdamW",
       "Streamlit",
       "HuggingFace Spaces",
-      "Google Colab T4",
+      "Google Colab",
     ],
     skillKeywords: [
       "fine-tuning",
@@ -156,20 +154,18 @@ export const projects: Project[] = [
   },
   {
     slug: "stock-clustering",
-    title: "Real-Time Equity Streaming and Clustering Pipeline",
+    title: "Kafka Ingestion and PySpark Clustering of Stock Prices",
     shortTitle: "Stock Clustering Pipeline",
     tagline:
-      "I built an Apache Kafka + PySpark MLlib pipeline streaming daily OHLCV across 55 per-ticker topics, then clustered with KMeans and PCA.",
+      "Kafka ingestion of six months of daily prices into 55 per-ticker topics, plus a separate PySpark MLlib K-means stage on one ticker's price series.",
     summary:
-      "I bootstrapped a single-broker Kafka 3.3.1 + Zookeeper cluster from a notebook. A KafkaProducer streamed daily OHLCV data (April to September 2023, yfinance) into 55 per-ticker topics for the US large-cap universe. The PySpark MLlib pipeline went VectorAssembler → KMeans (seed=1) → PCA (k=2) → ClusteringEvaluator, and I picked K=4 by combining Silhouette, Elbow, and 2D PCA across K in [2, 10]. Team of 2.",
+      "A single-broker Kafka 3.3.1 + Zookeeper setup, started from a notebook. Producers sent daily OHLCV data (April to September 2023, yfinance) for 55 US tickers into one topic per ticker: 6,875 messages (55 tickers x 125 trading days). This is a batch backfill: nothing consumes the topics, and Spark does not read from Kafka. Separately, PySpark MLlib (local mode) ran K-means on one ticker's daily prices, with K=4 chosen from silhouette and elbow plots; PCA was used only to plot the clusters. University team project (Hardware and Software for Big Data, Federico II) with Farshad Farahtaj; I built the full pipeline.",
     year: "2024",
-    team: "2-person team",
-    grade: "Top mark · Honours",
+    team: "University team project (2 people); I built the full pipeline",
     techStack: [
       "Apache Kafka 3.3.1",
       "Zookeeper",
       "PySpark MLlib",
-      "Scikit-learn",
       "KMeans",
       "PCA",
       "yfinance",
@@ -177,34 +173,32 @@ export const projects: Project[] = [
     skillKeywords: [
       "kafka",
       "pyspark",
-      "streaming",
       "clustering",
       "kmeans",
       "pca",
       "data engineering",
-      "real-time",
     ],
     repoUrl: "https://github.com/parhamkhoshsolat/stock-clustering-pipeline",
-    heroStat: { label: "Streaming topics", value: "55" },
+    heroStat: { label: "Kafka topics", value: "55" },
     status: "case-study",
   },
   {
     slug: "talentsonar",
-    title: "TalentSonar: Developer-Skill Inference from GitHub",
+    title: "TalentSonar: From Job Descriptions to GitHub Candidates",
     shortTitle: "TalentSonar",
     tagline:
-      "I built a GitHub GraphQL extractor feeding a Gemini LLM that infers technical skills, project archetypes, and seniority signal for any handle.",
+      "A 24-hour hackathon prototype: Gemini parses a job description into structured requirements, and the GitHub GraphQL API finds real candidates who match.",
     summary:
-      "TalentSonar pulls public-repo metadata, commit history, and language breakdowns via the GitHub GraphQL API, then passes structured features to Google Gemini for skill inference. I shipped a Streamlit candidate-scoring view with a CSS-only anti-cheat layer and downloadable PDF report. Test scoring is currently mock; LLM-evaluated scoring is the next iteration. Team of 2.",
+      "An HR user uploads a job description (PDF, Word, or markdown); Gemini extracts the required skills and experience; the skills drive a GitHub GraphQL search that returns real public profiles, shown in a Streamlit HR dashboard with optional candidate questionnaires. Candidate match scores are mock and years of experience are random placeholders, so there is no real scoring, and the Gemini-powered HR interview panel was not finished. Hackathon project with Amirhosein Shahdadian.",
     year: "2025",
-    team: "2-person team",
+    team: "2-person hackathon team",
     techStack: [
       "Python",
-      "GitHub GraphQL API",
       "Google Gemini API",
+      "GitHub GraphQL API",
       "Streamlit",
-      "NLP",
-      "PDF reporting",
+      "PyPDF2 + python-docx",
+      "Pydantic",
     ],
     skillKeywords: [
       "LLM",
@@ -215,8 +209,8 @@ export const projects: Project[] = [
       "prompt engineering",
     ],
     repoUrl: "https://github.com/parhamkhoshsolat/TalentSonar",
-    heroStat: { label: "Data source", value: "GitHub GraphQL" },
-    status: "live-demo",
+    heroStat: { label: "Candidate source", value: "GitHub GraphQL" },
+    status: "case-study",
   },
   {
     slug: "pest-forecasting",
@@ -225,10 +219,9 @@ export const projects: Project[] = [
     tagline:
       "I ran a tournament of eight model families across regression and classification; Random Forest reached F1 0.667 and recall 1.00 on a heavily imbalanced minority class.",
     summary:
-      "I cleaned and merged 245 daily samples across 5 monitoring sites (meteorological + entomological), then engineered lag, 3-day rolling-mean, recency, and calendar features. The tournament covered 6 regressors (ARIMAX, SARIMAX, Prophet, RandomForest, XGBoost, LightGBM) and 5 classifiers (RF, XGB, LGB, LSTM, GRU) under TimeSeriesSplit CV. Random Forest won both: regression test MAE 0.34 vs ARIMAX baseline 2.00; classification F1 0.667 / AUC 0.919, recall 1.00 on the 9-sample minority class against a 9.65:1 imbalance. Team of 3.",
+      "245 daily samples across 5 monitoring sites over 7 weeks (weather plus insect catches), with lag, 3-day rolling-mean, recency, and calendar features. 6 regressors (ARIMAX, SARIMAX, Prophet, RandomForest, XGBoost, LightGBM) and 5 classifiers (RF, XGB, LGB, LSTM, GRU) under TimeSeriesSplit CV, with a chronological hold-out. Best classifier: Random Forest, AUC about 0.92 and recall 1.00 at precision 0.5 on a 49-day hold-out with 9 catch days (target imbalance 10.67:1). Out-of-sample regression is weak (test R² 0.35), and the deep models were close to chance. University team project (Information Systems and Business Intelligence, Federico II) with Giovanni Montanile and Farshad Farahtaj; I built the full pipeline.",
     year: "2025",
-    team: "3-person team",
-    grade: "Top mark · Honours",
+    team: "University team project (3 people); I built the full pipeline",
     techStack: [
       "Python",
       "Scikit-learn",
@@ -258,12 +251,11 @@ export const projects: Project[] = [
     title: "Educational Analytics: OULAD Click-Stream Forecasting",
     shortTitle: "OULAD Time Series",
     tagline:
-      "I trained a custom 1D CNN that edged out SARIMA, ARIMAX, and Prophet on the Open University click-stream forecast (MAE 0.199, MAPE 1.9%).",
+      "Forecasting daily student activity on the Open University learning platform with SARIMA, ARIMAX, Prophet and a custom 1D CNN. The CNN reached MAE 0.20 on log-scale clicks on a chronological hold-out.",
     summary:
-      "I aggregated the 420 MB OULAD dataset to 808 daily observations, then engineered 7 lag features for the statistical models and a 30-lag input window for the CNN. The CNN narrowly beat Prophet on MAE (0.199 vs 0.203) and MAPE (1.9%). I kept SARIMA in the comparison as an interpretable seasonal baseline for academic staff without an ML background.",
-    year: "2025",
-    team: "Solo project",
-    grade: "Top mark · Honours",
+      "The 420 MB OULAD click-stream was aggregated to 808 daily totals and log-transformed, with 7 lag features for the statistical models and a 30-day input window for the CNN. The CNN scored MAE 0.20 on log clicks on a chronological hold-out. The statistical models were not scored on the same hold-out, so this is not a like-for-like ranking. University team project (Hardware and Software for Big Data, Federico II, July 2024) with Farshad Farahtaj and Zahra Jafarinejad; I built the full pipeline.",
+    year: "2024",
+    team: "University team project (3 people); I built the full pipeline",
     techStack: [
       "Python",
       "TensorFlow/Keras",
@@ -283,7 +275,7 @@ export const projects: Project[] = [
       "Keras",
     ],
     repoUrl: "https://github.com/parhamkhoshsolat/time-series-OULAD",
-    heroStat: { label: "CNN test MAPE", value: "1.9%" },
+    heroStat: { label: "CNN hold-out MAE (log clicks)", value: "0.20" },
     status: "case-study",
   },
 ];

@@ -2,13 +2,12 @@ import { projects } from "@/lib/projects";
 import { siteConfig } from "@/lib/site-config";
 
 // Stub responder that ships with the site until ANTHROPIC_API_KEY is wired.
-// Pattern-matches on the question, with hard refusal for personal /
-// off-topic / origin questions per the project's content rules.
+// Pattern-matches on the question, with a polite refusal for personal and
+// off-topic questions.
 
 const BANNED_TOPICS = [
-  /\biran\w*/i,
-  /\bpersia\w*/i,
-  /\btehran\b/i,
+  /\bnationalit\w*/i,
+  /\bcitizen\w*/i,
   /\bwhere.*from\b/i,
   /\bcountry of origin\b/i,
   /\bage\b/i,
@@ -49,44 +48,44 @@ export function generateStubAnswer(raw: string): string {
   // Project lookups.
   if (/florence|vqa|vision.?language|vlm/.test(q)) {
     const p = projects.find((x) => x.slug === "florence2-vqa")!;
-    return `${p.tagline} Training cross-entropy fell from 0.307 to 0.111 over 3 epochs on a Colab T4. Live demo on the Florence-2 project page.`;
+    return `${p.tagline} Final validation loss 0.202 after 3 epochs; no accuracy metric was computed. Live demo on the Florence-2 project page.`;
   }
   if (/kafka|stream|spark|cluster|stock/.test(q)) {
     const p = projects.find((x) => x.slug === "stock-clustering")!;
-    return `${p.tagline} Kafka streamed daily OHLCV data across 55 per-ticker topics; PySpark MLlib pipeline picked K=4 by combining Silhouette, Elbow, and 2D PCA.`;
+    return `${p.tagline} Kafka ingestion is a batch backfill that nothing consumes, and the K-means stage ran separately on one ticker's prices.`;
   }
   if (/talent|github|gemini|llm api|recruit/.test(q)) {
     const p = projects.find((x) => x.slug === "talentsonar")!;
-    return `${p.tagline} Test scoring is currently mock; LLM-evaluated scoring is the next iteration.`;
+    return `${p.tagline} Candidate scoring is mock, and the Gemini-powered interview panel was not finished.`;
   }
   if (/pest|forecast|random forest|imbalance/.test(q)) {
     const p = projects.find((x) => x.slug === "pest-forecasting")!;
-    return `${p.tagline} Eight-model-family tournament under TimeSeriesSplit CV. Random Forest hit recall 1.00 on the 9-sample minority class against a 9.65:1 imbalance.`;
+    return `${p.tagline} Eight model families under TimeSeriesSplit CV. Random Forest reached AUC about 0.92 and recall 1.00 on 9 catch days in a 49-day hold-out (10.67:1 imbalance overall).`;
   }
   if (/oulad|cnn|time.?series|sarima|prophet/.test(q)) {
     const p = projects.find((x) => x.slug === "oulad-timeseries")!;
-    return `${p.tagline} CNN won by a thin margin on MAE; SARIMA kept as the interpretable baseline.`;
+    return `${p.tagline} The statistical models were not scored on the same hold-out, so no winner is claimed.`;
   }
   if (/fater|geospatial|map|sql|choropleth|p&g|procter/.test(q)) {
     const p = projects.find((x) => x.slug === "retail-geospatial")!;
-    return `${p.tagline} Presented solo to Fater leadership; jury picked the work.`;
+    return `${p.tagline} Four-person university team; the public repo reruns the method on synthetic data.`;
   }
 
   // Profile-level questions.
   if (/strong|best|favourite|favorite|showpiece|impressive/.test(q)) {
-    return "Florence-2 is the AI showpiece (fine-tuned a 230M-parameter VLM end to end and shipped it live), and the Fater geospatial project is the BI showpiece (SQL + GeoPandas + a solo executive presentation that won jury recognition). Pick by audience.";
+    return "The two strongest are solo reinforcement-learning projects: Shielded LGV Routing (nine routing methods under one collision shield, evaluated over 5 seeds and 15 held-out layouts) and RL-Restore (a CVPR 2018 reimplementation extended with the paper's unreleased joint fine-tuning).";
   }
   if (/hire|fit|why.*him|reason/.test(q)) {
-    return "Parham ships end to end: he fine-tuned a 230M-parameter VLM, built a Kafka + PySpark pipeline, ran an eight-model-family ML tournament, and presented a geospatial analysis solo to a P&G joint-venture's leadership. Strong in SQL, Python, PyTorch, and dashboards, and clearly available with no relocation needed in Italy.";
+    return "Parham builds end to end: three years on the scoring and recommendation engine of a live influencer platform, two solo reinforcement-learning projects with careful multi-seed evaluation, and a full fine-tune of a 230M-parameter vision-language model deployed as a live demo.";
   }
   if (/naples|locat|relocat|based|onsite|on-site/.test(q)) {
-    return "Yes, Parham is based in Naples, Italy. No relocation needed for Italian roles; open to remote across the EU.";
+    return "Parham is based in Naples, Italy, and open to roles and PhD positions in Germany, in Italy, or remote across the EU.";
   }
   if (/avail|start|notice|graduat|when can/.test(q)) {
     return `${siteConfig.availability}`;
   }
   if (/rag|agent|llm|claude|haiku/.test(q)) {
-    return "Parham has shipped LLM work in TalentSonar (Gemini API + GitHub GraphQL) and the Florence-2 VLM fine-tune. This very agent (grounded in his project memory) is a third example you can play with right now.";
+    return "Parham's LLM-related work: the Florence-2 vision-language fine-tune, and TalentSonar, a hackathon prototype that uses the Gemini API to parse job descriptions. This chat agent is a third example.";
   }
   if (/contact|email|reach|call|book/.test(q)) {
     return `Reach Parham on LinkedIn: ${siteConfig.links.linkedin}. Or download this conversation via the icon at the top of the chat and follow up later.`;
@@ -95,15 +94,15 @@ export function generateStubAnswer(raw: string): string {
     return "His latest CV is available on request, or he can send a role-tailored version. Drop a note to " + siteConfig.contact.email + ".";
   }
   if (/skill|stack|tech|tool/.test(q)) {
-    return "Strongest in Python, SQL (CTEs, window functions, query optimisation), PyTorch, HuggingFace Transformers, Scikit-learn, Apache Kafka, PySpark, GeoPandas, and Power BI. Comfortable shipping with Streamlit and HuggingFace Spaces.";
+    return "Strongest in Python, PyTorch, reinforcement learning, HuggingFace Transformers, Scikit-learn, SQL, Apache Kafka, PySpark, and GeoPandas. Comfortable shipping with FastAPI, React, Docker, Streamlit, and HuggingFace Spaces.";
   }
   if (/thesis|research/.test(q)) {
     return "Master's thesis (in progress): human-robot interaction with reinforcement learning, at Federico II.";
   }
   if (/education|degree|university|federico|gpa|grade/.test(q)) {
-    return "MSc Data Science at the University of Naples Federico II (Sept 2023 to Oct 2026 expected). GPA 28.3/30 with three 30/30 e lode results. BSc in Information Technology Engineering before that.";
+    return "MSc Data Science at the University of Naples Federico II (September 2023 to December 2026). Weighted average 28.67/30, with four exams at 30 e lode. BSc in Information Technology Engineering before that.";
   }
 
   // Catch-all.
-  return "I can answer questions about Parham's six shipped projects, his target roles, his availability, or how to get in touch. Try asking about Florence-2, the Kafka pipeline, or his strongest project.";
+  return "I can answer questions about Parham's eight projects, his target roles, his availability, or how to get in touch. Try asking about Florence-2, the Kafka pipeline, or his strongest project.";
 }

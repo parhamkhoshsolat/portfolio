@@ -50,16 +50,16 @@ export const projectAssets: Record<string, ProjectAssets> = {
       {
         src: "/projects/stock-clustering/charts/chart-04.png",
         alt: "K-means visualisation grid across K = 2 to 6 in PCA space",
-        caption: "K-means projected into 2D PCA for K = 2, 3, 4, 5, 6.",
+        caption: "K-means on one ticker's daily prices, projected into 2D PCA for K = 2, 3, 4, 5, 6.",
         interpretation:
-          "How to read it: each panel is the same data, coloured by the K-means assignment at a different K. At K = 4 the four price regimes separate cleanly. At K = 5 and K = 6 one of the bands splits into two noisy sub-clusters with no clear meaning, which is the visual signature of over-fragmenting.",
+          "How to read it: each panel is the same data (one ticker's 125 trading days), coloured by the K-means assignment at a different K. PCA is used only to draw the plot. At K = 5 and K = 6 one band splits into smaller sub-clusters, which is why K = 4 was picked. The features are raw price levels of a single stock, so the clusters are an exercise in choosing K, not a finding about the market.",
       },
       {
         src: "/projects/stock-clustering/charts/chart-06.png",
         alt: "3D scatter plot of the chosen K=4 clusters in Open/High/Low space",
         caption: "Final K = 4 clusters in raw Open / High / Low price space.",
         interpretation:
-          "How to read it: each point is one trading day, positioned by its Open, High, and Low prices, coloured by its cluster. The four bands are visible price regimes. This view is what a portfolio manager would actually read: not abstract PCA components, but bands tied to real price levels.",
+          "How to read it: each point is one trading day of a single ticker, positioned by its Open, High, and Low prices, coloured by its cluster. Because the input is unscaled price levels, the clusters mostly separate periods with different price levels.",
       },
     ],
   },
@@ -82,14 +82,14 @@ export const projectAssets: Record<string, ProjectAssets> = {
         alt: "Prophet forecast on original scale showing observed vs forecast",
         caption: "Prophet forecast versus observed clicks in the original scale.",
         interpretation:
-          "How to read it: blue is the observed clicks, orange is Prophet's forecast. Prophet captures the weekly cycle and the multi-year trend cleanly but tends to under-shoot the sharp exam-week spikes. Test MAE 0.203, MAPE 1.9 percent. Prophet is the right pick if the audience needs an interpretable model with no ML background.",
+          "How to read it: blue is the observed clicks, orange is Prophet's forecast. Prophet captures the weekly cycle and the multi-year trend but under-shoots the sharp exam-week spikes.",
       },
       {
         src: "/projects/oulad-timeseries/charts/chart-32.png",
         alt: "Custom 1D CNN forecast vs observed clicks",
         caption: "Custom 1D CNN prediction versus training data.",
         interpretation:
-          "How to read it: blue is training data, orange is the CNN's out-of-sample forecast. The CNN learned the shape (including the exam spikes Prophet missed) without explicit seasonality terms. It edged Prophet by 0.004 MAE, which is statistically thin: the right call in production is to pick by interpretability, not headline accuracy.",
+          "How to read it: blue is training data, orange is the CNN's forecast on the chronological hold-out (MAE 0.20 on log clicks). The CNN follows the shape without explicit seasonality terms. The other models were not scored on the same hold-out, so the CNN is not ranked against them.",
       },
     ],
   },
@@ -97,16 +97,16 @@ export const projectAssets: Record<string, ProjectAssets> = {
   "retail-geospatial": {
     externalEmbed: {
       src: "/projects/retail-geospatial/districts_map.html",
-      title: "Interactive Folium choropleth of per-capita store potential",
+      title: "Interactive Folium map of stores and districts (synthetic data)",
       height: 560,
     },
     charts: [
       {
         src: "/projects/retail-geospatial/potential_per_capita.png",
         alt: "Choropleth of store potential per capita by district",
-        caption: "Per-capita store-potential metric across the 20 administrative microcode districts.",
+        caption: "Per-capita store-potential metric by district (synthetic data).",
         interpretation:
-          "How to read it: each polygon is one district; the colour scale runs from cream (low potential) to dark red (high potential). Darker means Fater is underserved there relative to population. The dark central districts are where new stores would close the gap between footprint and demand the most, and the ranking from this map was the single slide that drove the recommendation to leadership.",
+          "How to read it: each polygon is one district; the colour runs from cream (low) to dark red (high) store potential per resident. The data here is synthetic, so the map shows the method, not real results.",
       },
     ],
   },

@@ -63,7 +63,7 @@ export function Hero() {
           className="mt-6 max-w-2xl text-lg leading-relaxed text-muted md:text-xl"
         >
           I ship the whole data pipeline. Eight projects below across
-          vision-language fine-tuning, streaming engineering, time-series
+          vision-language fine-tuning, data engineering, time-series
           forecasting, deep RL, and{" "}
           <span className="text-accent">geospatial BI</span>.
         </motion.p>

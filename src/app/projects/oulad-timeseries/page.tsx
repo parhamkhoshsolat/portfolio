@@ -20,7 +20,7 @@ const stats = [
   { label: "Source data", value: "420 MB" },
   { label: "Daily observations", value: "808" },
   { label: "Models tested", value: "4" },
-  { label: "Best test MAPE", value: "1.9%" },
+  { label: "CNN hold-out MAE (log)", value: "0.20" },
 ];
 
 export default function OuladPage() {
@@ -29,9 +29,9 @@ export default function OuladPage() {
       <ProjectDeepHero project={project} assets={assets} stats={stats} />
 
       <HypothesisCallout>
-        Can a small custom 1D CNN out-forecast SARIMA, ARIMAX, and Prophet
-        on the OULAD click-stream while staying interpretable enough to
-        sit next to a SARIMA baseline academic staff actually trust?
+        How well can classical time-series models and a small 1D CNN
+        forecast daily student activity on the Open University learning
+        platform?
       </HypothesisCallout>
 
       <FadeIn>
@@ -44,13 +44,13 @@ export default function OuladPage() {
             The Open University Learning Analytics dataset (OULAD) is a public
             420 MB release of click-stream and assessment data across multiple
             UK course presentations. I aggregated it to 808 daily observations
-            of total VLE interactions and benchmarked four forecasters
-            head-to-head: SARIMA, ARIMAX, Prophet, and a custom 1D CNN.
+            of total VLE interactions, log-transformed, and built four
+            forecasters: SARIMA, ARIMAX, Prophet, and a custom 1D CNN.
           </p>
           <p>
-            The goal: a forecast accurate enough to inform academic planning,
-            but with at least one model that staff without an ML background
-            could interpret. SARIMA stayed in the comparison for that reason.
+            University team project (Hardware and Software for Big Data,
+            Federico II, July 2024) with Farshad Farahtaj and Zahra
+            Jafarinejad; I built the full pipeline.
           </p>
         </DeepSection>
 
@@ -79,55 +79,21 @@ export default function OuladPage() {
 
         <DeepSection
           eyebrow="Results"
-          title="CNN edged out Prophet by a thin margin"
+          title="What was measured, and what was not"
           icon={<TrendingUp className="h-4 w-4" />}
         >
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[420px] border-collapse text-sm">
-              <thead className="text-left text-xs uppercase tracking-wider text-muted">
-                <tr className="border-b border-border">
-                  <th className="py-3 pr-4 font-medium">Model</th>
-                  <th className="py-3 pr-4 font-medium">Test MAE</th>
-                  <th className="py-3 pr-4 font-medium">Test MAPE</th>
-                  <th className="py-3 pr-4 font-medium">Notes</th>
-                </tr>
-              </thead>
-              <tbody className="text-text tabular-nums">
-                <tr className="border-b border-border/60">
-                  <td className="py-3 pr-4 text-accent">1D CNN</td>
-                  <td className="py-3 pr-4 text-accent">0.199</td>
-                  <td className="py-3 pr-4 text-accent">1.9%</td>
-                  <td className="py-3 pr-4 text-muted">
-                    Winner. 50 epochs, batch 32, 30-lag window.
-                  </td>
-                </tr>
-                <tr className="border-b border-border/60">
-                  <td className="py-3 pr-4">Prophet</td>
-                  <td className="py-3 pr-4">0.203</td>
-                  <td className="py-3 pr-4">2.0%</td>
-                  <td className="py-3 pr-4 text-muted">
-                    Razor-thin runner-up.
-                  </td>
-                </tr>
-                <tr className="border-b border-border/60">
-                  <td className="py-3 pr-4">ARIMAX</td>
-                  <td className="py-3 pr-4 text-muted">n/a</td>
-                  <td className="py-3 pr-4 text-muted">n/a</td>
-                  <td className="py-3 pr-4 text-muted">
-                    Solid baseline; see chart below.
-                  </td>
-                </tr>
-                <tr>
-                  <td className="py-3 pr-4">SARIMA</td>
-                  <td className="py-3 pr-4 text-muted">n/a</td>
-                  <td className="py-3 pr-4 text-muted">n/a</td>
-                  <td className="py-3 pr-4 text-muted">
-                    Kept as interpretable seasonal baseline.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <p>
+            The 1D CNN (TensorFlow/Keras, 50 epochs, batch 32, 30-day input
+            window) reached an MAE of 0.20 on log-scale daily clicks on a
+            chronological hold-out.
+          </p>
+          <p>
+            SARIMA, ARIMAX and Prophet were fitted and plotted, but they were
+            not scored on the same hold-out as the CNN, so the numbers are not
+            a like-for-like comparison and no model is declared the winner.
+            Errors are on the log scale; they are not percentage errors on raw
+            click counts.
+          </p>
         </DeepSection>
 
         <DeepSection
@@ -138,7 +104,7 @@ export default function OuladPage() {
           <p>
             Three notebook outputs: the raw time series with anomalies
             flagged, Prophet&apos;s forecast against observed clicks in the
-            original scale, and the winning CNN&apos;s training-data fit plus
+            original scale, and the CNN&apos;s training-data fit plus
             its out-of-sample predictions.
           </p>
           <div className="mt-6">

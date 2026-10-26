@@ -33,38 +33,39 @@ export default function HomePage() {
                 underneath it was comparison: raw impressions reward whoever
                 posts most often, and a beauty audience is nothing like a
                 tech audience, so nobody could say which creator was actually
-                worth the money. I built the weekly pipeline that pulled
-                engagement from the Instagram, LinkedIn and X APIs, the
-                scoring that corrected for both distortions, and the
-                recommendation engine that turned a customer&apos;s brief
-                into a ranked shortlist. The platform is still running.
+                worth the money. As one of two technical people, I owned the
+                data side: weekly data collection from the Instagram,
+                LinkedIn and X APIs, a cross-platform engagement score that
+                corrected for both distortions, and the recommendation
+                engine that turned a customer&apos;s brief into a ranked
+                shortlist. After launch, about 8 in 10 campaigns used the
+                engine&apos;s recommendations instead of manual selection.
               </p>
               <p>
-                In April 2024 I stood in front of Fater S.p.A.&apos;s
-                leadership (the Procter &amp; Gamble joint venture behind
-                Pampers Italia) presenting a map that ranked twenty Naples
-                districts by store-expansion potential. Behind the map:
-                MySQL joins between Fater&apos;s proprietary sales records
-                and Italian census data, plus a Python geospatial pipeline.
-                In front of it: an executive who could read the answer in
-                five seconds. The jury recognised the project.
+                In spring 2024, in a Federico II course, my four-person team
+                took on a challenge set by Fater S.p.A. (the Procter &amp;
+                Gamble and Angelini joint venture behind Pampers in Italy):
+                map stores onto census districts and compare districts by
+                store potential per resident, on one map a non-specialist
+                can read. I did the statistics and analysis part.
               </p>
               <p>
                 That pattern repeats across this site. A vision-language
                 model I fine-tuned on 60,000 image-question pairs, shipped
                 as a public web demo where anyone uploads a photo and asks
-                questions about it. A Kafka and Zookeeper cluster that streamed six months of price data
-                through producers, with a separate PySpark stage that clusters a
-                ticker's price history.
-                A tournament of eight model families that chose the pest-outbreak detector that caught
-                every outbreak day in the held-out set, at the cost of a false
-                alarm rate a farmer can live with.
+                questions about it. A Kafka and Zookeeper setup that loaded
+                six months of daily prices for 55 tickers, with a separate
+                PySpark stage that clusters one ticker&apos;s price history.
+                A comparison of eight model families that found a pest-catch
+                detector which flagged every catch day in the held-out set,
+                at the cost of one false alarm for each true one.
               </p>
               <p>
                 My newest work leans into reinforcement learning. Six
-                warehouse vehicles routed by classical and learned planners
-                alike, all under a collision shield that makes crashes
-                structurally impossible. An agent that repairs damaged photos
+                warehouse vehicles routed by nine classical and learned
+                methods, all under one collision shield that keeps collisions
+                at zero, so they compete on throughput alone (the classical
+                planners won). An agent that repairs damaged photos
                 by chaining small specialist networks, reimplemented from a
                 CVPR paper and extended with its unreleased fine-tuning. Both
                 are live demos you can try. The same thread runs into my MSc
@@ -74,17 +75,18 @@ export default function HomePage() {
               <p>
                 What I&apos;m after: a team that values clarity over
                 cleverness and ships work to real users. Strong in Python,
-                SQL (CTEs, window functions, query optimisation), PyTorch,
-                HuggingFace Transformers, reinforcement learning, Apache
-                Kafka, PySpark, and Power BI.
+                SQL, PyTorch, HuggingFace Transformers, reinforcement
+                learning, Apache Kafka, and PySpark.
               </p>
               <p>
                 Naples-based, with three years of paid data science behind
-                me and an MSc finishing this year.{" "}
+                me and an MSc finishing in December 2026.{" "}
                 <span className="text-text">Data Scientist</span>,{" "}
                 <span className="text-text">ML Engineer</span>, or{" "}
                 <span className="text-text">AI Engineer</span> roles in
-                Italy, Germany, or remote across the EU. English C1.
+                Italy, Germany, or remote across the EU, and funded PhD
+                positions in Germany in reinforcement learning and
+                human-robot interaction. English C1.
               </p>
             </div>
           </FadeIn>
@@ -109,32 +111,39 @@ export default function HomePage() {
             <p className="mt-6 text-muted">
               Sakoudar is an influencer campaign management platform across
               LinkedIn, X and Instagram. I joined in the company&apos;s first
-              year and built the data side of the product.
+              year as one of two technical people.
             </p>
             <ul className="mt-6 space-y-4 text-muted">
               <li>
-                Built the weekly ingestion across the LinkedIn, X and
-                Instagram APIs, turning one-off snapshots into a
-                per-influencer time series.
+                Built the scoring and recommendation engine behind the live
+                platform. I owned the data, scoring and matching, and part of
+                the backend.
               </li>
               <li>
-                Designed the scoring that made influencers comparable,
-                weighting impressions so a daily poster did not simply
-                outrank a weekly one, and so categories with very different
-                audience sizes could be judged fairly.
+                Designed a cross-platform engagement score that weights each
+                interaction type per platform and corrects for posting
+                frequency, audience size and category, using the
+                platforms&apos; own audience demographics.
               </li>
               <li>
-                Built the recommendation engine: a customer brief in
-                (budget, platforms, vertical, headcount, and the
-                company&apos;s own mission and voice), a ranked shortlist
-                out, matched partly on how closely a creator&apos;s language
-                resembled the way the company talks about itself.
+                Built brand-fit matching with semantic text embeddings that
+                compares each campaign&apos;s message and goals with
+                influencers&apos; own posts.
               </li>
               <li>
-                Built the dashboard the founders used to check every score
-                against what they personally knew about each influencer, and
-                the pipeline that pushed data live only after they signed
-                off.
+                Turned customer briefs into ranked influencer shortlists.
+                After launch, about 8 in 10 campaigns used the engine&apos;s
+                recommendations instead of manual selection.
+              </li>
+              <li>
+                Applied sentiment analysis to influencer posts. Built the
+                founders&apos; review dashboard and the step that published
+                approved scores to the live site.
+              </li>
+              <li>
+                Python, pandas, MySQL on the company server. Weekly data
+                collection from three platform APIs, covering under 500
+                influencers.
               </li>
             </ul>
           </FadeIn>

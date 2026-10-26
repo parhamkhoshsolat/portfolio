@@ -23,7 +23,7 @@ const stats = [
   { label: "Model size", value: "230M params" },
   { label: "Training data", value: "60K train pairs" },
   { label: "Fine-tune", value: "Full-parameter" },
-  { label: "Hardware", value: "Colab T4" },
+  { label: "Hardware", value: "Colab GPU" },
 ];
 
 export default function Florence2Page() {
@@ -70,7 +70,7 @@ export default function Florence2Page() {
 
         <HypothesisCallout>
           Can a 230M-parameter vision-language model be fine-tuned on a
-          single Colab T4 to a stable, deployable VQA endpoint without
+          single Colab GPU to a stable, deployable VQA endpoint without
           exceeding memory or destabilising gradients?
         </HypothesisCallout>
       </FadeIn>
@@ -146,7 +146,7 @@ export default function Florence2Page() {
                 <tr className="border-b border-border">
                   <th className="py-3 pr-4 font-medium">Model</th>
                   <th className="py-3 pr-4 font-medium">Params</th>
-                  <th className="py-3 pr-4 font-medium">Outcome on Colab T4</th>
+                  <th className="py-3 pr-4 font-medium">Outcome on Colab</th>
                 </tr>
               </thead>
               <tbody className="text-text">
@@ -182,6 +182,11 @@ export default function Florence2Page() {
             <code className="text-accent">trust_remote_code=True</code>. All
             230M parameters trainable, no frozen layers.
           </p>
+          <p className="mt-4">
+            University team project (Data Mining and Machine Learning,
+            Federico II) with Zahra Jafarinejad and Farshad Farahtaj; I built
+            the full pipeline.
+          </p>
         </Section>
 
         <Section
@@ -192,7 +197,7 @@ export default function Florence2Page() {
           <p>
             We optimised with AdamW (learning rate 1e-5, batch size 8), a
             linear LR schedule, no warmup, and 22,500 total steps over 3
-            epochs. Training ran on a Google Colab T4 GPU in roughly 9 hours
+            epochs. Training ran on a single Google Colab GPU in roughly 9 hours
             wall clock, with a full validation pass at the end of every epoch.
           </p>
           <div className="mt-6 overflow-x-auto">
