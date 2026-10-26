@@ -19,10 +19,6 @@ export type ProjectAssets = {
 
 export const projectAssets: Record<string, ProjectAssets> = {
   "florence2-vqa": {
-    techReport: {
-      src: "/projects/florence2-vqa/tech-report.pdf",
-      title: "Data Mining and Machine Learning project report (9 pages, Federico II)",
-    },
     charts: [
       {
         src: "/projects/florence2-vqa/charts/chart-03.png",
@@ -42,10 +38,6 @@ export const projectAssets: Record<string, ProjectAssets> = {
   },
 
   "stock-clustering": {
-    techReport: {
-      src: "/projects/stock-clustering/tech-report.pdf",
-      title: "Stock Clustering Analysis project documentation",
-    },
     charts: [
       {
         src: "/projects/stock-clustering/charts/chart-04.png",
@@ -65,10 +57,6 @@ export const projectAssets: Record<string, ProjectAssets> = {
   },
 
   "oulad-timeseries": {
-    techReport: {
-      src: "/projects/oulad-timeseries/tech-report.pdf",
-      title: "Hardware and Software Mod B final project report",
-    },
     charts: [
       {
         src: "/projects/oulad-timeseries/charts/chart-24.png",
