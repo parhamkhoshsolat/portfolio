@@ -59,7 +59,12 @@ export function TopAnswersChart() {
         Top 20 most common answers (training)
       </h3>
       <div className="mt-4 h-[420px]">
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer
+          width="100%"
+          height="100%"
+          minWidth={0}
+          initialDimension={{ width: 600, height: 300 }}
+        >
           <BarChart
             data={TOP_ANSWERS}
             layout="vertical"

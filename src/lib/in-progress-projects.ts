@@ -28,9 +28,9 @@ export const inProgressProjects: InProgressProject[] = [
       "An MSc thesis in human robot interaction. People teach a learning robot where it should and should not go, then watch it learn the same task four times under four different setups and say how each one felt. Q learning in a gridworld, wrapped in a full participant facing web app.",
     hypothesis:
       "Does a shield make a learning robot easier to read than no shield, and do two new shield designs improve on the standard one?",
-    statusLabel: "Build complete, deployed",
+    statusLabel: "Study running with participants",
     statusDetail:
-      "A within-subjects study that runs in the browser. Each participant teaches a set of movement rules once, then watches a tabular Q-learning robot learn the same task four times in a randomised order: once with no shield, once under the standard shield from the original paper, and twice under new designs, an adaptive shield that loosens as the robot gains experience and a firm-or-flexible shield the person sets per object. The app computes each session on the server, then replays it with the robot narrating what it did. A paper is being written from the study, so the exact conditions, measures and analysis are held back for now. Heavily validated before launch, and deployed.",
+      "A within-subjects study that runs in the browser. Each participant teaches a set of movement rules once, then watches a tabular Q-learning robot learn the same task four times in a randomised order: once with no shield, once under the standard shield from the original paper, and twice under new designs, an adaptive shield that loosens as the robot gains experience and a firm-or-flexible shield the person sets per object. The app computes each session on the server, then replays it with the robot narrating what it did. A paper is being written from the study, so the exact conditions, measures and analysis are held back for now. Heavily validated before launch; the study is now running with participants.",
     progressStat: { label: "Study conditions", value: "4" },
     techStack: [
       "Python + tabular Q-learning",

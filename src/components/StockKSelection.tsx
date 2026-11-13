@@ -56,7 +56,12 @@ export function SilhouetteChart() {
         Silhouette score across K
       </h3>
       <div className="mt-4 h-64">
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer
+          width="100%"
+          height="100%"
+          minWidth={0}
+          initialDimension={{ width: 600, height: 300 }}
+        >
           <LineChart
             data={SILHOUETTE}
             margin={{ top: 8, right: 12, bottom: 0, left: -8 }}
@@ -115,7 +120,12 @@ export function ElbowChart() {
         Within-cluster sum of squares (Elbow)
       </h3>
       <div className="mt-4 h-64">
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer
+          width="100%"
+          height="100%"
+          minWidth={0}
+          initialDimension={{ width: 600, height: 300 }}
+        >
           <LineChart
             data={ELBOW}
             margin={{ top: 8, right: 12, bottom: 0, left: -8 }}

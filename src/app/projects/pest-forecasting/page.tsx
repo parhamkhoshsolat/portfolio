@@ -19,6 +19,7 @@ const assets = getProjectAssets("pest-forecasting");
 export const metadata: Metadata = {
   title: project.shortTitle,
   description: project.tagline,
+  alternates: { canonical: "/projects/pest-forecasting" },
 };
 
 const stats = [

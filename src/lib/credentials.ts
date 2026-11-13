@@ -6,14 +6,14 @@ export type Credential = {
   href?: string;
 };
 
-// Ordered most recent first. "Currently attending" sits at the top.
+// Ordered most recent first.
 export const credentials: Credential[] = [
   {
     title: "5G Academy",
     issuer: "Federico II in partnership with Nokia, TIM, and PagoPA",
-    date: "Currently attending",
+    date: "June to November 2026",
     detail:
-      "Postgraduate programme on 5G and digital transformation. Industry-aligned curriculum delivered jointly with EU telecom and public-tech partners.",
+      "Postgraduate programme on 5G and digital transformation, delivered jointly with EU telecom and public-tech partners. Final project: I owned root-cause analysis in an AI-assisted network operations centre proof of concept.",
     href: "https://www.5gacademy.unina.it/",
   },
   {

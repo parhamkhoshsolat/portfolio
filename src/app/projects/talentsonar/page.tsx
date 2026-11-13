@@ -14,6 +14,7 @@ const assets = getProjectAssets("talentsonar");
 export const metadata: Metadata = {
   title: project.shortTitle,
   description: project.tagline,
+  alternates: { canonical: "/projects/talentsonar" },
 };
 
 const stats = [

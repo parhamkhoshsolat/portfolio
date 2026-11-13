@@ -122,7 +122,7 @@ export function ChatBubble() {
     lines.push("---");
     lines.push("");
     lines.push("Reach Parham: https://www.linkedin.com/in/parham-khoshsolat");
-    lines.push("Portfolio: https://parhamkhoshsolat.com");
+    lines.push("Portfolio: https://www.parhamkhoshsolat.com");
     const blob = new Blob([lines.join("\n")], {
       type: "text/markdown;charset=utf-8",
     });

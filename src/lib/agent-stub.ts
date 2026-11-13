@@ -104,5 +104,5 @@ export function generateStubAnswer(raw: string): string {
   }
 
   // Catch-all.
-  return "I can answer questions about Parham's eight projects, his target roles, his availability, or how to get in touch. Try asking about Florence-2, the Kafka pipeline, or his strongest project.";
+  return "I can answer questions about Parham's nine projects, his target roles, his availability, or how to get in touch. Try asking about Florence-2, the Kafka pipeline, or his strongest project.";
 }

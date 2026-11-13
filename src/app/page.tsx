@@ -71,6 +71,8 @@ export default function HomePage() {
                 are live demos you can try. The same thread runs into my MSc
                 thesis at Federico II, on how a learning robot can stay
                 transparent and trustworthy to the person it learns from.
+                Alongside it, I&apos;m doing research on how code LLMs handle
+                hardware-design (Verilog) tasks, with results under review.
               </p>
               <p>
                 What I&apos;m after: a team that values clarity over
@@ -201,7 +203,7 @@ export default function HomePage() {
                 <Github className="h-5 w-5 text-accent" />
                 <p className="mt-3 font-semibold text-text">GitHub</p>
                 <p className="mt-1 text-sm text-muted">
-                  Source code for every project on this site.
+                  Source code for my public projects.
                 </p>
                 <p className="mt-auto pt-4 text-xs text-accent group-hover:underline">
                   github.com/parhamkhoshsolat →

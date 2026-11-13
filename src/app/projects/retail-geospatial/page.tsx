@@ -14,6 +14,7 @@ const assets = getProjectAssets("retail-geospatial");
 export const metadata: Metadata = {
   title: project.shortTitle,
   description: project.tagline,
+  alternates: { canonical: "/projects/retail-geospatial" },
 };
 
 const stats = [

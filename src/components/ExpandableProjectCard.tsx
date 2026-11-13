@@ -155,15 +155,17 @@ export function ExpandableProjectCard({ project, index, featured = false }: Prop
                   Open full write-up
                   <ArrowUpRight className="h-3.5 w-3.5" />
                 </Link>
-                <a
-                  href={project.repoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  className="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-3 py-2 text-xs text-muted hover:border-accent/60 hover:text-accent"
-                >
-                  <Github className="h-3.5 w-3.5" /> Repo
-                </a>
+                {project.repoUrl ? (
+                  <a
+                    href={project.repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-3 py-2 text-xs text-muted hover:border-accent/60 hover:text-accent"
+                  >
+                    <Github className="h-3.5 w-3.5" /> Repo
+                  </a>
+                ) : null}
                 {project.liveUrl ? (
                   <a
                     href={project.liveUrl}

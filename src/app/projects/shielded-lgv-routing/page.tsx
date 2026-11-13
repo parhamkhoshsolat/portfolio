@@ -21,6 +21,7 @@ const assets = getProjectAssets("shielded-lgv-routing");
 export const metadata: Metadata = {
   title: project.shortTitle,
   description: project.tagline,
+  alternates: { canonical: "/projects/shielded-lgv-routing" },
 };
 
 const stats = [

@@ -62,9 +62,9 @@ export function Hero() {
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.5 }}
           className="mt-6 max-w-2xl text-lg leading-relaxed text-muted md:text-xl"
         >
-          I ship the whole data pipeline. Eight projects below across
+          I ship the whole data pipeline. Nine projects below across
           vision-language fine-tuning, data engineering, time-series
-          forecasting, deep RL, and{" "}
+          forecasting, deep RL, network root-cause analysis, and{" "}
           <span className="text-accent">geospatial BI</span>.
         </motion.p>
 

@@ -14,6 +14,7 @@ const assets = getProjectAssets("oulad-timeseries");
 export const metadata: Metadata = {
   title: project.shortTitle,
   description: project.tagline,
+  alternates: { canonical: "/projects/oulad-timeseries" },
 };
 
 const stats = [

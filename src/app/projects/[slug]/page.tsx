@@ -36,6 +36,7 @@ export async function generateMetadata({
   return {
     title: project.shortTitle,
     description: project.tagline,
+    alternates: { canonical: `/projects/${project.slug}` },
   };
 }
 
@@ -70,11 +71,13 @@ export default function ProjectStubPage({
         </p>
 
         <div className="mt-8 flex flex-wrap gap-3">
-          <Button asChild variant="secondary">
-            <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
-              <Github className="h-4 w-4" /> Source on GitHub
-            </a>
-          </Button>
+          {project.repoUrl ? (
+            <Button asChild variant="secondary">
+              <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
+                <Github className="h-4 w-4" /> Source on GitHub
+              </a>
+            </Button>
+          ) : null}
           {project.liveUrl ? (
             <Button asChild>
               <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
@@ -128,23 +131,25 @@ export default function ProjectStubPage({
             <Construction className="h-5 w-5 text-accent" />
             <div>
               <h3 className="font-semibold text-text">
-                Interactive demo coming in v2
+                {project.repoUrl ? "Full write-up coming" : "Private team code"}
               </h3>
               <p className="mt-2 text-sm text-muted">
-                The deep write-up and interactive view for this project ship
-                in the next iteration. In the meantime, the source code and
-                technical artifacts are live on GitHub.
+                {project.repoUrl
+                  ? "A longer write-up for this project is on the way. In the meantime, the source code is on GitHub."
+                  : "This was built inside a team's private repository, so there is no public source or demo. Ask the agent or message me on LinkedIn for details."}
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
-                <Button asChild size="sm" variant="secondary">
-                  <a
-                    href={project.repoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Github className="h-3.5 w-3.5" /> View repo
-                  </a>
-                </Button>
+                {project.repoUrl ? (
+                  <Button asChild size="sm" variant="secondary">
+                    <a
+                      href={project.repoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Github className="h-3.5 w-3.5" /> View repo
+                    </a>
+                  </Button>
+                ) : null}
                 <Button asChild size="sm" variant="ghost">
                   <Link href="/#projects">Back to projects</Link>
                 </Button>

@@ -24,6 +24,7 @@ const assets = getProjectAssets("rl-restore");
 export const metadata: Metadata = {
   title: project.shortTitle,
   description: project.tagline,
+  alternates: { canonical: "/projects/rl-restore" },
 };
 
 const stats = [

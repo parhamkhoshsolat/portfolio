@@ -23,6 +23,7 @@ const project = inProgressProjects.find(
 export const metadata: Metadata = {
   title: project.shortTitle,
   description: project.tagline,
+  alternates: { canonical: "/projects/preference-shielding-hri" },
 };
 
 const SHOT = "/projects/preference-shielding-hri/screenshots";
@@ -102,8 +103,8 @@ export default function PreferenceShieldingPage() {
         </p>
 
         <p className="mt-4 inline-block rounded-lg border border-border bg-card px-4 py-2 text-sm text-muted">
-          Build complete and deployed. Recruitment opens once data collection is
-          approved.
+          Build complete and deployed. The study is now running with
+          participants.
         </p>
       </FadeIn>
 

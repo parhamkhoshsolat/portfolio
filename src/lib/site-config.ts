@@ -4,7 +4,7 @@ export const siteConfig = {
   description:
     "Portfolio of Parham Khosh Solat. Three years as a data scientist at an influencer marketing platform, now finishing an MSc in Data Science at the University of Naples Federico II. Projects across vision-language models, recommender systems, time-series forecasting, and geospatial analytics.",
   domain: "parhamkhoshsolat.com",
-  url: "https://parhamkhoshsolat.com",
+  url: "https://www.parhamkhoshsolat.com",
   location: "Naples, Italy",
   availability:
     "MSc graduation in December 2026. Available now.",
@@ -23,7 +23,7 @@ export const siteConfig = {
     "BI / AI Analyst",
   ],
   oneLiner:
-    "I'm an MSc Data Science student in Naples. Eight projects across vision-language models, data engineering, time-series forecasting, deep RL, and geospatial analytics.",
+    "I'm an MSc Data Science student in Naples. Nine projects across vision-language models, data engineering, time-series forecasting, deep RL, network root-cause analysis, and geospatial analytics.",
 };
 
 export type SiteConfig = typeof siteConfig;

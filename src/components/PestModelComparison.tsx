@@ -56,7 +56,12 @@ export function RegressionMaeChart() {
         Test MAE across the 6 regressors (lower is better)
       </h3>
       <div className="mt-4 h-72">
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer
+          width="100%"
+          height="100%"
+          minWidth={0}
+          initialDimension={{ width: 600, height: 300 }}
+        >
           <BarChart
             data={REGRESSION_RESULTS}
             margin={{ top: 8, right: 12, bottom: 0, left: 0 }}
@@ -98,7 +103,12 @@ export function ClassificationChart() {
         F1 and AUC across the 5 classifiers (higher is better)
       </h3>
       <div className="mt-4 h-72">
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer
+          width="100%"
+          height="100%"
+          minWidth={0}
+          initialDimension={{ width: 600, height: 300 }}
+        >
           <BarChart
             data={CLASSIFICATION_RESULTS}
             margin={{ top: 8, right: 12, bottom: 0, left: 0 }}

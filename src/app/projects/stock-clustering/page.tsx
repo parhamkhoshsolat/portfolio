@@ -15,6 +15,7 @@ const assets = getProjectAssets("stock-clustering");
 export const metadata: Metadata = {
   title: project.shortTitle,
   description: project.tagline,
+  alternates: { canonical: "/projects/stock-clustering" },
 };
 
 const stats = [

@@ -11,13 +11,36 @@ export type Project = {
   grade?: string;
   techStack: string[];
   skillKeywords: string[];
-  repoUrl: string;
+  repoUrl?: string;
   liveUrl?: string;
   heroStat: { label: string; value: string };
   status: ProjectStatus;
 };
 
 export const projects: Project[] = [
+  {
+    slug: "5g-noc-root-cause",
+    title: "Root-Cause Analysis for a 5G Network Operations Centre",
+    shortTitle: "5G NOC Root-Cause Analysis",
+    tagline:
+      "I owned root-cause analysis in an 8-person 5G Academy proof of concept: a ranker proposes the likely faulty element from alarms, KPIs and topology, and a rule-based verifier checks it before it is shown.",
+    summary:
+      "Final project of the 5G Academy postgraduate programme at Federico II: an AI-assisted network operations centre built by an 8-person team, where I owned the root-cause analysis component. Given correlated alarms, KPI time series and the network topology, a ranker proposes the likely faulty element, and a rule-based verifier checks the proposal against the evidence before it is shown, so a weak guess is flagged instead of claimed. Tested on held-out fault scenarios on simulated networks of 12 to 180 nodes. The code lives in the team's private repository, so there is no public source or demo.",
+    year: "2026",
+    team: "Team project (8 people); I owned the RCA component",
+    techStack: ["Python", "LightGBM", "NetworkX", "pandas"],
+    skillKeywords: [
+      "root-cause analysis",
+      "5G",
+      "network operations",
+      "alarm correlation",
+      "LightGBM",
+      "graph",
+      "verification",
+    ],
+    heroStat: { label: "Nodes per simulated network", value: "12‑180" },
+    status: "case-study",
+  },
   {
     slug: "retail-geospatial",
     title: "Retail Geospatial Analytics: Fater S.p.A. Industry Challenge",

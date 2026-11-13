@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { ChatBubble } from "@/components/ChatBubble";
 import { CursorSpotlight } from "@/components/CursorSpotlight";
 import { SiteBackground } from "@/components/SiteBackground";
+import { MotionPreference } from "@/components/MotionPreference";
 import { siteConfig } from "@/lib/site-config";
 
 const inter = Inter({
@@ -21,6 +22,7 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
+  alternates: { canonical: "/" },
   openGraph: {
     title: siteConfig.title,
     description: siteConfig.description,
@@ -54,12 +56,22 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} dark`}>
       <body className="min-h-screen bg-bg text-text">
-        <SiteBackground />
-        <CursorSpotlight />
-        <Header />
-        <main className="relative">{children}</main>
-        <Footer />
-        <ChatBubble />
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-card focus:px-4 focus:py-2 focus:text-sm focus:text-text"
+        >
+          Skip to content
+        </a>
+        <MotionPreference>
+          <SiteBackground />
+          <CursorSpotlight />
+          <Header />
+          <main id="main" className="relative">
+            {children}
+          </main>
+          <Footer />
+          <ChatBubble />
+        </MotionPreference>
       </body>
     </html>
   );

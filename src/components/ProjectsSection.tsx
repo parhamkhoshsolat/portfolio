@@ -34,7 +34,7 @@ export function ProjectsSection() {
       <FadeIn>
         <div className="mb-6 flex flex-col gap-2">
           <p className="text-xs uppercase tracking-[0.2em] text-accent">
-            Eight projects
+            Nine projects
           </p>
           <h2 className="text-3xl font-semibold md:text-4xl">
             Things I&apos;ve shipped
@@ -44,7 +44,7 @@ export function ProjectsSection() {
 
       <FadeIn delay={0.05}>
         <p className="mb-14 max-w-3xl border-l-2 border-accent/40 pl-4 text-lg italic leading-relaxed text-muted">
-          Eight projects, one ability: turning raw data into a deliverable
+          Nine projects, one ability: turning raw data into a deliverable
           a non-technical stakeholder can act on.
         </p>
       </FadeIn>
@@ -53,7 +53,7 @@ export function ProjectsSection() {
         icon={<Play className="h-3.5 w-3.5" />}
         eyebrow="Live demos"
         title="Projects you can actually try"
-        body={`${liveDemos.length} of the eight ship with a working interactive demo. Open any card for the summary, tech stack, and links.`}
+        body={`${liveDemos.length} of the nine ship with a working interactive demo. Open any card for the summary, tech stack, and links.`}
       />
       <div className="mt-8 grid items-start gap-6 md:grid-cols-2">
         {liveDemos.map((project, i) => (

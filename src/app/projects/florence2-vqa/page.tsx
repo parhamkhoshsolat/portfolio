@@ -17,6 +17,7 @@ const assets = getProjectAssets("florence2-vqa");
 export const metadata: Metadata = {
   title: project.shortTitle,
   description: project.tagline,
+  alternates: { canonical: "/projects/florence2-vqa" },
 };
 
 const stats = [
