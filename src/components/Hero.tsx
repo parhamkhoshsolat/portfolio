@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, MapPin, Sparkles } from "lucide-react";
@@ -23,6 +24,22 @@ export function Hero() {
         }}
       />
       <div className="container relative max-w-4xl py-24 md:py-28">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
+          className="mb-6"
+        >
+          <Image
+            src="/brand/portrait.jpg"
+            alt="Portrait of Parham Khosh Solat"
+            width={112}
+            height={112}
+            priority
+            className="h-24 w-24 rounded-full object-cover ring-2 ring-accent/50 ring-offset-4 ring-offset-bg md:h-28 md:w-28"
+          />
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
