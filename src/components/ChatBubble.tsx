@@ -1,5 +1,7 @@
 "use client";
 
+import { trackEvent } from "@/lib/analytics";
+
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
@@ -137,6 +139,7 @@ export function ChatBubble() {
   }, [messages]);
 
   async function ask(text: string) {
+    trackEvent("chat_question", { page: window.location.pathname });
     if (!text.trim() || streaming) return;
 
     const userMsg: Msg = { role: "user", text };
@@ -237,6 +240,7 @@ export function ChatBubble() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => {
+          if (!open) trackEvent("chat_open", { page: window.location.pathname });
           setOpen((o) => !o);
           dismissTooltip();
         }}

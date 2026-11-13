@@ -58,7 +58,8 @@ export function Footer() {
         </div>
         <p className="mt-10 text-xs text-muted">
           © {new Date().getFullYear()} {siteConfig.name}. Built with
-          Next.js, deployed on Vercel.
+          Next.js, deployed on Vercel. Visits are counted anonymously with
+          Umami, without cookies.
         </p>
       </div>
     </footer>

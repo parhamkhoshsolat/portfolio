@@ -12,6 +12,7 @@ import {
   Minus,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { trackEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 import type { Project } from "@/lib/projects";
 
@@ -48,7 +49,10 @@ export function ExpandableProjectCard({ project, index, featured = false }: Prop
 
       <button
         type="button"
-        onClick={() => setExpanded((e) => !e)}
+        onClick={() => {
+          if (!expanded) trackEvent("project_open", { project: project.slug });
+          setExpanded((e) => !e);
+        }}
         aria-expanded={expanded}
         aria-controls={contentId}
         className={cn(
