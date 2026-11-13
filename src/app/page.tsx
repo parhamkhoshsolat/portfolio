@@ -231,6 +231,9 @@ export default function HomePage() {
               <h2 className="text-3xl font-semibold md:text-4xl">
                 Programmes &amp; certificates
               </h2>
+              <p className="text-sm text-muted">
+                Legal name: Seyyed Alireza Khoshsolat (on degree certificates)
+              </p>
             </div>
           </FadeIn>
 
