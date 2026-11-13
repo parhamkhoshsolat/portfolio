@@ -100,7 +100,7 @@ export function generateStubAnswer(raw: string): string {
     return "Master's thesis (in progress): human-robot interaction with reinforcement learning, at Federico II.";
   }
   if (/education|degree|university|federico|gpa|grade/.test(q)) {
-    return "MSc Data Science at the University of Naples Federico II (September 2023 to December 2026). Weighted average 28.67/30, with four exams at 30 e lode. BSc in Information Technology Engineering before that.";
+    return "MSc Data Science at the University of Naples Federico II (September 2023 to an expected February 2027 graduation). Weighted average 28.67/30, with four exams at 30 e lode. BSc in Information Technology Engineering before that.";
   }
 
   // Catch-all.

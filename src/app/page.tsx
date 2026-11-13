@@ -82,7 +82,7 @@ export default function HomePage() {
               </p>
               <p>
                 Naples-based, with three years of paid data science behind
-                me and an MSc finishing in December 2026. Open to{" "}
+                me and an MSc expected to finish in February 2027. Open to{" "}
                 <span className="text-text">Data Scientist</span>,{" "}
                 <span className="text-text">ML Engineer</span>, and{" "}
                 <span className="text-text">AI Engineer</span> roles, and to

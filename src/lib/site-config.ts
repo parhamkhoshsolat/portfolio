@@ -7,7 +7,7 @@ export const siteConfig = {
   url: "https://www.parhamkhoshsolat.com",
   location: "Naples, Italy",
   availability:
-    "MSc graduation in December 2026. Available now.",
+    "MSc graduation expected in February 2027. Available now.",
   contact: {
     email: "parhamkhoshsolat@gmail.com",
   },
