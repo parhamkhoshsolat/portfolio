@@ -15,8 +15,7 @@ export default function NotFound() {
         Wrong turn somewhere.
       </h1>
       <p className="mt-4 max-w-2xl text-lg text-muted">
-        The page you tried doesn&apos;t exist. The site has six shipped
-        projects and one more in flight, all linked below. Or use the
+        The page you tried doesn&apos;t exist. The site has nine projects and an MSc thesis in progress, all linked below. Or use the
         agent in the bottom-right corner to ask for what you need.
       </p>
 
