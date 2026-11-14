@@ -2,7 +2,7 @@
 
 import Script from "next/script";
 import { useEffect } from "react";
-import { cleanRef, rememberRef, trackEvent } from "@/lib/analytics";
+import { cleanRef, getRef, rememberRef, takePendingActions, trackEvent } from "@/lib/analytics";
 
 // Public site ID from Umami Cloud (it appears in the page source anyway).
 const WEBSITE_ID =
@@ -35,7 +35,16 @@ function Tracking() {
     // Personal links: /?ref=bosch (or /r/bosch, which redirects here).
     const ref = cleanRef(new URLSearchParams(window.location.search).get("ref"));
     if (ref) {
+      const firstTime = !getRef();
       rememberRef(ref);
+      // Live Telegram alert, once per visit.
+      if (firstTime) {
+        fetch("/api/visit", {
+          method: "POST",
+          keepalive: true,
+          body: JSON.stringify({ type: "arrive", ref, page: window.location.pathname }),
+        }).catch(() => {});
+      }
       const send = () => {
         window.umami?.identify?.({ ref });
         trackEvent("ref_visit", { ref, page: window.location.pathname });
@@ -50,8 +59,25 @@ function Tracking() {
       const hit = classify(a.getAttribute("href") || "");
       if (hit) trackEvent(hit.event, { target: hit.target, page: window.location.pathname });
     };
+    // When a ref visitor leaves or switches tab, report what they did.
+    const report = () => {
+      if (document.visibilityState !== "hidden") return;
+      const who = getRef();
+      if (!who) return;
+      const actions = takePendingActions();
+      if (!actions.length) return;
+      navigator.sendBeacon(
+        "/api/visit",
+        JSON.stringify({ type: "summary", ref: who, actions })
+      );
+    };
+
     document.addEventListener("click", onClick, { capture: true });
-    return () => document.removeEventListener("click", onClick, { capture: true });
+    document.addEventListener("visibilitychange", report);
+    return () => {
+      document.removeEventListener("click", onClick, { capture: true });
+      document.removeEventListener("visibilitychange", report);
+    };
   }, []);
   return null;
 }

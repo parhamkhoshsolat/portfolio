@@ -37,9 +37,34 @@ export function rememberRef(ref: string) {
   }
 }
 
+const ACTIONS_KEY = "pks_actions";
+
+/** Actions a ref visitor took that have not been reported to Telegram yet. */
+export function takePendingActions(): [string, string][] {
+  try {
+    const list = JSON.parse(sessionStorage.getItem(ACTIONS_KEY) || "[]");
+    sessionStorage.removeItem(ACTIONS_KEY);
+    return Array.isArray(list) ? list : [];
+  } catch {
+    return [];
+  }
+}
+
+function rememberAction(event: string, data: Props) {
+  try {
+    const list = JSON.parse(sessionStorage.getItem(ACTIONS_KEY) || "[]");
+    const target = String(data.project ?? data.target ?? data.page ?? "");
+    list.push([event, target]);
+    sessionStorage.setItem(ACTIONS_KEY, JSON.stringify(list.slice(-15)));
+  } catch {
+    /* storage blocked: skip the summary */
+  }
+}
+
 /** Send one named event; adds the visitor's ref link when they came through one. */
 export function trackEvent(event: string, data: Props = {}) {
-  if (typeof window === "undefined" || !window.umami) return;
+  if (typeof window === "undefined") return;
   const ref = getRef();
-  window.umami.track(event, ref ? { ...data, ref } : data);
+  if (ref && event !== "ref_visit") rememberAction(event, data);
+  window.umami?.track(event, ref ? { ...data, ref } : data);
 }
