@@ -4,7 +4,9 @@ import Script from "next/script";
 import { useEffect } from "react";
 import { cleanRef, rememberRef, trackEvent } from "@/lib/analytics";
 
-const WEBSITE_ID = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID;
+// Public site ID from Umami Cloud (it appears in the page source anyway).
+const WEBSITE_ID =
+  process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID ?? "2ab6c6b0-69d7-4300-8061-48eb0dbbeb06";
 
 // Which outbound link was clicked, in a few readable groups.
 function classify(href: string): { event: string; target: string } | null {

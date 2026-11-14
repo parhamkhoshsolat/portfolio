@@ -1,5 +1,5 @@
 // Privacy-friendly visit tracking through Umami (no cookies, no personal data).
-// Everything here is a no-op until NEXT_PUBLIC_UMAMI_WEBSITE_ID is set.
+// Events are sent only on the live domain (see data-domains in Analytics.tsx).
 
 type Props = Record<string, string | number | boolean>;
 
