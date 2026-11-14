@@ -1,116 +1,49 @@
-import { Play, BookOpen } from "lucide-react";
-import { ExpandableProjectCard } from "@/components/ExpandableProjectCard";
+import { ProjectGridCard } from "@/components/ProjectGridCard";
 import { FadeIn } from "@/components/FadeIn";
 import { projects, type Project } from "@/lib/projects";
 
-// Split shipped projects into two clearly-labelled groups so visitors
-// can pick by intent: try the interactive embeds, or read the analyses.
-
-const FEATURED_LIVE = "florence2-vqa";
-const FEATURED_CASE = "retail-geospatial";
-
-// The featured card spans both columns. Putting it first makes it lead its
-// rail with a clean full-width row, so the remaining cards fill a tidy grid
-// instead of leaving a gap next to it. Sort is stable, so non-featured cards
-// keep their original order.
-function featuredFirst(list: Project[], featuredSlug: string): Project[] {
-  return [...list].sort((a, b) =>
-    a.slug === featuredSlug ? -1 : b.slug === featuredSlug ? 1 : 0
-  );
-}
+// Strongest first; one grid so every card lines up.
+const ORDER = [
+  "shielded-lgv-routing",
+  "rl-restore",
+  "5g-noc-root-cause",
+  "florence2-vqa",
+  "pest-forecasting",
+  "retail-geospatial",
+  "stock-clustering",
+  "oulad-timeseries",
+  "talentsonar",
+];
 
 export function ProjectsSection() {
-  const liveDemos = featuredFirst(
-    projects.filter((p) => p.status === "live-demo"),
-    FEATURED_LIVE
+  const ordered = ORDER.map((s) => projects.find((p) => p.slug === s)).filter(
+    (p): p is Project => Boolean(p)
   );
-  const caseStudies = featuredFirst(
-    projects.filter((p) => p.status === "case-study"),
-    FEATURED_CASE
-  );
+  const demos = ordered.filter((p) => p.liveUrl).length;
 
   return (
-    <section id="projects" className="container py-20 md:py-28">
+    <section id="projects" className="container py-20 md:py-24">
       <FadeIn>
-        <div className="mb-6 flex flex-col gap-2">
+        <div className="mb-8 flex flex-col gap-2">
           <p className="text-xs uppercase tracking-[0.2em] text-accent">
             Nine projects
           </p>
           <h2 className="text-3xl font-semibold md:text-4xl">
             Things I&apos;ve shipped
           </h2>
+          <p className="max-w-2xl text-sm leading-relaxed text-muted">
+            {demos} have a live demo you can try. Each card opens the full
+            write-up: the question, the method, the results and the honest
+            limits.
+          </p>
         </div>
       </FadeIn>
 
-      <FadeIn delay={0.05}>
-        <p className="mb-14 max-w-3xl border-l-2 border-accent/40 pl-4 text-lg italic leading-relaxed text-muted">
-          Nine projects, one ability: turning raw data into a deliverable
-          a non-technical stakeholder can act on.
-        </p>
-      </FadeIn>
-
-      <SubHeading
-        icon={<Play className="h-3.5 w-3.5" />}
-        eyebrow="Live demos"
-        title="Projects you can actually try"
-        body={`${liveDemos.length} of the nine ship with a working interactive demo. Open any card for the summary, tech stack, and links.`}
-      />
-      <div className="mt-8 grid items-start gap-6 md:grid-cols-2">
-        {liveDemos.map((project, i) => (
-          <ExpandableProjectCard
-            key={project.slug}
-            project={project}
-            index={i}
-            featured={project.slug === FEATURED_LIVE}
-          />
+      <div className="grid auto-rows-fr gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {ordered.map((project) => (
+          <ProjectGridCard key={project.slug} project={project} />
         ))}
       </div>
-
-      <div className="mt-20">
-        <SubHeading
-          icon={<BookOpen className="h-3.5 w-3.5" />}
-          eyebrow="Case studies"
-          title="Projects with the full analysis written up"
-          body={`${caseStudies.length} projects without a deployed UI. The deep pages have the verified metrics, methodology, and chart interpretations.`}
-        />
-        <div className="mt-8 grid items-start gap-6 md:grid-cols-2">
-          {caseStudies.map((project, i) => (
-            <ExpandableProjectCard
-              key={project.slug}
-              project={project}
-              index={i}
-              featured={project.slug === FEATURED_CASE}
-            />
-          ))}
-        </div>
-      </div>
     </section>
-  );
-}
-
-function SubHeading({
-  icon,
-  eyebrow,
-  title,
-  body,
-}: {
-  icon: React.ReactNode;
-  eyebrow: string;
-  title: string;
-  body: string;
-}) {
-  return (
-    <FadeIn>
-      <div className="flex flex-col gap-1.5">
-        <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-accent">
-          {icon}
-          {eyebrow}
-        </span>
-        <h3 className="text-xl font-semibold text-text md:text-2xl">
-          {title}
-        </h3>
-        <p className="text-sm text-muted">{body}</p>
-      </div>
-    </FadeIn>
   );
 }
