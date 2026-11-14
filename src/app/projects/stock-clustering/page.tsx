@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ProjectGlance } from "@/components/ProjectGlance";
 import { Database, Cpu, BarChart3, Layers } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { FadeIn } from "@/components/FadeIn";
@@ -39,6 +40,7 @@ export default function StockClusteringPage() {
         tickers of daily prices into it, and run a K-means analysis in
         PySpark with K chosen from silhouette and elbow plots?
       </HypothesisCallout>
+      <ProjectGlance slug="stock-clustering" />
 
       <FadeIn>
         <DeepSection

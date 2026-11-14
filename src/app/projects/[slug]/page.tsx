@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ProjectGlance } from "@/components/ProjectGlance";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ExternalLink, Github, Construction } from "lucide-react";
@@ -108,6 +109,8 @@ export default function ProjectStubPage({
           ) : null}
         </div>
       </FadeIn>
+
+      <ProjectGlance slug={project.slug} />
 
       <FadeIn>
         <section className="mt-14 border-t border-border/40 pt-10">

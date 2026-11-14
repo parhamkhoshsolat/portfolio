@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ProjectGlance } from "@/components/ProjectGlance";
 import { Database, Map, BarChart3, Layers, Award, Lock } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { FadeIn } from "@/components/FadeIn";
@@ -34,6 +35,7 @@ export default function RetailGeospatialPage() {
         compare districts of different sizes by store potential per
         resident, and show the result on a single map?
       </HypothesisCallout>
+      <ProjectGlance slug="retail-geospatial" />
 
       <FadeIn>
         <div className="mt-8 rounded-2xl border border-amber-500/30 bg-amber-500/5 p-5">

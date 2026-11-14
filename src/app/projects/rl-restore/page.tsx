@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ProjectGlance } from "@/components/ProjectGlance";
 import Image from "next/image";
 import {
   Image as ImageIcon,
@@ -100,6 +101,7 @@ export default function RlRestorePage() {
         is the result worth the extra machinery compared to one end-to-end
         network?
       </HypothesisCallout>
+      <ProjectGlance slug="rl-restore" />
 
       <FadeIn>
         <DeepSection

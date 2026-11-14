@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ProjectGlance } from "@/components/ProjectGlance";
 import { Database, Cpu, Layers, GitBranch, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { FadeIn } from "@/components/FadeIn";
@@ -53,6 +54,7 @@ export default function TalentSonarPage() {
         that finds real candidates on GitHub, fast enough to be useful in a
         24-hour hackathon prototype?
       </HypothesisCallout>
+      <ProjectGlance slug="talentsonar" />
 
       <FadeIn>
         <DeepSection

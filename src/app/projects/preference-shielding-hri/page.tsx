@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ProjectGlance } from "@/components/ProjectGlance";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -66,10 +67,10 @@ export default function PreferenceShieldingPage() {
       {/* Hero */}
       <FadeIn>
         <Link
-          href="/#in-progress"
+          href="/#research"
           className="inline-flex items-center gap-2 text-xs text-muted hover:text-accent"
         >
-          <ArrowLeft className="h-3.5 w-3.5" /> Back to in-progress
+          <ArrowLeft className="h-3.5 w-3.5" /> Back to research
         </Link>
 
         <div className="mt-6 flex flex-wrap items-center gap-2">
@@ -106,6 +107,7 @@ export default function PreferenceShieldingPage() {
           Build complete and deployed. The study is now running with
           participants.
         </p>
+        <ProjectGlance slug="preference-shielding-hri" />
       </FadeIn>
 
       {/* The question */}

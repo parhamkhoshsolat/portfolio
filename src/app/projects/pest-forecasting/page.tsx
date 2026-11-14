@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ProjectGlance } from "@/components/ProjectGlance";
 import { Database, Cpu, BarChart3, Layers, AlertCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { FadeIn } from "@/components/FadeIn";
@@ -40,6 +41,7 @@ export default function PestPage() {
         10.67:1 class imbalance, where the cost of a missed
         outbreak dwarfs the cost of a false alarm?
       </HypothesisCallout>
+      <ProjectGlance slug="pest-forecasting" />
 
       <FadeIn>
         <DeepSection

@@ -197,7 +197,7 @@ Before any rules are taught, a short demo shows the robot moving with no input. 
 
 ## B. Research on code LLMs for hardware design (Verilog)
 
-Parham is doing research on how code LLMs handle hardware-design (Verilog) tasks. Results are under review. Say only that; DO NOT name models, benchmarks, collaborators, numbers or findings. For more, point to LinkedIn.
+Parham is doing research on how code LLMs handle hardware-design (Verilog) tasks. It is in progress and the results are not public yet. Say only that; DO NOT name models, benchmarks, collaborators, numbers or findings. For more, point to LinkedIn.
 
 # Team handling
 

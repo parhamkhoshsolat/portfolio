@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ProjectGlance } from "@/components/ProjectGlance";
 import { Database, Cpu, BarChart3, Layers, TrendingUp } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { FadeIn } from "@/components/FadeIn";
@@ -34,6 +35,7 @@ export default function OuladPage() {
         forecast daily student activity on the Open University learning
         platform?
       </HypothesisCallout>
+      <ProjectGlance slug="oulad-timeseries" />
 
       <FadeIn>
         <DeepSection

@@ -23,7 +23,7 @@ export function Hero() {
             "radial-gradient(ellipse 900px 500px at 50% -10%, rgba(56, 189, 248, 0.10), transparent 60%)",
         }}
       />
-      <div className="container relative max-w-4xl py-24 md:py-28">
+      <div className="container relative max-w-4xl py-12 md:py-14">
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -104,12 +104,15 @@ export function Hero() {
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.8 }}
-          className="mt-10"
+          className="mt-8"
         >
           <Button asChild size="lg">
             <Link href="#projects">
               See the work <ArrowRight className="h-4 w-4" />
             </Link>
+          </Button>
+          <Button asChild size="lg" variant="secondary" className="ml-3">
+            <Link href="#research">Research</Link>
           </Button>
         </motion.div>
       </div>

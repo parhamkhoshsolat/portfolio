@@ -13,6 +13,68 @@ export default function HomePage() {
     <>
       <Hero />
 
+      <ProjectsSection />
+
+      <InProgressSection />
+
+      <section
+        id="experience"
+        className="border-b border-border/40"
+      >
+        <div className="container max-w-3xl py-20 md:py-24">
+          <FadeIn>
+            <p className="text-xs uppercase tracking-[0.2em] text-accent">
+              Experience
+            </p>
+            <h2 className="mt-2 text-3xl font-semibold md:text-4xl">
+              Data Scientist, Sakoudar
+            </h2>
+            <p className="mt-2 text-sm text-muted">
+              2022 to 2025 &middot; full time &middot; on site, then remote
+            </p>
+            <p className="mt-6 text-muted">
+              Sakoudar is an influencer campaign management platform across
+              LinkedIn, X and Instagram. I joined in the company&apos;s first
+              year as one of two technical people.
+            </p>
+            <ul className="mt-6 space-y-4 text-muted">
+              <li>
+                Built the scoring and recommendation engine behind the live
+                platform. I owned the data, scoring and matching, and part of
+                the backend.
+              </li>
+              <li>
+                Designed a cross-platform engagement score that weights each
+                interaction type per platform and corrects for posting
+                frequency, audience size and category, using the
+                platforms&apos; own audience demographics.
+              </li>
+              <li>
+                Built brand-fit matching with semantic text embeddings that
+                compares each campaign&apos;s message and goals with
+                influencers&apos; own posts.
+              </li>
+              <li>
+                Turned customer briefs into ranked influencer shortlists.
+                After launch, about 8 in 10 campaigns used the engine&apos;s
+                recommendations instead of manual selection.
+              </li>
+              <li>
+                Applied sentiment analysis to influencer posts. Built the
+                founders&apos; review dashboard and the step that published
+                approved scores to the live site.
+              </li>
+              <li>
+                Python, pandas, MySQL on the company server. Weekly data
+                collection from three platform APIs, covering under 500
+                influencers.
+              </li>
+            </ul>
+          </FadeIn>
+        </div>
+      </section>
+
+
       <section
         id="about"
         className="border-y border-border/40 bg-card/30"
@@ -72,7 +134,7 @@ export default function HomePage() {
                 thesis at Federico II, on how a learning robot can stay
                 transparent and trustworthy to the person it learns from.
                 Alongside it, I&apos;m doing research on how code LLMs handle
-                hardware-design (Verilog) tasks, with results under review.
+                hardware-design (Verilog) tasks; the results are not public yet.
               </p>
               <p>
                 What I&apos;m after: a team that values clarity over
@@ -93,67 +155,6 @@ export default function HomePage() {
           </FadeIn>
         </div>
       </section>
-
-      <section
-        id="experience"
-        className="border-b border-border/40"
-      >
-        <div className="container max-w-3xl py-20 md:py-24">
-          <FadeIn>
-            <p className="text-xs uppercase tracking-[0.2em] text-accent">
-              Experience
-            </p>
-            <h2 className="mt-2 text-3xl font-semibold md:text-4xl">
-              Data Scientist, Sakoudar
-            </h2>
-            <p className="mt-2 text-sm text-muted">
-              2022 to 2025 &middot; full time &middot; on site, then remote
-            </p>
-            <p className="mt-6 text-muted">
-              Sakoudar is an influencer campaign management platform across
-              LinkedIn, X and Instagram. I joined in the company&apos;s first
-              year as one of two technical people.
-            </p>
-            <ul className="mt-6 space-y-4 text-muted">
-              <li>
-                Built the scoring and recommendation engine behind the live
-                platform. I owned the data, scoring and matching, and part of
-                the backend.
-              </li>
-              <li>
-                Designed a cross-platform engagement score that weights each
-                interaction type per platform and corrects for posting
-                frequency, audience size and category, using the
-                platforms&apos; own audience demographics.
-              </li>
-              <li>
-                Built brand-fit matching with semantic text embeddings that
-                compares each campaign&apos;s message and goals with
-                influencers&apos; own posts.
-              </li>
-              <li>
-                Turned customer briefs into ranked influencer shortlists.
-                After launch, about 8 in 10 campaigns used the engine&apos;s
-                recommendations instead of manual selection.
-              </li>
-              <li>
-                Applied sentiment analysis to influencer posts. Built the
-                founders&apos; review dashboard and the step that published
-                approved scores to the live site.
-              </li>
-              <li>
-                Python, pandas, MySQL on the company server. Weekly data
-                collection from three platform APIs, covering under 500
-                influencers.
-              </li>
-            </ul>
-          </FadeIn>
-        </div>
-      </section>
-
-      <ProjectsSection />
-
-      <InProgressSection />
 
       <section
         id="contact"

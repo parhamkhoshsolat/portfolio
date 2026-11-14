@@ -1,32 +1,22 @@
-import { Boxes, FlaskConical, MessageSquare, FileText } from "lucide-react";
-
-// Static "what's on this site" row that replaces the earlier marquee.
-// Sets expectations without animation noise.
-
+// Proof strip under the hero: the same three facts for every visitor.
 const items = [
-  { icon: Boxes, label: "9 projects" },
-  { icon: FlaskConical, label: "MSc thesis in progress" },
-  { icon: MessageSquare, label: "Live AI agent trained on the work" },
-  { icon: FileText, label: "2 certificates, 1 programme" },
+  { value: "3 years", label: "data scientist at Sakoudar, 2022 to 2025" },
+  { value: "28.67/30", label: "MSc Data Science weighted average, Federico II" },
+  { value: "4", label: "live demos you can try on this site" },
 ];
 
 export function HeroMarquee() {
   return (
     <div className="border-y border-border/30 bg-bg/40">
-      <div className="container flex flex-wrap items-center justify-center gap-x-8 gap-y-3 py-4 text-xs text-muted md:justify-between">
-        <span className="text-[10px] uppercase tracking-[0.22em] text-accent">
-          On this site
-        </span>
+      <dl className="container grid gap-px py-5 sm:grid-cols-3">
         {items.map((it) => (
-          <span
-            key={it.label}
-            className="inline-flex items-center gap-2 text-text"
-          >
-            <it.icon className="h-3.5 w-3.5 text-accent" aria-hidden />
-            {it.label}
-          </span>
+          <div key={it.label} className="px-1 py-2 sm:px-4 sm:first:pl-0">
+            <dt className="sr-only">{it.label}</dt>
+            <dd className="text-2xl font-semibold tabular-nums text-accent">{it.value}</dd>
+            <dd className="mt-0.5 text-xs leading-snug text-muted">{it.label}</dd>
+          </div>
         ))}
-      </div>
+      </dl>
     </div>
   );
 }

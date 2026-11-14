@@ -12,15 +12,16 @@ export function InProgressSection() {
   const count = inProgressProjects.length;
   const heading =
     count === 1
-      ? "One research project in flight"
-      : `${count} research projects in flight`;
+      ? "Research in progress"
+      : `${count} research projects in progress`;
 
   return (
-    <section id="in-progress" className="container pb-20 md:pb-28">
+    <section id="research" className="container scroll-mt-20 pb-20 md:pb-28">
+      <span id="in-progress" aria-hidden className="block -translate-y-20" />
       <FadeIn>
         <div className="mb-6 flex flex-col gap-2">
           <p className="text-xs uppercase tracking-[0.2em] text-accent">
-            Currently building
+            Research
           </p>
           <h2 className="text-3xl font-semibold md:text-4xl">{heading}</h2>
         </div>
@@ -32,6 +33,15 @@ export function InProgressSection() {
           {inProgressProjects.map((project, i) => (
             <InProgressCard key={project.slug} project={project} index={i} />
           ))}
+          <div className="rounded-2xl border border-dashed border-border bg-card/40 p-5">
+            <p className="text-xs uppercase tracking-[0.18em] text-muted">
+              Second research line
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-text">
+              How code LLMs handle hardware-design (Verilog) tasks. In progress;
+              results are not public yet.
+            </p>
+          </div>
         </div>
       ) : (
         <>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ProjectGlance } from "@/components/ProjectGlance";
 import {
   Database,
   Cpu,
@@ -71,6 +72,7 @@ export default function ShieldedLgvRoutingPage() {
         methods compete on throughput alone, do learned policies beat
         classical multi-agent planners?
       </HypothesisCallout>
+      <ProjectGlance slug="shielded-lgv-routing" />
 
       <FadeIn>
         <DeepSection

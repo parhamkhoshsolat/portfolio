@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ProjectGlance } from "@/components/ProjectGlance";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink, Github, Cpu, Database, GraduationCap, BarChart3 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -74,6 +75,7 @@ export default function Florence2Page() {
           single Colab GPU to a stable, deployable VQA endpoint without
           exceeding memory or destabilising gradients?
         </HypothesisCallout>
+      <ProjectGlance slug="florence2-vqa" />
       </FadeIn>
 
       <FadeIn delay={0.05}>

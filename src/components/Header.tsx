@@ -30,10 +30,10 @@ export function Header() {
             Projects
           </Link>
           <Link
-            href="/#in-progress"
+            href="/#research"
             className="hidden text-muted hover:text-text transition-colors sm:inline"
           >
-            In progress
+            Research
           </Link>
           <Link
             href="/#about"
