@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 };
 
 const stats = [
-  { label: "Data sources", value: "Stores + census" },
+  { label: "Data sources", value: "Stores + population" },
   { label: "Join", value: "Point-in-polygon" },
   { label: "Team", value: "4 people" },
   { label: "Public data", value: "Synthetic" },
@@ -31,7 +31,7 @@ export default function RetailGeospatialPage() {
       <ProjectDeepHero project={project} assets={assets} stats={stats} />
 
       <HypothesisCallout>
-        Can store locations and census districts be joined spatially to
+        Can store locations and districts be joined spatially to
         compare districts of different sizes by store potential per
         resident, and show the result on a single map?
       </HypothesisCallout>
@@ -68,9 +68,9 @@ export default function RetailGeospatialPage() {
             that owns Pampers Italia, Lines, and Tampax for the Italian
             market. The brief, set as part of the Statistical Learning and
             Data Analysis course at Federico II: estimate the potential of
-            sales points in the children&apos;s diapers category by
-            neighbourhood, combining Fater&apos;s store data with census
-            data.
+            sales points in the children&apos;s diapers category (per the
+            attendance certificate) by neighbourhood, combining Fater&apos;s
+            store data with district population data.
           </p>
           <p>
             A university team of four: Shayan Ekramnia, Farshad Farahtaj,
@@ -90,8 +90,9 @@ export default function RetailGeospatialPage() {
             <li>
               <strong className="text-text">Load.</strong> Store records
               (location, store type, sales area, Fater&apos;s potential
-              score) came from a MySQL database; census district polygons
-              and population came from ISTAT.
+              score), district polygons and population data. The original
+              pipeline read stores from MySQL; the public notebook keeps that
+              code for reference and runs on CSV files.
             </li>
             <li>
               <strong className="text-text">Spatial join.</strong> A

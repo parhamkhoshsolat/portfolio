@@ -19,8 +19,8 @@ export const metadata: Metadata = {
 };
 
 const stats = [
-  { label: "Source data", value: "420 MB" },
-  { label: "Daily observations", value: "808" },
+  { label: "Source data", value: "400+ MB" },
+  { label: "Days in seasonal model", value: "808" },
   { label: "Models tested", value: "4" },
   { label: "CNN hold-out MAE (log)", value: "0.20" },
 ];
@@ -45,15 +45,16 @@ export default function OuladPage() {
         >
           <p>
             The Open University Learning Analytics dataset (OULAD) is a public
-            420 MB release of click-stream and assessment data across multiple
-            UK course presentations. I aggregated it to 808 daily observations
-            of total VLE interactions, log-transformed, and built four
+            release (over 400 MB) of click-stream and assessment data across
+            multiple UK course presentations. I aggregated it to about 2.3
+            years of daily totals of VLE interactions (808 days used by the
+            seasonal model), log-transformed, and built four
             forecasters: SARIMA, ARIMAX, Prophet, and a custom 1D CNN.
           </p>
           <p>
             University team project (Hardware and Software for Big Data,
             Federico II, July 2024) with Farshad Farahtaj and Zahra
-            Jafarinejad; I built the full pipeline.
+            Jafarinejad; I built the pipeline.
           </p>
         </DeepSection>
 
@@ -69,8 +70,9 @@ export default function OuladPage() {
           <ul className="ml-6 list-disc space-y-2">
             <li>
               <strong className="text-text">7 lag features</strong> at 1, 2,
-              3, 7, 14, 21, and 28 days for the statistical models, mirroring
-              weekly and monthly seasonality.
+              3, 7, 14, 21, and 28 days for the seasonal ARIMA models
+              (Prophet uses no lags), mirroring weekly and monthly
+              seasonality.
             </li>
             <li>
               <strong className="text-text">30-lag input window</strong> for

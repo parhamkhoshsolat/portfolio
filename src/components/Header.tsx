@@ -22,7 +22,7 @@ export function Header() {
             Parham Khosh Solat
           </span>
         </Link>
-        <nav className="flex items-center gap-5 text-sm">
+        <nav className="flex items-center gap-4 text-sm sm:gap-5">
           <Link
             href="/#projects"
             className="text-muted hover:text-text transition-colors"
@@ -31,7 +31,7 @@ export function Header() {
           </Link>
           <Link
             href="/#research"
-            className="hidden text-muted hover:text-text transition-colors sm:inline"
+            className="text-muted hover:text-text transition-colors"
           >
             Research
           </Link>

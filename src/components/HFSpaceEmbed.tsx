@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { ExternalLink, Play } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Play } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 // Direct embed of the running HuggingFace Space via its dedicated
 // *.hf.space subdomain. Hides the bare iframe area behind a placeholder
@@ -19,6 +20,20 @@ export function HFSpaceEmbed({
 }) {
   const [started, setStarted] = useState(false);
   const [loaded, setLoaded] = useState(false);
+
+  // Visitors stay on this site: "Live demo" buttons link to #live-demo, which starts it here.
+  useEffect(() => {
+    const check = () => {
+      if (window.location.hash === "#live-demo") setStarted(true);
+    };
+    check();
+    window.addEventListener("hashchange", check);
+    return () => window.removeEventListener("hashchange", check);
+  }, []);
+
+  useEffect(() => {
+    if (started) trackEvent("demo_open", { target: liveUrl });
+  }, [started, liveUrl]);
 
   // Nothing loads from Hugging Face until the visitor asks for it, so the page
   // itself stays cookie-free.
@@ -39,14 +54,6 @@ export function HFSpaceEmbed({
           Loads {spaceName} from huggingface.co, which may set its own cookies.
           A sleeping demo takes 30 to 60 seconds to wake up.
         </p>
-        <a
-          href={liveUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-xs text-accent hover:underline"
-        >
-          <ExternalLink className="h-3.5 w-3.5" aria-hidden /> Or open it in a new tab
-        </a>
       </div>
     );
   }
@@ -70,14 +77,6 @@ export function HFSpaceEmbed({
           <p className="text-xs leading-relaxed text-muted">
             {spaceName} usually wakes up in 30 to 60 seconds.
           </p>
-          <a
-            href={liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs text-accent hover:underline"
-          >
-            <ExternalLink className="h-3.5 w-3.5" /> Or open in a new tab
-          </a>
         </div>
       ) : null}
       <iframe

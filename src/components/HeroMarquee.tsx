@@ -1,6 +1,6 @@
 // Proof strip under the hero: the same three facts for every visitor.
 const items = [
-  { value: "3 years", label: "data scientist at Sakoudar, 2022 to 2025" },
+  { value: "3 years", label: "data scientist at Sakoudar, an influencer marketing platform, 2022 to 2025" },
   { value: "28.67/30", label: "MSc Data Science weighted average, Federico II" },
   { value: "4", label: "live demos you can try on this site" },
 ];

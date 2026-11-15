@@ -50,9 +50,7 @@ export function Footer() {
               </li>
             </ul>
             <p className="mt-4 text-xs text-muted">
-              For direct contact, message me on LinkedIn. The agent in the
-              bottom-right will answer any question about the work, and you
-              can download the conversation when you&apos;re done.
+              For direct contact, email me or message me on LinkedIn.
             </p>
           </div>
         </div>

@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { ChatBubble } from "@/components/ChatBubble";
 import { CursorSpotlight } from "@/components/CursorSpotlight";
 import { SiteBackground } from "@/components/SiteBackground";
 import { MotionPreference } from "@/components/MotionPreference";
@@ -71,7 +70,6 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
-          <ChatBubble />
         </MotionPreference>
         <Analytics />
       </body>

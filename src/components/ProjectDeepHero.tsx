@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, ExternalLink, Github } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github, Play } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { FadeIn } from "@/components/FadeIn";
@@ -47,13 +47,14 @@ export function ProjectDeepHero({
         <div className="mt-8 flex flex-wrap gap-3">
           <Button asChild variant="secondary">
             <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
-              <Github className="h-4 w-4" /> Source on GitHub
+              <Github className="h-4 w-4" />{" "}
+              {project.repoUrl?.includes("huggingface.co") ? "Source on Hugging Face" : "Source on GitHub"}
             </a>
           </Button>
           {project.liveUrl ? (
             <Button asChild>
-              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                <ExternalLink className="h-4 w-4" /> {liveLabel ?? "Live demo"}
+              <a href="#live-demo">
+                <Play className="h-4 w-4" /> {liveLabel ?? "Live demo"}
               </a>
             </Button>
           ) : null}
@@ -85,18 +86,20 @@ export function ProjectDeepHero({
 }
 
 export function DeepSection({
+  id,
   eyebrow,
   title,
   icon,
   children,
 }: {
+  id?: string;
   eyebrow: string;
   title: string;
   icon?: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
-    <section className="mt-16 border-t border-border/40 pt-12">
+    <section id={id} className="mt-16 scroll-mt-20 border-t border-border/40 pt-12">
       <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-accent">
         {icon}
         <span>{eyebrow}</span>

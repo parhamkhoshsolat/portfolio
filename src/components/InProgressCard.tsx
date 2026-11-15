@@ -40,6 +40,11 @@ export function InProgressCard({
       <h3 className="text-xl font-semibold text-text">
         {project.shortTitle}
       </h3>
+      {project.supervisor ? (
+        <p className="mt-1 text-sm text-text/90">
+          {project.supervisor}
+        </p>
+      ) : null}
       <p className="mt-3 text-sm leading-relaxed text-muted">
         {project.tagline}
       </p>
@@ -63,13 +68,13 @@ export function InProgressCard({
       </div>
 
       <div className="mt-5 flex flex-wrap gap-1.5">
-        {project.techStack.slice(0, 5).map((t) => (
+        {project.techStack.slice(0, 3).map((t) => (
           <Badge key={t} variant="default">
             {t}
           </Badge>
         ))}
-        {project.techStack.length > 5 ? (
-          <Badge variant="default">+{project.techStack.length - 5}</Badge>
+        {project.techStack.length > 3 ? (
+          <Badge variant="default">+{project.techStack.length - 3}</Badge>
         ) : null}
       </div>
     </>

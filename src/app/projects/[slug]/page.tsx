@@ -139,7 +139,7 @@ export default function ProjectStubPage({
               <p className="mt-2 text-sm text-muted">
                 {project.repoUrl
                   ? "A longer write-up for this project is on the way. In the meantime, the source code is on GitHub."
-                  : "This was built inside a team's private repository, so there is no public source or demo. Ask the agent or message me on LinkedIn for details."}
+                  : "This was built inside a team's private repository, so there is no public source or demo. Message me on LinkedIn for details."}
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {project.repoUrl ? (

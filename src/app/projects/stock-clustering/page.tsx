@@ -23,7 +23,7 @@ const stats = [
   { label: "Kafka topics", value: "55" },
   { label: "Window", value: "Apr to Sep 2023" },
   { label: "Chosen K", value: "4" },
-  { label: "Silhouette @ K=4", value: "0.74" },
+  { label: "Silhouette at K = 4", value: "~0.74" },
 ];
 
 export default function StockClusteringPage() {
@@ -65,7 +65,7 @@ export default function StockClusteringPage() {
           </p>
           <p>
             University team project (Hardware and Software for Big Data,
-            Federico II) with Farshad Farahtaj; I built the full pipeline.
+            Federico II) with Farshad Farahtaj; I built the pipeline.
           </p>
         </DeepSection>
 
@@ -88,7 +88,8 @@ export default function StockClusteringPage() {
             <li>2D PCA visualisation, to eyeball how clusters fragment</li>
           </ul>
           <p>
-            Silhouette peaks at K=3 but stays close at K=4 (0.756 vs 0.740);
+            Silhouette peaks at K = 3 but stays close at K = 4 (about 0.76 vs
+            about 0.74, read off the notebook&apos;s plot);
             Elbow shows the largest drop between K=2 and K=3, then diminishing
             returns; in the PCA plots K=5 and K=6 start to split bands. K=4
             was picked by eye from these plots. With one stock and unscaled
@@ -105,7 +106,7 @@ export default function StockClusteringPage() {
           <p>
             The silhouette and elbow curves below are rebuilt from the
             notebook outputs as interactive charts. Hover any point for the
-            exact value at that K. Amber rings mark K = 4, the chosen
+            approximate value at that K. Amber rings mark K = 4, the chosen
             partition.
           </p>
           <div className="mt-6 grid gap-6 md:grid-cols-2">

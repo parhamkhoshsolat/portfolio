@@ -47,11 +47,11 @@ const results = [
   {
     method: "RL agent (DQN+LSTM, up to 3 tools)",
     gain: "+2.93",
-    note: "Nearly doubles the best single tool. Reaches about 90% of the oracle ceiling.",
+    note: "+0.59 dB (25%) more than the best single tool. Reaches about 90% of the oracle-with-stop ceiling.",
     highlight: true,
   },
   {
-    method: "Greedy oracle (best-possible chain)",
+    method: "Oracle with stop (best possible chain)",
     gain: "+3.24",
     note: "The ceiling for this toolbox if you could always pick the perfect chain.",
     highlight: false,
@@ -142,7 +142,8 @@ export default function RlRestorePage() {
             looks again, and either picks the next tool or stops. Chains run
             up to three tools. The LSTM is what lets the agent remember what
             it has already done and adapt the rest of the chain to the image
-            in front of it.
+            in front of it. Reported scores are on 63x63 test patches; the
+            full-image path is the demo.
           </p>
         </DeepSection>
 
@@ -189,13 +190,14 @@ export default function RlRestorePage() {
             </table>
           </div>
           <p className="mt-6 border-l-2 border-accent/40 pl-4 text-sm leading-relaxed text-muted">
-            The honest takeaway: the agent reaches about 90% of the oracle
-            ceiling and nearly doubles the best single tool, but a single
-            end-to-end CNN of the same size scores higher on raw PSNR. So
-            the toolchain&apos;s value is not peak fidelity. It is
-            interpretability (it shows its work step by step), modularity
-            (swap or add a tool without retraining the rest), and per-image
-            adaptivity. Pixel-loss models also come out slightly soft from
+            The honest takeaway: the agent reaches about 90% of the
+            oracle-with-stop ceiling and gains 0.59 dB (25%) more than the
+            best single tool, but a single end-to-end CNN of the same size
+            scores higher on raw PSNR. So the toolchain&apos;s appeal is not
+            peak fidelity: it is that each step is visible (this was not
+            measured). The comparison also favours the CNN, which trained on
+            all three damage strengths while the agent&apos;s dispatcher
+            trained on moderate damage only. Pixel-loss models also come out slightly soft from
             regression to the mean, which is why the generative finisher
             exists.
           </p>
@@ -235,7 +237,7 @@ export default function RlRestorePage() {
             <figure className="overflow-hidden rounded-2xl border border-border bg-white">
               <Image
                 src="/projects/rl-restore/restore-strip-mild.png"
-                alt="Mild degradation restored in three steps: degraded 19.93 dB, denoise4, deblur3, denoise3, then ground truth, for a +2.20 dB agent gain"
+                alt="Mild degradation restored in three steps: degraded 19.93 dB, denoise4, deblur3, denoise3, then ground truth, for a +2.20 dB agent gain; stopping after the first tool would have scored +3.16 dB"
                 width={1440}
                 height={360}
                 className="h-auto w-full"
@@ -254,16 +256,16 @@ export default function RlRestorePage() {
             </figure>
           </div>
           <p className="mt-4 border-l-2 border-accent/40 pl-4 text-sm leading-relaxed text-muted">
-            Top: a mild but textured crop gets a three-tool chain (denoise,
-            deblur, denoise again) for a +2.20 dB gain. Bottom: a heavily
-            degraded crop gets a single strong denoise and a +4.45 dB gain.
-            Same agent, different decision per image. That per-image
-            adaptivity is the behaviour the toolchain buys you.
+            Top: here the agent should have stopped after the first tool
+            (+3.16 dB); the two later steps lowered the score to +2.20 dB.
+            Bottom: a heavily degraded crop gets a single strong denoise and
+            a +4.45 dB gain. Same agent, different decision per image.
           </p>
         </DeepSection>
 
         {project.liveUrl ? (
           <DeepSection
+            id="live-demo"
             eyebrow="Live demo"
             title="Watch the agent restore a photo, one tool at a time"
             icon={<ExternalLink className="h-4 w-4" />}
@@ -272,8 +274,7 @@ export default function RlRestorePage() {
               A self-contained FastAPI + React app, no Gradio. Pick a method,
               upload or snap a photo, and watch the agent restore it step by
               step with the quality meter climbing. The optional Enhance &amp;
-              Upscale 4x step runs Real-ESRGAN. Open in a new tab if
-              you&apos;d rather not wait inline.
+              Upscale 4x step runs Real-ESRGAN.
             </p>
             <HFSpaceEmbed
               liveUrl={project.liveUrl}

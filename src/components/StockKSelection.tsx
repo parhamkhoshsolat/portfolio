@@ -12,7 +12,7 @@ import {
 } from "recharts";
 
 // Read off the notebook chart outputs (chart-02 silhouette, chart-03 elbow).
-// Approximate to 2 decimal places; exact values live in the notebook.
+// Approximate to 2 decimal places; values are read off the notebook's plots.
 
 const SILHOUETTE = [
   { k: 2, score: 0.69 },
@@ -101,7 +101,7 @@ export function SilhouetteChart() {
       </p>
       <p className="mt-2 border-l-2 border-accent/40 pl-3 text-xs text-muted">
         How to read it: silhouette measures cluster cohesion plus separation.
-        The global peak is at K = 3 (0.76) and K = 4 sits close behind (0.74,
+        The global peak is at K = 3 (about 0.76) and K = 4 sits close behind (about 0.74,
         amber marker). Either is defensible from this metric alone, which is
         why we cross-checked against Elbow and the PCA grid before
         committing.

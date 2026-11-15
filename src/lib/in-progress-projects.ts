@@ -17,6 +17,8 @@ export type InProgressProject = {
   heroImage?: { src: string; alt: string; caption: string };
   links?: { label: string; url: string }[];
   hypothesis?: string;
+  supervisor?: string;
+  supervisorLink?: { label: string; url: string };
 };
 
 export const inProgressProjects: InProgressProject[] = [
@@ -28,6 +30,8 @@ export const inProgressProjects: InProgressProject[] = [
       "An MSc thesis in human robot interaction. People teach a learning robot where it should and should not go, then watch it learn the same task four times under four different setups and say how each one felt. Q learning in a gridworld, wrapped in a full participant facing web app.",
     hypothesis:
       "Does a shield make a learning robot easier to read than no shield, and do two new shield designs improve on the standard one?",
+    supervisor: "Supervised by Prof. Silvia Rossi, PRISCA Lab.",
+    supervisorLink: { label: "PRISCA Lab", url: "https://www.prisca.unina.it" },
     statusLabel: "Study running with participants",
     statusDetail:
       "A within-subjects study that runs in the browser. Each participant teaches a set of movement rules once, then watches a tabular Q-learning robot learn the same task four times in a counterbalanced order: once with no shield, once under the standard shield from the original paper, and twice under new designs, an adaptive shield that loosens as the robot gains experience and a firm-or-flexible shield the person sets per object. The app computes each session on the server, then replays it with the robot narrating what it did. A paper is being written from the study, so the exact conditions, measures and analysis are held back for now. Heavily validated before launch; the study is now running with participants.",
@@ -37,7 +41,7 @@ export const inProgressProjects: InProgressProject[] = [
       "FastAPI + aiosqlite (async WebSocket replay)",
       "React 18 + Vite",
       "Recharts",
-      "Playwright",
+      "Python test and audit scripts",
       "Docker + Fly.io",
     ],
     techStackFull: [
@@ -45,10 +49,10 @@ export const inProgressProjects: InProgressProject[] = [
       "A small gridworld with four cardinal actions and a handful of objects",
       "FastAPI backend with an async WebSocket replay loop",
       "aiosqlite for participant data",
-      "React 18 with Vite, hand-drawn SVG room and props",
+      "React 18 with Vite, Tailwind CSS and hand-drawn SVG room and props",
       "Four conditions: no shield, the standard shield from the original paper, an adaptive shield that loosens with experience, and a firm-or-flexible shield set per object",
       "Recharts in the researcher panel",
-      "Playwright for scripted participant walkthroughs",
+      "Python scripts for load tests, session audits and convergence runs (Playwright used during development)",
       "Docker on Fly.io (London region), SQLite on an encrypted volume with scheduled backup",
     ],
     links: [],

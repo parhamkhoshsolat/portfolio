@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { ProjectGlance } from "@/components/ProjectGlance";
-import { Database, Cpu, Layers, GitBranch, Sparkles } from "lucide-react";
+import { Database, Cpu, Layers, GitBranch } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { FadeIn } from "@/components/FadeIn";
 import { ProjectDeepHero, DeepSection } from "@/components/ProjectDeepHero";
-import { HFSpaceEmbed } from "@/components/HFSpaceEmbed";
 import { HypothesisCallout } from "@/components/HypothesisCallout";
 import { getProject } from "@/lib/projects";
 import { getProjectAssets } from "@/lib/project-assets";
@@ -108,38 +107,17 @@ export default function TalentSonarPage() {
               GraphQL search that returns real candidate profiles.
             </li>
             <li>
-              <strong className="text-text">Placeholder:</strong> candidate
-              match scores are mock values, and candidates&apos; years of
-              experience are random placeholders in the code, so the ranking
-              is not a real assessment.
+              <strong className="text-text">Placeholder:</strong> candidates
+              are ranked by a simple rule-based score that was never
+              validated, and years of experience are random placeholders, so
+              the ranking is not a real assessment.
             </li>
             <li>
-              <strong className="text-text">Did not work:</strong> the
-              Gemini-powered HR interview panel was not finished.
+              <strong className="text-text">Not built:</strong> LLM scoring
+              of candidate answers; text answers are scored by length.
             </li>
           </ul>
         </DeepSection>
-
-        {project.liveUrl ? (
-          <DeepSection
-            eyebrow="Live demo"
-            title="Try the candidate-scoring app"
-            icon={<GitBranch className="h-4 w-4" />}
-          >
-            <p>
-              The Streamlit app lives on HuggingFace Spaces. Paste a GitHub
-              handle to see the GraphQL extraction plus the Gemini-driven
-              skill inference end to end.
-            </p>
-            <div className="mt-6">
-              <HFSpaceEmbed
-                liveUrl={project.liveUrl}
-                spaceName="TalentSonar"
-                height={720}
-              />
-            </div>
-          </DeepSection>
-        ) : null}
 
         <DeepSection
           eyebrow="Tech stack"
@@ -167,17 +145,6 @@ export default function TalentSonarPage() {
           </p>
         </DeepSection>
 
-        <div className="mt-12 rounded-2xl border border-dashed border-border bg-card/40 p-6">
-          <div className="flex items-start gap-3">
-            <Sparkles className="mt-0.5 h-4 w-4 text-accent" />
-            <p className="text-sm text-muted">
-              The agent at the bottom-right has the project notes for
-              TalentSonar. Ask it:{" "}
-              <span className="text-accent">&ldquo;What part of TalentSonar
-              actually worked?&rdquo;</span>.
-            </p>
-          </div>
-        </div>
       </FadeIn>
     </article>
   );

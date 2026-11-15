@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ProjectGlance } from "@/components/ProjectGlance";
 import Link from "next/link";
-import { ArrowLeft, ExternalLink, Github, Cpu, Database, GraduationCap, BarChart3 } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github, Play, Cpu, Database, GraduationCap, BarChart3 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { FadeIn } from "@/components/FadeIn";
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 };
 
 const stats = [
-  { label: "Model size", value: "230M params" },
+  { label: "Model size", value: "~230M params" },
   { label: "Training data", value: "60K train pairs" },
   { label: "Fine-tune", value: "Full-parameter" },
   { label: "Hardware", value: "Colab GPU" },
@@ -61,8 +61,8 @@ export default function Florence2Page() {
             </a>
           </Button>
           <Button asChild>
-            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-              <ExternalLink className="h-4 w-4" /> Open on HuggingFace Spaces
+            <a href="#live-demo">
+              <Play className="h-4 w-4" /> Live demo
             </a>
           </Button>
           {assets.techReport ? (
@@ -71,7 +71,7 @@ export default function Florence2Page() {
         </div>
 
         <HypothesisCallout>
-          Can a 230M-parameter vision-language model be fine-tuned on a
+          Can an about 230M-parameter vision-language model be fine-tuned on a
           single Colab GPU to a stable, deployable VQA endpoint without
           exceeding memory or destabilising gradients?
         </HypothesisCallout>
@@ -106,8 +106,8 @@ export default function Florence2Page() {
             We started from VQA v2.0&apos;s Abstract Scenes split: 50,000
             fully coloured cartoon-style scenes, ~3 crowd-annotated questions
             per image, ~150K image-question pairs total (60K train, 30K val,
-            60K test). We kept only the open-ended QA subset and dropped
-            multiple-choice questions to match the model&apos;s output format.
+            60K test) (dataset&apos;s published description). We used the
+            open-ended question files.
           </p>
           <p>
             We built a custom preprocessing pass that joined the raw
@@ -115,8 +115,8 @@ export default function Florence2Page() {
             <code className="text-accent">question_id</code>, took the modal-vote
             answer per question, prefixed each prompt with the{" "}
             <code className="text-accent">&lt;VQA&gt;</code> task token, and
-            emitted clean train / val / test JSONs. Images were resized
-            offline to 224×224 for training, and to 768×768 at inference time.
+            emitted clean train / val / test JSONs. The images in the release
+            are 224×224; the Florence processor resizes them again.
           </p>
         </Section>
 
@@ -141,54 +141,25 @@ export default function Florence2Page() {
         <Section
           icon={<Cpu className="h-4 w-4" />}
           eyebrow="Model selection"
-          title="Three architectures evaluated; Florence-2 won on stability"
+          title="Florence-2 kept after two other models failed on Colab"
         >
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[520px] border-collapse text-sm">
-              <thead className="text-left text-xs uppercase tracking-wider text-muted">
-                <tr className="border-b border-border">
-                  <th className="py-3 pr-4 font-medium">Model</th>
-                  <th className="py-3 pr-4 font-medium">Params</th>
-                  <th className="py-3 pr-4 font-medium">Outcome on Colab</th>
-                </tr>
-              </thead>
-              <tbody className="text-text">
-                <tr className="border-b border-border/60">
-                  <td className="py-3 pr-4">PaliGemma</td>
-                  <td className="py-3 pr-4 text-muted">~3B</td>
-                  <td className="py-3 pr-4 text-muted">
-                    Exceeded GPU memory; prompt-format sensitive.
-                  </td>
-                </tr>
-                <tr className="border-b border-border/60">
-                  <td className="py-3 pr-4">BLIP</td>
-                  <td className="py-3 pr-4 text-muted">~1.3B</td>
-                  <td className="py-3 pr-4 text-muted">
-                    Unstable gradients; kernel crashes during contrastive
-                    learning.
-                  </td>
-                </tr>
-                <tr>
-                  <td className="py-3 pr-4 text-accent">Florence-2-base-ft</td>
-                  <td className="py-3 pr-4 text-accent">230M</td>
-                  <td className="py-3 pr-4 text-accent">
-                    Stable end-to-end full-parameter fine-tune.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <p>
+            We also tried PaliGemma (ran out of GPU memory) and BLIP (did not
+            train stably); these runs were not logged. Florence-2-base-ft
+            gave a stable full-parameter fine-tune, so we kept it.
+          </p>
           <p className="mt-4">
             We loaded{" "}
             <code className="text-accent">microsoft/Florence-2-base-ft</code>{" "}
             at revision <code className="text-accent">refs/pr/6</code> with{" "}
             <code className="text-accent">trust_remote_code=True</code>. All
-            230M parameters trainable, no frozen layers.
+            parameters (about 230M) trainable, no frozen layers.
           </p>
           <p className="mt-4">
             University team project (Data Mining and Machine Learning,
-            Federico II) with Zahra Jafarinejad and Farshad Farahtaj; I built
-            the full pipeline.
+            Federico II) with Zahra Jafarinejad and Farshad Farahtaj. I built
+            the pipeline: data preparation, the fine-tune, loss tracking and
+            the deployed app.
           </p>
         </Section>
 
@@ -232,21 +203,22 @@ export default function Florence2Page() {
             </table>
           </div>
           <p className="mt-4 text-xs text-muted">
-            Note: only cross-entropy loss is reported. No test-set
-            accuracy / BLEU / CIDEr was computed; qualitative validation
-            via manual inspection of validation outputs.
+            Note: only cross-entropy loss is reported. No accuracy, BLEU or
+            CIDEr was computed; only loss was tracked. The loss counts padding
+            tokens, so its absolute value is not comparable to other
+            fine-tunes; the downward trend is real.
           </p>
         </Section>
 
         <Section
+          id="live-demo"
           icon={<ExternalLink className="h-4 w-4" />}
           eyebrow="Live demo"
           title="Try the fine-tuned model on HuggingFace Spaces"
         >
           <p className="mb-6">
             Configurable beam search and a per-answer confidence score.
-            Upload any photo and ask a question about it. Open in a new tab
-            if you&apos;d rather not wait inline.
+            Upload any photo and ask a question about it.
           </p>
           <Florence2LiveDemo
             liveUrl={project.liveUrl!}
@@ -285,18 +257,20 @@ export default function Florence2Page() {
 }
 
 function Section({
+  id,
   icon,
   eyebrow,
   title,
   children,
 }: {
+  id?: string;
   icon: React.ReactNode;
   eyebrow: string;
   title: string;
   children: React.ReactNode;
 }) {
   return (
-    <section className="mt-16 border-t border-border/40 pt-12">
+    <section id={id} className="mt-16 scroll-mt-20 border-t border-border/40 pt-12">
       <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-accent">
         {icon}
         <span>{eyebrow}</span>

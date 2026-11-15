@@ -33,9 +33,9 @@ const SHOT = "/projects/preference-shielding-hri/screenshots";
 // back until the paper is out.
 const stats = [
   { value: "4", label: "Study conditions" },
-  { value: "8x8", label: "Gridworld" },
-  { value: "60", label: "Target completers" },
-  { value: "~45 min", label: "Per participant" },
+  { value: "All 4", label: "Seen by every participant" },
+  { value: "Browser", label: "Where it runs" },
+  { value: "236", label: "Backend test functions" },
 ];
 
 const conditions = [
@@ -425,8 +425,8 @@ export default function PreferenceShieldingPage() {
               </p>
               <ul className="mt-3 space-y-2 text-sm text-muted">
                 <li>SciPy: statistical tests, effect sizes, power analysis</li>
-                <li>pandas: long format export handling</li>
-                <li>Playwright: scripted end to end participant walkthroughs</li>
+                <li>CSV export (Python csv module)</li>
+                <li>Python scripts for load tests, session audits and convergence runs (Playwright used during development)</li>
                 <li>pytest: backend test suite</li>
                 <li>Matplotlib, Plotly: figures</li>
                 <li>reportlab, pypdf: generated reports</li>

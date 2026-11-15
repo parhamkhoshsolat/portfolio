@@ -43,7 +43,7 @@ const classicalPlanners = [
   },
   {
     name: "Conflict-Based Search (CBS)",
-    body: "Two-level optimal search: a constraint tree at the top, single-agent A* at each leaf. Optimal under standard MAPF assumptions; expensive at scale.",
+    body: "Two-level optimal search: a constraint tree at the top, single-agent A* at each leaf. Optimal in its textbook form; here windowed with an expansion cap for the lifelong task stream.",
   },
 ];
 
@@ -81,8 +81,8 @@ export default function ShieldedLgvRoutingPage() {
           icon={<ShieldCheck className="h-4 w-4" />}
         >
           <p>
-            Six LGVs share the warehouse with each other and with human
-            workers walking the aisles. Every routing method, classical or
+            Six LGVs share the warehouse aisles (walking workers appear in
+            the live demo only, not in the scored runs). Every routing method, classical or
             learned, runs on top of the same collision shield: a
             priority-ordered simplification of PIBT (without its priority
             inheritance or backtracking) that checks every joint move. A
@@ -91,9 +91,8 @@ export default function ShieldedLgvRoutingPage() {
           </p>
           <p>
             Because safety lives in the shield and not in the planner, the
-            comparison reduces to throughput. A first attempt, which
-            penalised collisions in the reward, failed; the shield fixed
-            it. Evaluated over 5 seeds on 15 held-out layouts with IQM and
+            comparison reduces to throughput. Evaluated over 5 seeds on 15
+            held-out task streams on one warehouse layout, with IQM and
             bootstrap confidence intervals, the classical planners won:
             prioritized planning 3.03x greedy throughput and CBS 3.01x,
             against 2.53x for the best learned policy.
@@ -149,19 +148,22 @@ export default function ShieldedLgvRoutingPage() {
             Workers walk warehouse aisles on the same grid the LGVs use.
             Every routing method navigates around them without retraining,
             because the shield treats workers as dynamic obstacles, the same
-            way it treats other vehicles.
+            way it treats other vehicles. In the live demo only; workers
+            were not part of the evaluation.
           </p>
         </DeepSection>
 
         {project.liveUrl ? (
           <DeepSection
+            id="live-demo"
             eyebrow="Live demo"
             title="Switch methods, reshape the warehouse, add workers"
             icon={<ExternalLink className="h-4 w-4" />}
           >
             <p className="mb-6">
               Python simulation server, WebSocket streaming, live web
-              client. Pick any of the nine methods, change the warehouse
+              client. Pick any of six methods (greedy, prioritized, CBS, behaviour
+              cloning, bootstrapped DQN, hybrid), change the warehouse
               layout, raise or lower the number of human workers. The
               shield runs underneath all of it.
             </p>

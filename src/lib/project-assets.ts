@@ -25,14 +25,14 @@ export const projectAssets: Record<string, ProjectAssets> = {
         alt: "Word cloud of the most common training question tokens",
         caption: "Training-set question vocabulary across 60,000 open-ended prompts.",
         interpretation:
-          "What it tells us: the questions cluster around color, counts, and object identification (color, many, dog, man, woman). The model needs strong colour recognition and basic counting more than abstract reasoning. That insight directly drove the inference-time resize to 768x768, which preserves colour fidelity over raw token count.",
+          "What it tells us: the questions cluster around color, counts, and object identification (color, many, dog, man, woman). The model needs strong colour recognition and basic counting more than abstract reasoning.",
       },
       {
         src: "/projects/florence2-vqa/charts/chart-06.png",
         alt: "Histogram of validation question length in word count",
         caption: "Validation question length distribution. Bin width is one word.",
         interpretation:
-          "How to read it: the mode sits at 5 to 7 words and the tail extends past 15. So the model can rarely lean on template matching, even short prompts are linguistically varied. This is why we used the full Florence-2 tokenizer rather than truncating to a fixed prefix.",
+          "How to read it: the mode sits at 5 to 7 words and the tail extends past 15. So the model can rarely lean on template matching, even short prompts are linguistically varied.",
       },
     ],
   },
@@ -44,7 +44,7 @@ export const projectAssets: Record<string, ProjectAssets> = {
         alt: "K-means visualisation grid across K = 2 to 6 in PCA space",
         caption: "K-means on one ticker's daily prices, projected into 2D PCA for K = 2, 3, 4, 5, 6.",
         interpretation:
-          "How to read it: each panel is the same data (one ticker's 125 trading days), coloured by the K-means assignment at a different K. PCA is used only to draw the plot. At K = 5 and K = 6 one band splits into smaller sub-clusters, which is why K = 4 was picked. The features are raw price levels of a single stock, so the clusters are an exercise in choosing K, not a finding about the market.",
+          "How to read it: each panel is the same data (one ticker's 125 trading days), coloured by the K-means assignment at a different K. PCA is used only to draw the plot. At K = 5 and K = 6 one band splits into smaller sub-clusters; K = 4 itself was chosen from the silhouette and elbow plots. The features are raw price levels of a single stock, so the clusters are an exercise in choosing K, not a finding about the market.",
       },
       {
         src: "/projects/stock-clustering/charts/chart-06.png",
@@ -61,23 +61,23 @@ export const projectAssets: Record<string, ProjectAssets> = {
       {
         src: "/projects/oulad-timeseries/charts/chart-24.png",
         alt: "Log clicks over time with anomalies highlighted",
-        caption: "Daily VLE log clicks across 2.5 academic years. Red dots are statistical anomalies.",
+        caption: "Daily VLE log clicks across about 2.3 years. Red dots are statistical anomalies.",
         interpretation:
-          "How to read it: blue is daily clicks on log scale, red dots are points that fall outside the statistical band. The recurring summer dip (July-August) and winter dip (late December) are academic breaks. The visible spikes are exam weeks. This shape is what drove the lag-feature window choice: weekly, monthly, and quarterly lags all matter.",
+          "How to read it: blue is daily clicks on log scale, red dots are points that fall outside the statistical band. Spikes line up with the assumed course starts (February and October); dips in summer and at Christmas. Lags up to 28 days matter.",
       },
       {
         src: "/projects/oulad-timeseries/charts/chart-31.png",
         alt: "Prophet forecast on original scale showing observed vs forecast",
         caption: "Prophet forecast versus observed clicks in the original scale.",
         interpretation:
-          "How to read it: blue is the observed clicks, orange is Prophet's forecast. Prophet captures the weekly cycle and the multi-year trend but under-shoots the sharp exam-week spikes.",
+          "How to read it: blue is the observed clicks, orange is Prophet's forecast. Prophet captures the weekly cycle and the multi-year trend but under-shoots the sharp peaks.",
       },
       {
         src: "/projects/oulad-timeseries/charts/chart-32.png",
         alt: "Custom 1D CNN forecast vs observed clicks",
         caption: "Custom 1D CNN prediction versus training data.",
         interpretation:
-          "How to read it: blue is training data, orange is the CNN's forecast on the chronological hold-out (MAE 0.20 on log clicks). The CNN follows the shape without explicit seasonality terms. The other models were not scored on the same hold-out, so the CNN is not ranked against them.",
+          "How to read it: blue is training data, orange is the CNN's forecast on the chronological hold-out (MAE 0.20 on log clicks); dates are shifted by the 30-day window and actual values are not plotted. The CNN follows the shape without explicit seasonality terms. The other models were not scored on the same hold-out, so the CNN is not ranked against them.",
       },
     ],
   },
@@ -101,7 +101,7 @@ export const projectAssets: Record<string, ProjectAssets> = {
 
   "pest-forecasting": {
     // No notebook charts to extract; this project's visuals are
-    // generated client-side by PestModelComparison from project_memory metrics.
+    // generated by PestModelComparison from the 15 Nov 2026 re-analysis.
     charts: [],
   },
 
