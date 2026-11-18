@@ -37,9 +37,41 @@ export function rememberRef(ref: string) {
   }
 }
 
+const SEEN_KEY = "pks_seen";
+const ME_KEY = "pks_me";
+
+/** True the first time this is called in a browser tab (one arrival alert per visit). */
+export function firstPageInTab(): boolean {
+  try {
+    if (sessionStorage.getItem(SEEN_KEY)) return false;
+    sessionStorage.setItem(SEEN_KEY, "1");
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/** Your own browsers: open the site once with ?me=1 to stop alerts from it (?me=0 undoes it). */
+export function isMe(): boolean {
+  try {
+    return localStorage.getItem(ME_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+export function setMe(on: boolean) {
+  try {
+    if (on) localStorage.setItem(ME_KEY, "1");
+    else localStorage.removeItem(ME_KEY);
+  } catch {
+    /* storage blocked */
+  }
+}
+
 const ACTIONS_KEY = "pks_actions";
 
-/** Actions a ref visitor took that have not been reported to Telegram yet. */
+/** Actions a visitor took that have not been reported to Telegram yet. */
 export function takePendingActions(): [string, string][] {
   try {
     const list = JSON.parse(sessionStorage.getItem(ACTIONS_KEY) || "[]");
@@ -65,6 +97,6 @@ function rememberAction(event: string, data: Props) {
 export function trackEvent(event: string, data: Props = {}) {
   if (typeof window === "undefined") return;
   const ref = getRef();
-  if (ref && event !== "ref_visit") rememberAction(event, data);
+  if (event !== "ref_visit" && !isMe()) rememberAction(event, data);
   window.umami?.track(event, ref ? { ...data, ref } : data);
 }

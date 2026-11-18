@@ -1,24 +1,29 @@
 import { NextResponse } from "next/server";
 import { cleanRef } from "@/lib/analytics";
 
-// Telegram alert when someone opens the site through a personal /r/<name> link.
-// Needs TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID in the Vercel project settings;
-// without them this route does nothing.
+// Telegram alert when someone opens the site: named for personal /r/<name> links,
+// "Someone" for everyone else. Needs TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID in the
+// Vercel project settings; without them this route does nothing.
 
-const DAILY_CAP = 20; // best effort: counted per server instance
+// Best effort, counted per server instance: personal links and other visits have
+// separate caps, so a busy day of other visits never hides a personal-link alert.
+const DAILY_CAP = { ref: 20, other: 40 };
 let day = "";
-let sentToday = 0;
+const sentToday = { ref: 0, other: 0 };
 
-function underCap(): boolean {
+function underCap(kind: "ref" | "other"): boolean {
   const today = new Date().toISOString().slice(0, 10);
   if (today !== day) {
     day = today;
-    sentToday = 0;
+    sentToday.ref = 0;
+    sentToday.other = 0;
   }
-  if (sentToday >= DAILY_CAP) return false;
-  sentToday += 1;
+  if (sentToday[kind] >= DAILY_CAP[kind]) return false;
+  sentToday[kind] += 1;
   return true;
 }
+
+const BOT_UA = /bot|crawl|spider|slurp|preview|headless|lighthouse|pingdom|uptime|monitor|python|curl|wget|httpclient/i;
 
 function device(ua: string): string {
   const browser = /Edg\//.test(ua)
@@ -70,18 +75,29 @@ export async function POST(request: Request) {
   const chatId = process.env.TELEGRAM_CHAT_ID;
   if (!token || !chatId) return new NextResponse(null, { status: 204 });
 
-  let body: { type?: string; ref?: string; page?: string; actions?: unknown };
+  const ua = request.headers.get("user-agent") || "";
+  if (!ua || BOT_UA.test(ua)) return new NextResponse(null, { status: 204 });
+
+  let body: { type?: string; ref?: string | null; page?: string; from?: string | null; actions?: unknown };
   try {
     body = JSON.parse(await request.text());
   } catch {
     return new NextResponse(null, { status: 400 });
   }
   const ref = cleanRef(body.ref);
-  if (!ref) return new NextResponse(null, { status: 400 });
+  const where = place(request.headers);
 
   let text: string;
   if (body.type === "arrive") {
-    text = `👀 ${ref} just opened your portfolio\n${place(request.headers)} · ${device(request.headers.get("user-agent") || "")}`;
+    const from = body.from ? clean(body.from, 60) : "";
+    const page = clean(body.page);
+    const lines = [
+      ref ? `👀 ${ref} just opened your portfolio` : "👀 Someone opened your portfolio",
+      `${where} · ${device(ua)}`,
+      from ? `came from ${from}` : "direct visit (typed, bookmark, app or PDF link such as the CV)",
+    ];
+    if (page && page !== "/") lines.push(`landed on ${page}`);
+    text = lines.join("\n");
   } else if (body.type === "summary" && Array.isArray(body.actions) && body.actions.length) {
     const lines = body.actions.slice(0, 15).map((a) => {
       const [event, target] = Array.isArray(a) ? a : [];
@@ -90,12 +106,12 @@ export async function POST(request: Request) {
     });
     const shown = lines.filter(Boolean);
     if (!shown.length) return new NextResponse(null, { status: 204 });
-    text = `📄 ${ref} so far:\n${shown.join("\n")}`;
+    text = `📄 ${ref ?? `Visitor from ${where}`} so far:\n${shown.join("\n")}`;
   } else {
     return new NextResponse(null, { status: 400 });
   }
 
-  if (!underCap()) return new NextResponse(null, { status: 429 });
+  if (!underCap(ref ? "ref" : "other")) return new NextResponse(null, { status: 429 });
 
   const res = await fetch(`${process.env.TELEGRAM_API_BASE ?? "https://api.telegram.org"}/bot${token}/sendMessage`, {
     method: "POST",
