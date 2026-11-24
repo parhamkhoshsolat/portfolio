@@ -7,6 +7,7 @@ import { CursorSpotlight } from "@/components/CursorSpotlight";
 import { SiteBackground } from "@/components/SiteBackground";
 import { MotionPreference } from "@/components/MotionPreference";
 import { Analytics } from "@/components/Analytics";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 import { siteConfig } from "@/lib/site-config";
 
 const inter = Inter({
@@ -72,6 +73,7 @@ export default function RootLayout({
           <Footer />
         </MotionPreference>
         <Analytics />
+        <VercelAnalytics />
       </body>
     </html>
   );
